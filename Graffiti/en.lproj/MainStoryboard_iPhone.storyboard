@@ -1,82 +1,176 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2837" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="4">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1921"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier First View Controller - First-->
+        <!--First View Controller - First-->
         <scene sceneID="11">
             <objects>
                 <viewController title="First" id="2" customClass="FirstViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="16">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="First View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="20">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="21">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="Ikv-jk-tyi"/>
-                                </constraints>
-                                <string key="text">Loaded by the first view controller — an instance of FirstViewController — specified in the app delegate.</string>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Password" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8cb-Nw-aRo">
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits"/>
-                            </textView>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="User Id" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5c-bt-uI8">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="273" id="E9N-cA-d58"/>
+                                </constraints>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMM-15-r8f">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="2OH-Ii-9vs"/>
+                                    <constraint firstAttribute="width" constant="277" id="Kad-FI-3ec"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Sign In" backgroundImage="iosbluebutton.png">
+                                    <color key="titleColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="graffitilogo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="yyJ-vO-9Bp">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="DuQ-ht-u3i"/>
+                                    <constraint firstAttribute="height" constant="119" id="lTQ-Vm-eIP"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.20392158627510071" green="0.20392158627510071" blue="0.20392158627510071" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="21" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="QBg-X6-fBV"/>
-                            <constraint firstAttribute="trailing" secondItem="20" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Qxj-1L-2Yh"/>
-                            <constraint firstItem="20" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ty9-wx-CyI"/>
-                            <constraint firstItem="21" firstAttribute="leading" secondItem="16" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Zmm-k2-2L7"/>
-                            <constraint firstItem="21" firstAttribute="top" secondItem="20" secondAttribute="bottom" constant="40" type="user" id="jX0-Wi-kmb"/>
-                            <constraint firstAttribute="centerY" secondItem="21" secondAttribute="centerY" type="user" id="yWk-L2-m9F"/>
+                            <constraint firstItem="8cb-Nw-aRo" firstAttribute="trailing" secondItem="K5c-bt-uI8" secondAttribute="trailing" type="default" id="1Jp-WE-VOd"/>
+                            <constraint firstItem="yyJ-vO-9Bp" firstAttribute="centerX" secondItem="16" secondAttribute="centerX" type="default" id="CKh-rA-fwi"/>
+                            <constraint firstAttribute="trailing" secondItem="XMM-15-r8f" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="FVP-Ui-MOF"/>
+                            <constraint firstItem="yyJ-vO-9Bp" firstAttribute="top" secondItem="16" secondAttribute="top" constant="57" id="GCi-eR-y6l"/>
+                            <constraint firstItem="8cb-Nw-aRo" firstAttribute="top" secondItem="K5c-bt-uI8" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="GHv-5U-bR5"/>
+                            <constraint firstAttribute="bottom" secondItem="XMM-15-r8f" secondAttribute="bottom" constant="100" id="RwC-2T-ytH"/>
+                            <constraint firstItem="XMM-15-r8f" firstAttribute="leading" secondItem="8cb-Nw-aRo" secondAttribute="leading" type="default" id="fRr-uT-RY4"/>
+                            <constraint firstItem="8cb-Nw-aRo" firstAttribute="leading" secondItem="K5c-bt-uI8" secondAttribute="leading" type="default" id="vCz-ma-Pqh"/>
+                            <constraint firstItem="K5c-bt-uI8" firstAttribute="top" secondItem="16" secondAttribute="top" constant="205" id="xJ6-YJ-lnA"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="7"/>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="7"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="653" y="-138"/>
         </scene>
-        <!--class Prefix:identifier Second View Controller - Second-->
+        <!--View Tags Controller - Item-->
+        <scene sceneID="UFc-fs-fUU">
+            <objects>
+                <tableViewController id="5Ir-Em-9Vd" customClass="ViewTagsController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="81" sectionHeaderHeight="22" sectionFooterHeight="22" id="dmv-Lx-V6f">
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="81" id="JFi-zK-Yzc" customClass="TagCell">
+                                <rect key="frame" x="0.0" y="22" width="320" height="81"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FlL-GS-Zpo">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="BPX-yM-LyB"/>
+                                                <constraint firstAttribute="width" constant="314" id="hzC-6W-Fio"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="22"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="FlL-GS-Zpo" firstAttribute="top" secondItem="JFi-zK-Yzc" secondAttribute="top" constant="2" id="jWg-kx-yfB"/>
+                                    <constraint firstItem="FlL-GS-Zpo" firstAttribute="trailing" secondItem="JFi-zK-Yzc" secondAttribute="trailing" type="default" id="p9T-v6-iTA"/>
+                                </constraints>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="5Ir-Em-9Vd" id="wfc-bm-kYt"/>
+                            <outlet property="delegate" destination="5Ir-Em-9Vd" id="bGB-U6-atM"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Item" id="plX-Wr-aTY"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dG-Ln-Nim" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="1062"/>
+        </scene>
+        <!--Second View Controller - Second-->
         <scene sceneID="13">
             <objects>
                 <viewController title="Second" id="3" customClass="SecondViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="22">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="0.0" bouncesZoom="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WX9-Qd-Tr6">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="88" id="cQR-IW-sY8"/>
+                                    <constraint firstAttribute="height" constant="148" id="EV1-01-4kw"/>
                                 </constraints>
-                                <string key="text">Loaded by the second view controller — an instance of SecondViewController — specified in the app delegate.</string>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="s7W-fi-48t">
+                                <items>
+                                    <barButtonItem systemItem="camera" id="XIJ-06-4If">
+                                        <connections>
+                                            <action selector="CameraButtonPressed:" destination="3" id="g45-AX-YRM"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="play" id="Zlk-av-Rsq"/>
+                                    <barButtonItem systemItem="refresh" id="Kzn-If-dR1"/>
+                                </items>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="c5c-nG-HFy">
+                                <items>
+                                    <navigationItem title="Title" id="wQI-Ph-3KP">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="p7I-eO-7W4"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Tag It" id="1ob-ja-9Ai">
+                                            <connections>
+                                                <action selector="btnTagItPressed:" destination="3" id="sVm-0g-o5O"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.20392158630000001" green="0.20392158630000001" blue="0.20392158630000001" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="22" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0q6-IA-e8m"/>
-                            <constraint firstAttribute="trailing" secondItem="23" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="fR4-wH-Ih7"/>
-                            <constraint firstItem="23" firstAttribute="leading" secondItem="17" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fzb-YA-SeR"/>
-                            <constraint firstAttribute="centerY" secondItem="23" secondAttribute="centerY" type="user" id="llH-eD-iPS"/>
-                            <constraint firstAttribute="trailing" secondItem="22" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="pc3-9Y-W42"/>
-                            <constraint firstItem="23" firstAttribute="top" secondItem="22" secondAttribute="bottom" constant="40" type="user" id="yUx-Ee-KEk"/>
+                            <constraint firstItem="WX9-Qd-Tr6" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="09C-2M-SZT"/>
+                            <constraint firstItem="c5c-nG-HFy" firstAttribute="top" secondItem="17" secondAttribute="top" type="default" id="KHC-wz-BPm"/>
+                            <constraint firstItem="c5c-nG-HFy" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="Vjb-f1-Y55"/>
+                            <constraint firstItem="s7W-fi-48t" firstAttribute="leading" secondItem="17" secondAttribute="leading" type="default" id="XNx-mf-fCx"/>
+                            <constraint firstItem="s7W-fi-48t" firstAttribute="top" secondItem="WX9-Qd-Tr6" secondAttribute="bottom" type="default" id="kPd-8j-Tg9"/>
+                            <constraint firstItem="WX9-Qd-Tr6" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="khy-Sv-7mg"/>
+                            <constraint firstItem="s7W-fi-48t" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="qys-8n-MpY"/>
+                            <constraint firstItem="WX9-Qd-Tr6" firstAttribute="top" secondItem="17" secondAttribute="top" constant="45" id="st8-Rj-TXa"/>
+                            <constraint firstItem="c5c-nG-HFy" firstAttribute="trailing" secondItem="17" secondAttribute="trailing" type="default" id="wFR-nW-vYG"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="6"/>
+                    <tabBarItem key="tabBarItem" title="Tag" image="spraycan.png" id="6"/>
+                    <connections>
+                        <outlet property="ComposeTagNavBar" destination="c5c-nG-HFy" id="Gnx-nq-A2J"/>
+                        <outlet property="btnTagIt" destination="1ob-ja-9Ai" id="CYF-SL-K5z"/>
+                        <outlet property="cameraButton" destination="XIJ-06-4If" id="KH2-Tt-sXs"/>
+                        <outlet property="txtTag" destination="WX9-Qd-Tr6" id="cB0-01-0y0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,6 +189,7 @@
                     <connections>
                         <segue destination="2" kind="relationship" relationship="viewControllers" id="26"/>
                         <segue destination="3" kind="relationship" relationship="viewControllers" id="27"/>
+                        <segue destination="5Ir-Em-9Vd" kind="relationship" relationship="viewControllers" id="9xD-iX-SZf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
@@ -103,12 +198,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="16" height="16"/>
-        <image name="second" width="16" height="16"/>
+        <image name="graffitilogo.jpg" width="16" height="16"/>
+        <image name="iosbluebutton.png" width="487" height="97"/>
+        <image name="spraycan.png" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
+        <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
 </document>

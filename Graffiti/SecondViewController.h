@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "DataLayer.h"
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
+
+    @property (strong, nonatomic) IBOutlet UIView *view;
+    @property (strong, nonatomic) IBOutlet UITextView *txtTag;
+    @property (strong, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+    @property (strong, nonatomic) IBOutlet UINavigationBar *ComposeTagNavBar;
+    @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnTagIt;
+    @property (strong, nonatomic) CLLocationManager *myLocationManager;
+    @property (strong, nonatomic) DataLayer *myDataLayer;
+    - (IBAction)CameraButtonPressed:(id)sender;
+    - (IBAction)btnTagItPressed:(id)sender;
 
 @end
