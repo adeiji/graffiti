@@ -39,9 +39,8 @@
     [txtTag becomeFirstResponder];
     //Make the title of the Tag Page Tag Location
     ComposeTagNavBar.topItem.title = @"Tag Location";
-    
+    myDataLayer = [[DataLayer alloc] init];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -59,6 +58,7 @@
     myLocationManager.distanceFilter = 1000.0f;
     
 }
+
 
 #pragma mark - Camera Non Delegate Methods
 
@@ -87,6 +87,9 @@
     [myLocationManager startUpdatingLocation];
 }
 
+- (IBAction)btnCancelPressed:(id)sender {
+    [self.parentViewController.navigationController popViewControllerAnimated:YES];
+}
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
@@ -123,6 +126,7 @@
     tag.uid = (__bridge NSString *)(CFUUIDCreate(NULL));
     tag.type = @"image";
     tag.content = txtTag.text;
+    tag.data = UIImageJPEGRepresentation(myImage, 1.0);
     //Call the AmazonS3Handler which will add the file to the Amazon Server
     AmazonS3Handler *myS3Handler = [[AmazonS3Handler alloc] init:myImage :tag.type :tag.name];
     //Get the Url of the image that was saved onto the server and then save this url into the database
@@ -166,6 +170,12 @@
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
      [cameraButton setTintColor:[UIColor clearColor]];
+}
+
+#pragma mark - Keyboard Delegate Methods
+-(void) keyboardWillShow
+{
+    
 }
 
 @end

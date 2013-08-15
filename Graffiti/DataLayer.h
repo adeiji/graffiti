@@ -16,5 +16,5 @@
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 - (void) SaveContext  :(Tag *) myTag;
-
+- (NSArray *) GetFiftyRecords;
 @end

@@ -2,46 +2,40 @@
 //  Tag.m
 //  Graffiti
 //
-//  Created by Ade on 5/27/13.
+//  Created by Ade on 5/8/13.
 //  Copyright (c) 2013 Ade. All rights reserved.
 //
 
 #import "Tag.h"
 
-
 @implementation Tag
 
+@synthesize type;
+@synthesize _id;
 @synthesize content;
-@synthesize uid;
 @synthesize image;
+@synthesize audio;
 @synthesize latitude;
 @synthesize longitude;
 @synthesize name;
-@synthesize type;
-@synthesize data;
 
-- (NSManagedObject*) init
-{
-    return self;
-}
-
-- (void) init   :(NSString *) myType
+-(void) init    :(NSString *) myType
                 :(NSString *) myId
                 :(NSString *) myContent
                 :(NSString *) myImage
-                :(NSNumber *) myLatitude
-                :(NSNumber *) myLongitude
+                :(NSString *) myAudio
+                :(NSString *) myLatitude
+                :(NSString *) myLongitude
                 :(NSString *) myName
-                :(NSData *) myData
 {
     type = myType;
-    uid = myId;
+    _id = myId;
     content = myContent;
     image = myImage;
+    audio = myAudio;
     latitude = myLatitude;
     longitude = myLongitude;
     name = myName;
-    data = myData;
 }
 
 @end

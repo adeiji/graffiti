@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController <UITextFieldDelegate>
+
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) UITextField *activeField;
+@property (strong, nonatomic) IBOutlet UITextField *txtUserId;
+@property (strong, nonatomic) IBOutlet UITextField *txtPassword;
+
+-(void) textFieldDidBeginEditing:(UITextField *)textField;
+-(void) textFieldDidEndEditing:(UITextField *)textField;
 
 @end

@@ -19,6 +19,7 @@
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * type;
+@property (nonatomic, retain) NSData *data;
 
 - (NSManagedObject *) init;
 
@@ -28,6 +29,6 @@
                 :(NSString *) myImage
                 :(NSNumber *) myLatitude
                 :(NSNumber *) myLongitude
-                :(NSString *) myName;
-
+                :(NSString *) myName
+                :(NSData *) data;
 @end

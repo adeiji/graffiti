@@ -2,7 +2,7 @@
 //  TagCell.m
 //  Graffiti
 //
-//  Created by Ade on 5/31/13.
+//  Created by Ade on 8/14/13.
 //  Copyright (c) 2013 Ade. All rights reserved.
 //
 
@@ -14,7 +14,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor colorWithRed:0.098 green:0.824 blue:0.871 alpha:1.0];
+        // Initialization code
     }
     return self;
 }

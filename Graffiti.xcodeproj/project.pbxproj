@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE08DD211795DE850061201F /* ViewTagsWithDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */; };
+		CE08DD261795DF450061201F /* ViewAllTagDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD251795DF450061201F /* ViewAllTagDetailView.m */; };
 		CE107C1E173C475500691F0C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE107C1D173C475500691F0C /* CoreData.framework */; };
+		CE8FC69D17BBF2DA001F9B69 /* Graffiti.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8FC69C17BBF2DA001F9B69 /* Graffiti.png */; };
+		CE8FC6A117BC0357001F9B69 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8FC6A017BC0357001F9B69 /* background.png */; };
+		CE8FC6AA17BC3267001F9B69 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6A917BC3267001F9B69 /* TagCell.m */; };
+		CE8FC6AD17BC38B7001F9B69 /* ViewTags.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */; };
 		CE9947E51753F62000447989 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9947E41753F62000447989 /* Tag.m */; };
 		CE9A068717398B2D00783843 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A068617398B2D00783843 /* UIKit.framework */; };
 		CE9A068917398B2D00783843 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A068817398B2D00783843 /* Foundation.framework */; };
@@ -31,8 +37,12 @@
 		CE9A06BB17398B2E00783843 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A068817398B2D00783843 /* Foundation.framework */; };
 		CE9A06C317398B2E00783843 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE9A06C117398B2E00783843 /* InfoPlist.strings */; };
 		CE9A06C617398B2E00783843 /* GraffitiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9A06C517398B2E00783843 /* GraffitiTests.m */; };
-		CE9B44DE17590E770094BC9A /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B44DD17590E770094BC9A /* TagCell.m */; };
-		CE9B44E11759555A0094BC9A /* ViewTagsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9B44E01759555A0094BC9A /* ViewTagsController.m */; };
+		CE9B4578175970890094BC9A /* libCoreDataAI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B455F17595FC70094BC9A /* libCoreDataAI.a */; };
+		CE9B92E61763E2ED007FA4CF /* images in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E51763E2ED007FA4CF /* images */; };
+		CE9B92E81763E3F9007FA4CF /* homeButtonimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E71763E3F9007FA4CF /* homeButtonimage.png */; };
+		CE9B92EA1763EB26007FA4CF /* spraycannoalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */; };
+		CE9B92EC1763ED5C007FA4CF /* tagit.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92EB1763ED5C007FA4CF /* tagit.png */; };
+		CE9F38A9175ECA7E00656674 /* graffitilogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */; };
 		CEEEDF331739AEE200A4DE20 /* iosbluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEEDF311739AEE200A4DE20 /* iosbluebutton.png */; };
 		CEEEDF3F1739BD5D00A4DE20 /* spraycan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEEEDF3E1739BD5D00A4DE20 /* spraycan.jpg */; };
 		CEEEDF451739BFC300A4DE20 /* spraycan.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEEDF441739BFC300A4DE20 /* spraycan.png */; };
@@ -52,24 +62,34 @@
 			remoteGlobalIDString = CE9A068217398B2D00783843;
 			remoteInfo = Graffiti;
 		};
-		CE9B451B17595D220094BC9A /* PBXContainerItemProxy */ = {
+		CE9B455E17595FC70094BC9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CE9B451617595D220094BC9A /* CoreData.xcodeproj */;
+			containerPortal = CE9B455917595FC70094BC9A /* CoreDataAI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = CE9B44EB17595CE00094BC9A;
-			remoteInfo = CoreData;
+			remoteGlobalIDString = CE9B452B17595F850094BC9A;
+			remoteInfo = CoreDataAI;
 		};
-		CE9B451D17595D220094BC9A /* PBXContainerItemProxy */ = {
+		CE9B456017595FC70094BC9A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CE9B451617595D220094BC9A /* CoreData.xcodeproj */;
+			containerPortal = CE9B455917595FC70094BC9A /* CoreDataAI.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = CE9B44FC17595CE00094BC9A;
-			remoteInfo = CoreDataTests;
+			remoteGlobalIDString = CE9B453C17595F850094BC9A;
+			remoteInfo = CoreDataAITests;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE08DD1F1795DE850061201F /* ViewTagsWithDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewTagsWithDetailViewController.h; sourceTree = "<group>"; };
+		CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewTagsWithDetailViewController.m; sourceTree = "<group>"; };
+		CE08DD241795DF450061201F /* ViewAllTagDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewAllTagDetailView.h; sourceTree = "<group>"; };
+		CE08DD251795DF450061201F /* ViewAllTagDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewAllTagDetailView.m; sourceTree = "<group>"; };
 		CE107C1D173C475500691F0C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CE8FC69C17BBF2DA001F9B69 /* Graffiti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Graffiti.png; path = images/Graffiti.png; sourceTree = "<group>"; };
+		CE8FC6A017BC0357001F9B69 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = images/background.png; sourceTree = "<group>"; };
+		CE8FC6A817BC3267001F9B69 /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
+		CE8FC6A917BC3267001F9B69 /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
+		CE8FC6AB17BC38B7001F9B69 /* ViewTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewTags.h; sourceTree = "<group>"; };
+		CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewTags.m; sourceTree = "<group>"; };
 		CE9947E31753F62000447989 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		CE9947E41753F62000447989 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		CE9A068317398B2D00783843 /* Graffiti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graffiti.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,11 +122,12 @@
 		CE9A06C417398B2E00783843 /* GraffitiTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GraffitiTests.h; sourceTree = "<group>"; };
 		CE9A06C517398B2E00783843 /* GraffitiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GraffitiTests.m; sourceTree = "<group>"; };
 		CE9A06CF17398B5B00783843 /* Graffiti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Graffiti.entitlements; sourceTree = "<group>"; };
-		CE9B44DC17590E770094BC9A /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
-		CE9B44DD17590E770094BC9A /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
-		CE9B44DF175955590094BC9A /* ViewTagsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewTagsController.h; sourceTree = "<group>"; };
-		CE9B44E01759555A0094BC9A /* ViewTagsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewTagsController.m; sourceTree = "<group>"; };
-		CE9B451617595D220094BC9A /* CoreData.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreData.xcodeproj; path = ../CoreData/CoreData.xcodeproj; sourceTree = "<group>"; };
+		CE9B455917595FC70094BC9A /* CoreDataAI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreDataAI.xcodeproj; path = ../CoreDataAI/CoreDataAI.xcodeproj; sourceTree = "<group>"; };
+		CE9B92E51763E2ED007FA4CF /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
+		CE9B92E71763E3F9007FA4CF /* homeButtonimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = homeButtonimage.png; path = images/homeButtonimage.png; sourceTree = "<group>"; };
+		CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spraycannoalpha.png; path = Graffiti/spraycannoalpha.png; sourceTree = "<group>"; };
+		CE9B92EB1763ED5C007FA4CF /* tagit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tagit.png; path = images/tagit.png; sourceTree = "<group>"; };
+		CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = graffitilogo.jpg; sourceTree = "<group>"; };
 		CEEEDF311739AEE200A4DE20 /* iosbluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iosbluebutton.png; sourceTree = "<group>"; };
 		CEEEDF3E1739BD5D00A4DE20 /* spraycan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spraycan.jpg; sourceTree = "<group>"; };
 		CEEEDF441739BFC300A4DE20 /* spraycan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spraycan.png; sourceTree = "<group>"; };
@@ -125,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE9B4578175970890094BC9A /* libCoreDataAI.a in Frameworks */,
 				CE107C1E173C475500691F0C /* CoreData.framework in Frameworks */,
 				CEEEDF58173C459400A4DE20 /* AWSRuntime.framework in Frameworks */,
 				CEEEDF52173C383E00A4DE20 /* AWSS3.framework in Frameworks */,
@@ -151,9 +173,14 @@
 		CE9A067A17398B2D00783843 = {
 			isa = PBXGroup;
 			children = (
-				CE9B451617595D220094BC9A /* CoreData.xcodeproj */,
+				CE9B92E51763E2ED007FA4CF /* images */,
+				CE9B455917595FC70094BC9A /* CoreDataAI.xcodeproj */,
 				CEEEDF441739BFC300A4DE20 /* spraycan.png */,
+				CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */,
+				CE9B92EB1763ED5C007FA4CF /* tagit.png */,
 				CEEEDF3E1739BD5D00A4DE20 /* spraycan.jpg */,
+				CE9B92E71763E3F9007FA4CF /* homeButtonimage.png */,
+				CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */,
 				CEEEDF311739AEE200A4DE20 /* iosbluebutton.png */,
 				CE9A068C17398B2D00783843 /* Graffiti */,
 				CE9A06BE17398B2E00783843 /* GraffitiTests */,
@@ -193,10 +220,15 @@
 				CE9A069517398B2D00783843 /* AppDelegate.h */,
 				CE9A069617398B2D00783843 /* AppDelegate.m */,
 				CE9A069E17398B2D00783843 /* MainStoryboard_iPhone.storyboard */,
-				CE9B44DF175955590094BC9A /* ViewTagsController.h */,
-				CE9B44E01759555A0094BC9A /* ViewTagsController.m */,
-				CE9B44DC17590E770094BC9A /* TagCell.h */,
-				CE9B44DD17590E770094BC9A /* TagCell.m */,
+				CE8FC6A017BC0357001F9B69 /* background.png */,
+				CE08DD241795DF450061201F /* ViewAllTagDetailView.h */,
+				CE08DD251795DF450061201F /* ViewAllTagDetailView.m */,
+				CE8FC6A817BC3267001F9B69 /* TagCell.h */,
+				CE8FC6A917BC3267001F9B69 /* TagCell.m */,
+				CE08DD1F1795DE850061201F /* ViewTagsWithDetailViewController.h */,
+				CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */,
+				CE8FC6AB17BC38B7001F9B69 /* ViewTags.h */,
+				CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */,
 				CE9A06A117398B2D00783843 /* MainStoryboard_iPad.storyboard */,
 				CE9A06A417398B2D00783843 /* FirstViewController.h */,
 				CE9A06A517398B2D00783843 /* FirstViewController.m */,
@@ -221,6 +253,7 @@
 		CE9A068D17398B2D00783843 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE8FC69C17BBF2DA001F9B69 /* Graffiti.png */,
 				CE9A068E17398B2D00783843 /* Graffiti-Info.plist */,
 				CE9A068F17398B2D00783843 /* InfoPlist.strings */,
 				CE9A069217398B2D00783843 /* main.m */,
@@ -251,11 +284,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CE9B451717595D220094BC9A /* Products */ = {
+		CE9B455A17595FC70094BC9A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CE9B451C17595D220094BC9A /* libCoreData.a */,
-				CE9B451E17595D220094BC9A /* CoreDataTests.octest */,
+				CE9B455F17595FC70094BC9A /* libCoreDataAI.a */,
+				CE9B456117595FC70094BC9A /* CoreDataAITests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -320,8 +353,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = CE9B451717595D220094BC9A /* Products */;
-					ProjectRef = CE9B451617595D220094BC9A /* CoreData.xcodeproj */;
+					ProductGroup = CE9B455A17595FC70094BC9A /* Products */;
+					ProjectRef = CE9B455917595FC70094BC9A /* CoreDataAI.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -333,18 +366,18 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		CE9B451C17595D220094BC9A /* libCoreData.a */ = {
+		CE9B455F17595FC70094BC9A /* libCoreDataAI.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libCoreData.a;
-			remoteRef = CE9B451B17595D220094BC9A /* PBXContainerItemProxy */;
+			path = libCoreDataAI.a;
+			remoteRef = CE9B455E17595FC70094BC9A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		CE9B451E17595D220094BC9A /* CoreDataTests.octest */ = {
+		CE9B456117595FC70094BC9A /* CoreDataAITests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = CoreDataTests.octest;
-			remoteRef = CE9B451D17595D220094BC9A /* PBXContainerItemProxy */;
+			path = CoreDataAITests.octest;
+			remoteRef = CE9B456017595FC70094BC9A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -367,6 +400,13 @@
 				CEEEDF331739AEE200A4DE20 /* iosbluebutton.png in Resources */,
 				CEEEDF3F1739BD5D00A4DE20 /* spraycan.jpg in Resources */,
 				CEEEDF451739BFC300A4DE20 /* spraycan.png in Resources */,
+				CE9F38A9175ECA7E00656674 /* graffitilogo.jpg in Resources */,
+				CE9B92E61763E2ED007FA4CF /* images in Resources */,
+				CE9B92E81763E3F9007FA4CF /* homeButtonimage.png in Resources */,
+				CE9B92EA1763EB26007FA4CF /* spraycannoalpha.png in Resources */,
+				CE9B92EC1763ED5C007FA4CF /* tagit.png in Resources */,
+				CE8FC69D17BBF2DA001F9B69 /* Graffiti.png in Resources */,
+				CE8FC6A117BC0357001F9B69 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,8 +449,10 @@
 				CEEEDF48173AD4A900A4DE20 /* GraffitiModel.xcdatamodeld in Sources */,
 				CEEEDF50173AECFB00A4DE20 /* DataLayer.m in Sources */,
 				CE9947E51753F62000447989 /* Tag.m in Sources */,
-				CE9B44DE17590E770094BC9A /* TagCell.m in Sources */,
-				CE9B44E11759555A0094BC9A /* ViewTagsController.m in Sources */,
+				CE08DD211795DE850061201F /* ViewTagsWithDetailViewController.m in Sources */,
+				CE08DD261795DF450061201F /* ViewAllTagDetailView.m in Sources */,
+				CE8FC6AA17BC3267001F9B69 /* TagCell.m in Sources */,
+				CE8FC6AD17BC38B7001F9B69 /* ViewTags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +537,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -520,6 +563,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "DataLayer.h"
 
-@interface SecondViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
+@interface SecondViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, UITextFieldDelegate>
 
     @property (strong, nonatomic) IBOutlet UIView *view;
     @property (strong, nonatomic) IBOutlet UITextView *txtTag;
@@ -21,5 +21,6 @@
     @property (strong, nonatomic) DataLayer *myDataLayer;
     - (IBAction)CameraButtonPressed:(id)sender;
     - (IBAction)btnTagItPressed:(id)sender;
+    - (IBAction)btnCancelPressed:(id)sender;
 
 @end

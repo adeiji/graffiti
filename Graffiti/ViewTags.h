@@ -1,5 +1,5 @@
 //
-//  TagCell.h
+//  ViewTags.h
 //  Graffiti
 //
 //  Created by Ade on 8/14/13.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TagCell : UITableViewCell
-
-@property (strong, nonatomic) IBOutlet UITextView *txtTagContent;
+@interface ViewTags : UIView
 
 @end
