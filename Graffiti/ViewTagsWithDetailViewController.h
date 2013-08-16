@@ -11,8 +11,9 @@
 #import "ViewAllTagDetailView.h"
 #import "TagCell.h"
 
-@interface ViewTagsWithDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate>
+@interface ViewTagsWithDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, UIScrollViewDelegate>
 
+@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) IBOutlet UIImageView *imgContent;
 @property (strong, nonatomic) DataLayer *dataLayer;
 @property (strong, nonatomic) NSArray *myTags;
@@ -20,6 +21,5 @@
 @property (strong, nonatomic) IBOutlet ViewAllTagDetailView *viewAllTagsDetailView;
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) IBOutlet UITextView *txtContent;
-
 
 @end

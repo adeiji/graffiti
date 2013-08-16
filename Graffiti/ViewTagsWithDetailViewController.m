@@ -11,19 +11,26 @@
 #import "TagCell.h"
 
 @interface ViewTagsWithDetailViewController ()
-{
-    float cellHeight;
-}
+
+@property float cellHeight;
+@property (strong, nonatomic) UIView *containerView;
+
+- (void) centerScrollViewContents;
+
 @end
 
 @implementation ViewTagsWithDetailViewController
 
 @synthesize myTags;
+@synthesize viewTags;
 @synthesize dataLayer;
 @synthesize imgContent;
 @synthesize viewAllTagsDetailView;
 @synthesize txtContent;
 @synthesize myTableView;
+@synthesize cellHeight;
+@synthesize scrollView = _scrollView;
+@synthesize containerView = _containerView;
 
 - (void)viewDidLoad
 {
@@ -31,6 +38,8 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    viewTags.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
     
     dataLayer = [[DataLayer alloc] init];
     myTags = [dataLayer GetFiftyRecords];
