@@ -35,14 +35,22 @@
     dataLayer = [[DataLayer alloc] init];
     myTags = [dataLayer GetFiftyRecords];
     
-    [self loadTags];
+    [self gotoFirstRowInTable];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [myTableView reloadData];
 }
 
 //Select the first row of the table view
 - (void) gotoFirstRowInTable
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [myTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
+    if ([myTags count] > 0)
+    {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [myTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -51,19 +59,6 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void) loadTags
-{
-    for (int i = 0; i < [myTags count]; i ++)
-    {
-        //Get the correct information from the database specific to this tag
-        NSString *myContent = [[myTags objectAtIndex:i] valueForKey:@"content"];
-        NSString *myType = [[myTags objectAtIndex:i] valueForKey:@"type"];
-        //If an image is stored here, than get the image from the data table in the database
-        UIImage *myImage = [[UIImage alloc]initWithData:[[myTags objectAtIndex:i]valueForKey:@"data"]];
-    
-        imgContent.image = myImage;
-    }
-}
 
 - (CGFloat)heightForTextView:(UITextView*)textView containingString:(NSString*)string
 {
@@ -87,10 +82,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if ([myTags count] == 0)
-    {
-    }
-    return [myTags count] - 1;
+    return [myTags count];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

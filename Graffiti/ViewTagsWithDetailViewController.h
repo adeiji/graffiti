@@ -21,4 +21,5 @@
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) IBOutlet UITextView *txtContent;
 
+
 @end

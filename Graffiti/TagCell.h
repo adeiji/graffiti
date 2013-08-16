@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TagCell : UITableViewCell
+@interface TagCell : UITableViewCell <UITextViewDelegate>
 
 @property (strong, nonatomic) UITextView *txtTagContent;
 
