@@ -19,20 +19,36 @@
 @synthesize name;
 @synthesize type;
 @synthesize data;
+@synthesize conversation;
+@synthesize expirationDate;
+@synthesize dateTime;
+@synthesize tagger;
+@synthesize notes;
+@synthesize restrictions;
+@synthesize groups;
+
 
 - (NSManagedObject*) init
 {
     return self;
 }
 
-- (void) init   :(NSString *) myType
-                :(NSString *) myId
-                :(NSString *) myContent
-                :(NSString *) myImage
-                :(NSNumber *) myLatitude
-                :(NSNumber *) myLongitude
-                :(NSString *) myName
-                :(NSData *) myData
+- (void) init    :(NSString *) myType
+                 :(NSString *) myId
+                 :(NSString *) myContent
+                 :(NSString *) myImage
+                 :(NSNumber *) myLatitude
+                 :(NSNumber *) myLongitude
+                 :(NSString *) myName
+                 :(NSData *) myData
+                 :(NSString *) myConversation
+                 :(NSDate *) myExpirationDate
+                 :(NSDate *) myDateTime
+                 :(NSString *) myTagger
+                 :(NSString *) myNotes
+                 :(NSString *) myRestrictions
+                 :(NSString *) myGroups;
+
 {
     type = myType;
     uid = myId;
@@ -42,6 +58,13 @@
     longitude = myLongitude;
     name = myName;
     data = myData;
+    conversation = myConversation;
+    expirationDate = myExpirationDate;
+    dateTime = myDateTime;
+    tagger = myTagger;
+    notes = myNotes;
+    restrictions = myRestrictions;
+    groups = myGroups;
 }
 
 @end

@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "DataLayer.h"
 #import "SecondViewController.h"
+#import "ViewTagsWithDetailViewController.h"
+
 
 @implementation AppDelegate
 
@@ -18,7 +20,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
     [self.window makeKeyAndVisible];
     
     return YES;

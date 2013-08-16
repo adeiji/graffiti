@@ -9,7 +9,7 @@
             <objects>
                 <viewController title="First" id="2" customClass="FirstViewController" sceneMemberID="viewController">
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" id="gcs-GV-Qcd">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ux-Fc-whq">
@@ -97,12 +97,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="564" y="-161"/>
+            <point key="canvasLocation" x="557" y="-238"/>
         </scene>
-        <!--View Tags With Detail View Controller - ViewTagDetails-->
+        <!--View Tags With Detail View Controller - viewTagDetails-->
         <scene sceneID="tVL-jn-gvH">
             <objects>
-                <viewController storyboardIdentifier="ViewTagDetails" title="ViewTagDetails" id="N1b-Ck-EMG" customClass="ViewTagsWithDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewTagDetails" title="viewTagDetails" id="N1b-Ck-EMG" customClass="ViewTagsWithDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mmX-gn-IQY" customClass="ViewTags">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -123,7 +123,7 @@
                                     <constraint firstItem="NuN-yA-5Tb" firstAttribute="top" secondItem="hg1-qG-fx0" secondAttribute="top" constant="20" symbolic="YES" type="default" id="nIp-eF-qre"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.50000000000000011" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9NX-dT-uYh">
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9NX-dT-uYh">
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Er7-oY-dyP">
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -142,19 +142,19 @@
                             </view>
                             <view alpha="0.50000000000000011" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQc-6d-opa">
                                 <subviews>
-                                    <tableView clipsSubviews="YES" alpha="0.99999999999999989" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-kd-5lm">
+                                    <tableView clipsSubviews="YES" alpha="0.99999999999999989" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" rowHeight="135" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-kd-5lm">
                                         <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <prototypes>
-                                            <tableViewCell alpha="0.50000000000000011" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="displayTagCell" rowHeight="72" id="Pon-bh-UIo" customClass="TagCell">
-                                                <rect key="frame" x="0.0" y="22" width="280" height="72"/>
+                                            <tableViewCell alpha="0.50000000000000011" contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="displayTagCell" rowHeight="135" id="Pon-bh-UIo" customClass="TagCell">
+                                                <rect key="frame" x="0.0" y="22" width="280" height="135"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="71"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="280" height="134"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQB-kd-FBS">
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQB-kd-FBS">
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="71" id="48u-bq-9uF"/>
+                                                                <constraint firstAttribute="height" constant="487" id="3VF-or-Ngh"/>
                                                             </constraints>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,7 +170,7 @@
                                                     <constraint firstItem="DQB-kd-FBS" firstAttribute="leading" secondItem="Pon-bh-UIo" secondAttribute="leading" type="default" id="bIW-Aa-6AC"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="txtTagContent" destination="DQB-kd-FBS" id="F8n-of-9BN"/>
+                                                    <outlet property="txtTagContent" destination="DQB-kd-FBS" id="OiD-qL-clW"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
@@ -196,25 +196,26 @@
                         </accessibility>
                         <constraints>
                             <constraint firstItem="9NX-dT-uYh" firstAttribute="centerX" secondItem="WQc-6d-opa" secondAttribute="centerX" type="default" id="02M-iw-ygr"/>
-                            <constraint firstItem="9NX-dT-uYh" firstAttribute="top" secondItem="mmX-gn-IQY" secondAttribute="top" constant="140" id="0Pa-Zg-5DR"/>
                             <constraint firstItem="Ynd-2a-tEx" firstAttribute="top" secondItem="mmX-gn-IQY" secondAttribute="top" type="default" id="3Rq-Ka-bGI"/>
                             <constraint firstItem="Ynd-2a-tEx" firstAttribute="leading" secondItem="mmX-gn-IQY" secondAttribute="leading" type="default" id="L88-4y-PqT"/>
-                            <constraint firstItem="WQc-6d-opa" firstAttribute="top" secondItem="mmX-gn-IQY" secondAttribute="top" constant="230" id="LMc-Eq-CpI"/>
-                            <constraint firstAttribute="bottom" secondItem="9NX-dT-uYh" secondAttribute="bottom" constant="208" id="Ovi-dR-P1l"/>
                             <constraint firstItem="hg1-qG-fx0" firstAttribute="leading" secondItem="mmX-gn-IQY" secondAttribute="leading" constant="60" id="PFq-B8-20e"/>
+                            <constraint firstItem="WQc-6d-opa" firstAttribute="top" secondItem="mmX-gn-IQY" secondAttribute="top" constant="211" id="RVA-UK-CyH"/>
                             <constraint firstItem="WQc-6d-opa" firstAttribute="leading" secondItem="mmX-gn-IQY" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="SRg-ix-7Xw"/>
                             <constraint firstAttribute="trailing" secondItem="WQc-6d-opa" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="UIg-Eu-aGs"/>
                             <constraint firstItem="hg1-qG-fx0" firstAttribute="top" secondItem="mmX-gn-IQY" secondAttribute="top" constant="20" symbolic="YES" type="default" id="UoV-fG-r4m"/>
+                            <constraint firstAttribute="bottom" secondItem="WQc-6d-opa" secondAttribute="bottom" constant="14" id="WFS-EM-z50"/>
+                            <constraint firstItem="WQc-6d-opa" firstAttribute="top" secondItem="9NX-dT-uYh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Whe-fA-jWb"/>
                             <constraint firstItem="Ynd-2a-tEx" firstAttribute="bottom" secondItem="mmX-gn-IQY" secondAttribute="bottom" type="default" id="aiy-Cl-xZQ"/>
                             <constraint firstItem="9NX-dT-uYh" firstAttribute="leading" secondItem="hg1-qG-fx0" secondAttribute="leading" type="default" id="c2N-BF-V9e"/>
                             <constraint firstAttribute="bottom" secondItem="hg1-qG-fx0" secondAttribute="bottom" constant="271" id="i94-v5-3g1"/>
                             <constraint firstItem="9NX-dT-uYh" firstAttribute="trailing" secondItem="hg1-qG-fx0" secondAttribute="trailing" type="default" id="pqH-e9-lxF"/>
-                            <constraint firstAttribute="bottom" secondItem="WQc-6d-opa" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="tsu-wu-lXl"/>
+                            <constraint firstItem="9NX-dT-uYh" firstAttribute="top" secondItem="mmX-gn-IQY" secondAttribute="top" constant="140" id="uvU-kr-h3n"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="2t1-ef-i1t"/>
                     <navigationItem key="navigationItem" title="Tag Details" id="kc0-Uf-WU8"/>
                     <connections>
+                        <outlet property="imgContent" destination="NuN-yA-5Tb" id="Fre-A6-qe4"/>
                         <outlet property="myTableView" destination="HHl-kd-5lm" id="big-iY-E22"/>
                     </connections>
                 </viewController>
@@ -225,7 +226,7 @@
         <!--Second View Controller - Second-->
         <scene sceneID="13">
             <objects>
-                <viewController title="Second" id="3" customClass="SecondViewController" sceneMemberID="viewController">
+                <viewController title="Second" modalTransitionStyle="flipHorizontal" id="3" customClass="SecondViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="17">
                         <rect key="frame" x="0.0" y="20" width="320" height="411"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -252,6 +253,7 @@
                             <navigationBar contentMode="scaleToFill" barStyle="blackOpaque" translatesAutoresizingMaskIntoConstraints="NO" id="c5c-nG-HFy">
                                 <items>
                                     <navigationItem title="Title" id="wQI-Ph-3KP">
+                                        <barButtonItem key="backBarButtonItem" title="Cancel" id="cdz-n1-jpQ"/>
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="LDk-UC-Vms">
                                             <connections>
                                                 <action selector="btnCancelPressed:" destination="3" id="XA0-sK-OwO"/>
@@ -290,12 +292,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="912" y="548"/>
+            <point key="canvasLocation" x="666" y="430"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Graffiti Tab Bar Controller - mainViewController-->
         <scene sceneID="15">
             <objects>
-                <tabBarController id="4" sceneMemberID="viewController">
+                <tabBarController title="mainViewController" id="4" customClass="GraffitiTabBarController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="IOl-J1-uO6"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="5">
@@ -304,14 +306,13 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2" kind="relationship" relationship="viewControllers" id="j5N-YC-UUs"/>
-                        <segue destination="3" kind="relationship" relationship="viewControllers" id="2xZ-AM-5bR"/>
-                        <segue destination="N1b-Ck-EMG" kind="relationship" relationship="viewControllers" id="aE6-jC-Khf"/>
+                        <segue destination="N1b-Ck-EMG" kind="relationship" relationship="viewControllers" id="tlC-A6-WGO"/>
+                        <segue destination="3" kind="relationship" relationship="viewControllers" id="Rt1-Tm-Gm0"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="14" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="180"/>
+            <point key="canvasLocation" x="134" y="234"/>
         </scene>
     </scenes>
     <resources>
@@ -320,56 +321,6 @@
         <image name="iosbluebutton.png" width="487" height="97"/>
         <image name="spraycan.png" width="30" height="30"/>
     </resources>
-    <classes>
-        <class className="FirstViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FirstViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="txtPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txtUserId" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="SecondViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SecondViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="CameraButtonPressed:"/>
-                <relationship kind="action" name="btnCancelPressed:"/>
-                <relationship kind="action" name="btnTagItPressed:"/>
-                <relationship kind="outlet" name="ComposeTagNavBar" candidateClass="UINavigationBar"/>
-                <relationship kind="outlet" name="btnTagIt" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="cameraButton" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="txtTag" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="view" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="TagCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TagCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="txtTagContent" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="ViewAllTagDetailView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewAllTagDetailView.h"/>
-        </class>
-        <class className="ViewTags" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewTags.h"/>
-        </class>
-        <class className="ViewTagsWithDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewTagsWithDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="imgAvatar" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imgContent" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="lblDetails" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="lblHeader" candidateClass="UIView"/>
-                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
-                <relationship kind="outlet" name="viewAllTagsDetailView" candidateClass="ViewAllTagDetailView"/>
-                <relationship kind="outlet" name="viewTags" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

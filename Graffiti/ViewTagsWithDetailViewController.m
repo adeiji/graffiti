@@ -11,18 +11,19 @@
 #import "TagCell.h"
 
 @interface ViewTagsWithDetailViewController ()
-
+{
+    float cellHeight;
+}
 @end
 
 @implementation ViewTagsWithDetailViewController
 
 @synthesize myTags;
 @synthesize dataLayer;
-@synthesize lblDetails;
-@synthesize lblHeader;
 @synthesize imgContent;
-@synthesize imgAvatar;
 @synthesize viewAllTagsDetailView;
+@synthesize txtContent;
+@synthesize myTableView;
 
 - (void)viewDidLoad
 {
@@ -37,6 +38,12 @@
     [self loadTags];
 }
 
+//Select the first row of the table view
+- (void) gotoFirstRowInTable
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [myTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
+}
 
 - (void)didReceiveMemoryWarning
 {
@@ -55,13 +62,20 @@
         UIImage *myImage = [[UIImage alloc]initWithData:[[myTags objectAtIndex:i]valueForKey:@"data"]];
     
         imgContent.image = myImage;
-        lblDetails.text = myContent;
-        
-        CGRect rect = lblDetails.frame;
-        rect.size.height = lblDetails.contentSize.height;
-        lblDetails.frame = rect;
     }
 }
+
+- (CGFloat)heightForTextView:(UITextView*)textView containingString:(NSString*)string
+{
+    float horizontalPadding = 24;
+    float verticalPadding = 16;
+    float widthOfTextView = textView.contentSize.width - horizontalPadding;
+    float height = [string sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
+    
+    return height;
+}
+
+
 
 #pragma mark - Table View Delegate Methods
 
@@ -76,7 +90,12 @@
     if ([myTags count] == 0)
     {
     }
-    return [myTags count];
+    return [myTags count] - 1;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return cellHeight;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -85,18 +104,37 @@
     TagCell *cell = (TagCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     //Get the correct information from the database specific to this tag
-    NSString *myId = [[myTags objectAtIndex:indexPath.row] valueForKey:@"uid"];
+    NSString *myTagger = [[myTags objectAtIndex:indexPath.row] valueForKey:@"tagger"];
+    NSString *myDate = [[myTags objectAtIndex:indexPath.row] valueForKey:@"dateTime"];
     NSString *myContent = [[myTags objectAtIndex:indexPath.row] valueForKey:@"content"];
-    NSString *myType = [[myTags objectAtIndex:indexPath.row] valueForKey:@"type"];
+    NSString *myConversation = [[myTags objectAtIndex:indexPath.row] valueForKey:@"conversation"];
+    NSString *myLatitude = [[myTags objectAtIndex:indexPath.row] valueForKey:@"latitude"];
+    NSString *myLongitude = [[myTags objectAtIndex:indexPath.row] valueForKey:@"longitude"];
+    NSString *myGroup = [[myTags objectAtIndex:indexPath.row] valueForKey:@"groups"];
+    
     //If an image is stored here, than get the image from the data table in the database
-    UIImage *myImage = [[UIImage alloc]initWithData:[[myTags objectAtIndex:indexPath.row]valueForKey:@"data"]];
-
-    NSMutableString *myTagDetails = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"%@\nType - %@\nDate Uploaded - %@\nDistance - %@\nConversation - %@", myId, myType, @"1-25-2005", @"25 miles", @"Enter later"]];
+    NSMutableString *myTagDetails = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"Tagger - %@\nDate Uploaded - %@\nContent - %@\nConversation - %@\nLocation - %@, %@\nGroup - %@", myTagger, myDate, myContent, myConversation, myLatitude, myLongitude, myGroup]];
+    
+    //Set the height of the TableViewCell to the height of the text containing the content
+    [cell.txtTagContent sizeToFit];
     
     cell.txtTagContent.text = myTagDetails;
+    [cell.contentView addSubview:cell.txtTagContent];
+    
+    //Set the height of the cell's text view to the height of the content within it.  Dynamic height.
+    CGRect frame =  cell.txtTagContent.frame;
+    frame.size.height = cell.txtTagContent.contentSize.height;
+    cell.txtTagContent.frame = frame;
+    cellHeight = cell.txtTagContent.frame.size.height;
+    
+    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
     return cell;
 }
 
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    imgContent.image = [UIImage imageWithData:[[myTags objectAtIndex:indexPath.row] valueForKey:@"data"]];
+}
 
 @end

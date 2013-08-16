@@ -20,6 +20,13 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSData *data;
+@property (nonatomic, retain) NSString *groups;
+@property (nonatomic, retain) NSString *conversation;
+@property (nonatomic, retain) NSDate *expirationDate;
+@property (nonatomic, retain) NSDate *dateTime;
+@property (nonatomic, retain) NSString *tagger;
+@property (nonatomic, retain) NSString *notes;
+@property (nonatomic, retain) NSString *restrictions;
 
 - (NSManagedObject *) init;
 
@@ -30,5 +37,12 @@
                 :(NSNumber *) myLatitude
                 :(NSNumber *) myLongitude
                 :(NSString *) myName
-                :(NSData *) data;
+                :(NSData *) data
+                :(NSString *) conversation
+                :(NSDate *) expirationDate
+                :(NSDate *) dateTime
+                :(NSString *) tagger
+                :(NSString *) notes
+                :(NSString *) restrictions
+                :(NSString *) groups;
 @end

@@ -10,6 +10,8 @@
 
 @interface TagCell : UITableViewCell
 
-@property (strong, nonatomic) IBOutlet UITextView *txtTagContent;
+@property (strong, nonatomic) UITextView *txtTagContent;
+
+- (void) layoutSubviews;
 
 @end

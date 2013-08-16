@@ -14,6 +14,7 @@
 		CE8FC6A117BC0357001F9B69 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8FC6A017BC0357001F9B69 /* background.png */; };
 		CE8FC6AA17BC3267001F9B69 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6A917BC3267001F9B69 /* TagCell.m */; };
 		CE8FC6AD17BC38B7001F9B69 /* ViewTags.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */; };
+		CE8FC6FA17BD7383001F9B69 /* GraffitiTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6F917BD7383001F9B69 /* GraffitiTabBarController.m */; };
 		CE9947E51753F62000447989 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9947E41753F62000447989 /* Tag.m */; };
 		CE9A068717398B2D00783843 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A068617398B2D00783843 /* UIKit.framework */; };
 		CE9A068917398B2D00783843 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A068817398B2D00783843 /* Foundation.framework */; };
@@ -90,6 +91,8 @@
 		CE8FC6A917BC3267001F9B69 /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
 		CE8FC6AB17BC38B7001F9B69 /* ViewTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewTags.h; sourceTree = "<group>"; };
 		CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewTags.m; sourceTree = "<group>"; };
+		CE8FC6F817BD7382001F9B69 /* GraffitiTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraffitiTabBarController.h; sourceTree = "<group>"; };
+		CE8FC6F917BD7383001F9B69 /* GraffitiTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraffitiTabBarController.m; sourceTree = "<group>"; };
 		CE9947E31753F62000447989 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		CE9947E41753F62000447989 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		CE9A068317398B2D00783843 /* Graffiti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graffiti.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +223,8 @@
 				CE9A069517398B2D00783843 /* AppDelegate.h */,
 				CE9A069617398B2D00783843 /* AppDelegate.m */,
 				CE9A069E17398B2D00783843 /* MainStoryboard_iPhone.storyboard */,
+				CE8FC6F817BD7382001F9B69 /* GraffitiTabBarController.h */,
+				CE8FC6F917BD7383001F9B69 /* GraffitiTabBarController.m */,
 				CE8FC6A017BC0357001F9B69 /* background.png */,
 				CE08DD241795DF450061201F /* ViewAllTagDetailView.h */,
 				CE08DD251795DF450061201F /* ViewAllTagDetailView.m */,
@@ -453,6 +458,7 @@
 				CE08DD261795DF450061201F /* ViewAllTagDetailView.m in Sources */,
 				CE8FC6AA17BC3267001F9B69 /* TagCell.m in Sources */,
 				CE8FC6AD17BC38B7001F9B69 /* ViewTags.m in Sources */,
+				CE8FC6FA17BD7383001F9B69 /* GraffitiTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

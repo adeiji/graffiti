@@ -12,6 +12,7 @@
 #import "AmazonS3Handler.h"
 #import "DataLayer.h"
 #import "AppDelegate.h"
+#import "GraffitiTabBarController.h"
 
 @interface SecondViewController ()
 {
@@ -88,7 +89,10 @@
 }
 
 - (IBAction)btnCancelPressed:(id)sender {
-    [self.parentViewController.navigationController popViewControllerAnimated:YES];
+    
+    GraffitiTabBarController *myController = (GraffitiTabBarController *) self.parentViewController;
+    
+    [self.tabBarController setSelectedViewController:myController.myPreviousViewController];
 }
 
 - (void) locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
@@ -132,9 +136,27 @@
     //Get the Url of the image that was saved onto the server and then save this url into the database
     NSString *url = [myS3Handler GetUrl];
     tag.image = url;
+    tag.conversation = @"";
+    tag.expirationDate =  [self getNextYear];
+    tag.dateTime = [[NSDate alloc] init];
+    tag.tagger = @"adeiji";
+    tag.notes = @"NOTES";
+    tag.restrictions = @"PUBLIC";
+    tag.groups = @"NONE";
     
-    
+    //Save the content of this tag
     [myDataLayer SaveContext:tag];
+}
+
+- (NSDate *) getNextYear
+{
+    NSDate *today = [[NSDate alloc] init];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *offsetComponents = [[NSDateComponents alloc] init];
+    [offsetComponents setYear:1];
+    NSDate *nextYear = [gregorian dateByAddingComponents:offsetComponents toDate:today options:0];
+    
+    return nextYear;
 }
 
 #pragma mark - Alert View Delegate Methods
