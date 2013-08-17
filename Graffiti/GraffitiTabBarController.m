@@ -39,13 +39,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-//    myPreviousViewController = tabBarController.selectedViewController;
-}
-
 - (BOOL) tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
+    //Save the previous view controller so that we can return to this view controller after the user tags the item
     myPreviousViewController = tabBarController.selectedViewController;
     
     return YES;

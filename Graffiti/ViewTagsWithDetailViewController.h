@@ -20,6 +20,8 @@
 @property (strong, nonatomic) IBOutlet UIView *viewTags;
 @property (strong, nonatomic) IBOutlet ViewAllTagDetailView *viewAllTagsDetailView;
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
-@property (strong, nonatomic) IBOutlet UITextView *txtContent;
+@property (strong, nonatomic) IBOutlet UIImageView *background;
+@property (strong, nonatomic) IBOutlet UIView *mainView;
+@property (strong, nonatomic) IBOutlet UIView *imageView;
 
 @end

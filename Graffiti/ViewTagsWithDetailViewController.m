@@ -13,6 +13,7 @@
 @interface ViewTagsWithDetailViewController ()
 
 @property float cellHeight;
+
 @property (strong, nonatomic) UIView *containerView;
 
 - (void) centerScrollViewContents;
@@ -26,9 +27,12 @@
 @synthesize dataLayer;
 @synthesize imgContent;
 @synthesize viewAllTagsDetailView;
-@synthesize txtContent;
 @synthesize myTableView;
 @synthesize cellHeight;
+@synthesize background;
+@synthesize mainView;
+@synthesize imageView;
+
 @synthesize scrollView = _scrollView;
 @synthesize containerView = _containerView;
 
@@ -36,19 +40,107 @@
 {
 //    viewAllTagsDetailView = [[ViewAllTagDetailView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y , self.view.frame.size.width, self.view.frame.size.height)];
     
+    [self.scrollView setScrollEnabled:YES];
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
     viewTags.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
+    //Set the background to the background image
+    self.mainView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
+    self.scrollView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
+    self.imageView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:.5f];
     
     dataLayer = [[DataLayer alloc] init];
-    myTags = [dataLayer GetFiftyRecords];
     
     [self gotoFirstRowInTable];
+    
+    //Set up the container view to hold your custom view hierarchy
+    CGSize containerSize = CGSizeMake(320.0f, 822.0f);
+    self.containerView = [[UIView alloc] initWithFrame:(CGRect){.origin = CGPointMake(0.0f, 0.0f), .size = containerSize}];
+    [self.scrollView addSubview:self.containerView];
+    
+    [self addButtonToViewTags];
+    
+    //setup your custom view hierarchy
+    CGRect frame = viewTags.frame;
+    
+    frame.origin.y = 550;
+    frame.origin.x = 20;
+    
+    frame.size.width = 280;
+    
+    viewTags.frame = frame;
+    viewTags.hidden = false;
+    
+    [self.containerView addSubview:viewTags];
+    
+    //Tell the scroll view the size of the contents
+    self.scrollView.contentSize = containerSize;
+    
+}
+//Add the add comment button
+- (void) addButtonToViewTags
+{
+    //Create the button
+    UIButton *myButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //Set it on the second view when scrolled down
+    CGRect frame = CGRectMake(123, 470, 75, 75);
+    myButton.frame = frame;
+    
+    UIImage *backgroundImage = [UIImage imageNamed:@"commentbutton.png"];
+    
+    [myButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+    
+    [self.containerView addSubview:myButton];
+    
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void)centerScrollViewContents {
+    CGSize boundsSize = self.scrollView.bounds.size;
+    CGRect contentsFrame = self.containerView.frame;
+    
+    if (contentsFrame.size.width < boundsSize.width) {
+        contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0f;
+    } else {
+        contentsFrame.origin.x = 0.0f;
+    }
+    
+    if (contentsFrame.size.height < boundsSize.height) {
+        contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0f;
+    } else {
+        contentsFrame.origin.y = 0.0f;
+    }
+    
+    self.containerView.frame = contentsFrame;
+}
+
+- (UIView*)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+    // Return the view that we want to zoom
+    return self.containerView;
+}
+
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView {
+    // The scroll view has zoomed, so we need to re-center the contents
+    [self centerScrollViewContents];
+}
+
+- (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
+    //set up the minimum and maximum zoom scales
+    CGRect scrollViewFrame = self.scrollView.frame;
+    CGFloat scaleWidth = scrollViewFrame.size.width / self.scrollView.contentSize.width;
+    CGFloat scaleHeight = scrollViewFrame.size.height / self.scrollView.contentSize.height;
+    CGFloat minScale = MIN(scaleWidth, scaleHeight);
+    
+    self.scrollView.minimumZoomScale = minScale;
+    self.scrollView.maximumZoomScale = 1.0f;
+    self.scrollView.zoomScale = 1.0f;
+    
+    [self centerScrollViewContents];
+    myTags = [dataLayer GetFiftyRecords];
     [myTableView reloadData];
 }
 

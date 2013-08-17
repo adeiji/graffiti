@@ -28,7 +28,7 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="restrictions" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="restrictions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tagger" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>

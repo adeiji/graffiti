@@ -48,7 +48,14 @@
     [newTag setValue:[myTag latitude] forKey:@"latitude"];
     [newTag setValue:[myTag longitude] forKey:@"longitude"];
     [newTag setValue:(__bridge id)(myId) forKey:@"uid"];
-    [newTag setValue:[myTag data] forKey:@"data"];
+    [newTag setValue:[myTag conversation] forKey:@"conversation"];
+    [newTag setValue:[myTag expirationDate] forKey:@"expirationDate"];
+    [newTag setValue:[myTag dateTime] forKey:@"dateTime"];
+    [newTag setValue:[myTag tagger] forKey:@"tagger"];
+    [newTag setValue:[myTag notes] forKey:@"notes"];
+    [newTag setValue:[myTag restrictions] forKey:@"restrictions"];
+    [newTag setValue:[myTag groups] forKey:@"groups"];
+    
     
     NSError *error;
     
@@ -64,7 +71,7 @@
 {
     if (fetchedResultsController != nil)
     {
-        return fetchedResultsController;
+        return fetchedResultsController.fetchedObjects;
     }
     
     /*

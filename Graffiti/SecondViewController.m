@@ -136,7 +136,7 @@
     //Get the Url of the image that was saved onto the server and then save this url into the database
     NSString *url = [myS3Handler GetUrl];
     tag.image = url;
-    tag.conversation = @"";
+    tag.conversation = @"This crazy right here man";
     tag.expirationDate =  [self getNextYear];
     tag.dateTime = [[NSDate alloc] init];
     tag.tagger = @"adeiji";

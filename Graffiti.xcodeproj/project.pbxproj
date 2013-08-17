@@ -15,6 +15,8 @@
 		CE8FC6AA17BC3267001F9B69 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6A917BC3267001F9B69 /* TagCell.m */; };
 		CE8FC6AD17BC38B7001F9B69 /* ViewTags.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */; };
 		CE8FC6FA17BD7383001F9B69 /* GraffitiTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6F917BD7383001F9B69 /* GraffitiTabBarController.m */; };
+		CE8FC6FC17BEB9E4001F9B69 /* chainFence.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8FC6FB17BEB9E3001F9B69 /* chainFence.png */; };
+		CE8FC6FE17BFE21B001F9B69 /* commentbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8FC6FD17BFE21A001F9B69 /* commentbutton.png */; };
 		CE9947E51753F62000447989 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9947E41753F62000447989 /* Tag.m */; };
 		CE9A068717398B2D00783843 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A068617398B2D00783843 /* UIKit.framework */; };
 		CE9A068917398B2D00783843 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A068817398B2D00783843 /* Foundation.framework */; };
@@ -93,6 +95,8 @@
 		CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewTags.m; sourceTree = "<group>"; };
 		CE8FC6F817BD7382001F9B69 /* GraffitiTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraffitiTabBarController.h; sourceTree = "<group>"; };
 		CE8FC6F917BD7383001F9B69 /* GraffitiTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraffitiTabBarController.m; sourceTree = "<group>"; };
+		CE8FC6FB17BEB9E3001F9B69 /* chainFence.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chainFence.png; path = images/chainFence.png; sourceTree = "<group>"; };
+		CE8FC6FD17BFE21A001F9B69 /* commentbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = commentbutton.png; path = images/commentbutton.png; sourceTree = "<group>"; };
 		CE9947E31753F62000447989 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		CE9947E41753F62000447989 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		CE9A068317398B2D00783843 /* Graffiti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Graffiti.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +227,7 @@
 				CE9A069517398B2D00783843 /* AppDelegate.h */,
 				CE9A069617398B2D00783843 /* AppDelegate.m */,
 				CE9A069E17398B2D00783843 /* MainStoryboard_iPhone.storyboard */,
+				CE8FC6FB17BEB9E3001F9B69 /* chainFence.png */,
 				CE8FC6F817BD7382001F9B69 /* GraffitiTabBarController.h */,
 				CE8FC6F917BD7383001F9B69 /* GraffitiTabBarController.m */,
 				CE8FC6A017BC0357001F9B69 /* background.png */,
@@ -232,6 +237,7 @@
 				CE8FC6A917BC3267001F9B69 /* TagCell.m */,
 				CE08DD1F1795DE850061201F /* ViewTagsWithDetailViewController.h */,
 				CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */,
+				CE8FC6FD17BFE21A001F9B69 /* commentbutton.png */,
 				CE8FC6AB17BC38B7001F9B69 /* ViewTags.h */,
 				CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */,
 				CE9A06A117398B2D00783843 /* MainStoryboard_iPad.storyboard */,
@@ -412,6 +418,8 @@
 				CE9B92EC1763ED5C007FA4CF /* tagit.png in Resources */,
 				CE8FC69D17BBF2DA001F9B69 /* Graffiti.png in Resources */,
 				CE8FC6A117BC0357001F9B69 /* background.png in Resources */,
+				CE8FC6FC17BEB9E4001F9B69 /* chainFence.png in Resources */,
+				CE8FC6FE17BFE21B001F9B69 /* commentbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
