@@ -15,6 +15,9 @@
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
+
+- (void) SaveContext : (NSString *) userId : (NSString *) password : (NSUUID *) UDID;
 - (void) SaveContext  :(Tag *) myTag;
-- (NSArray *) GetFiftyRecords;
+//Receives a number of rows wanted, which tag, and which sort descriptor, and then returns the fetched objects
+- (NSArray *) fetchValues : (NSString *) entityName : (NSString *) sortDescriptorName : (int) numOfRows;
 @end

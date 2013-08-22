@@ -13,6 +13,7 @@
 #import "DataLayer.h"
 #import "AppDelegate.h"
 #import "GraffitiTabBarController.h"
+#import "MongoDbConnection.h"
 
 @interface SecondViewController ()
 {
@@ -39,8 +40,18 @@
     //We do this so that the Keyboard appears immediately when you open the Tag Screen after taking the picture
     [txtTag becomeFirstResponder];
     //Make the title of the Tag Page Tag Location
+    
+    CGRect frame = ComposeTagNavBar.frame;
+    
+    frame.origin.y = 0;
+    frame.origin.x = 0;
+    
+    ComposeTagNavBar.frame = frame;
+    
     ComposeTagNavBar.topItem.title = @"Tag Location";
     myDataLayer = [[DataLayer alloc] init];
+    
+    self.delegate = [[UIApplication sharedApplication] delegate];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -48,6 +59,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Handles the location services
 - (void) InitiateLocationServices
 {
     myLocationManager = [[CLLocationManager alloc] init];
@@ -136,13 +148,13 @@
     //Get the Url of the image that was saved onto the server and then save this url into the database
     NSString *url = [myS3Handler GetUrl];
     tag.image = url;
-    tag.conversation = @"This crazy right here man";
+    //tag.conversation = @"This crazy right here man";
     tag.expirationDate =  [self getNextYear];
     tag.dateTime = [[NSDate alloc] init];
-    tag.tagger = @"adeiji";
-    tag.notes = @"NOTES";
+    tag.tagger = self.delegate.tagger;
+    //tag.notes = @"NOTES";
     tag.restrictions = @"PUBLIC";
-    tag.groups = @"NONE";
+    //tag.groups = @"NONE";
     
     //Save the content of this tag
     [myDataLayer SaveContext:tag];

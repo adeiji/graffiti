@@ -46,6 +46,52 @@
 		CE9B92EA1763EB26007FA4CF /* spraycannoalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */; };
 		CE9B92EC1763ED5C007FA4CF /* tagit.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92EB1763ED5C007FA4CF /* tagit.png */; };
 		CE9F38A9175ECA7E00656674 /* graffitilogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */; };
+		CEB9358A17C3077700E825B9 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9358917C3077700E825B9 /* ProfileViewController.m */; };
+		CEB936D917C40C7E00E825B9 /* bcon.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936CA17C40BF100E825B9 /* bcon.c */; };
+		CEB936DA17C40C8200E825B9 /* bson.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936CC17C40BF100E825B9 /* bson.c */; };
+		CEB936DB17C40C8500E825B9 /* encoding.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936CE17C40BF100E825B9 /* encoding.c */; };
+		CEB936DC17C40C8900E825B9 /* env.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936D017C40BF100E825B9 /* env.c */; };
+		CEB936DD17C40C8C00E825B9 /* gridfs.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936D217C40BF100E825B9 /* gridfs.c */; };
+		CEB936DE17C40C8F00E825B9 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936D417C40BF100E825B9 /* md5.c */; };
+		CEB936DF17C40C9200E825B9 /* mongo.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936D617C40BF100E825B9 /* mongo.c */; };
+		CEB936E017C40C9500E825B9 /* numbers.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936D817C40BF100E825B9 /* numbers.c */; };
+		CEB9371817C40CCE00E825B9 /* BSON_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936E317C40CCC00E825B9 /* BSON_Helper.m */; };
+		CEB9371917C40CCE00E825B9 /* BSONDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936E717C40CCC00E825B9 /* BSONDecoder.m */; };
+		CEB9371A17C40CCE00E825B9 /* BSONDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936E917C40CCC00E825B9 /* BSONDocument.m */; };
+		CEB9371B17C40CCE00E825B9 /* BSONEncoder.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936EB17C40CCC00E825B9 /* BSONEncoder.m */; };
+		CEB9371C17C40CCE00E825B9 /* BSONIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936ED17C40CCC00E825B9 /* BSONIterator.m */; };
+		CEB9371D17C40CCE00E825B9 /* BSONTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936EF17C40CCC00E825B9 /* BSONTypes.m */; };
+		CEB9371E17C40CCE00E825B9 /* NSData+BSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936F117C40CCD00E825B9 /* NSData+BSONAdditions.m */; };
+		CEB9371F17C40CCE00E825B9 /* NSDictionary+BSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936F317C40CCD00E825B9 /* NSDictionary+BSONAdditions.m */; };
+		CEB9372017C40CCE00E825B9 /* NSManagedObject+BSONCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936F517C40CCD00E825B9 /* NSManagedObject+BSONCoding.m */; };
+		CEB9372117C40CCE00E825B9 /* NSString+BSONAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936F717C40CCD00E825B9 /* NSString+BSONAdditions.m */; };
+		CEB9372217C40CCE00E825B9 /* ObjCBSON.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936F917C40CCD00E825B9 /* ObjCBSON.m */; };
+		CEB9372317C40CCE00E825B9 /* Mongo_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936FC17C40CCD00E825B9 /* Mongo_Helper.m */; };
+		CEB9372417C40CCE00E825B9 /* MongoConnection+Diagnostics.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB936FF17C40CCD00E825B9 /* MongoConnection+Diagnostics.m */; };
+		CEB9372517C40CCE00E825B9 /* MongoConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9370117C40CCD00E825B9 /* MongoConnection.m */; };
+		CEB9372617C40CCE00E825B9 /* MongoCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9370317C40CCD00E825B9 /* MongoCursor.m */; };
+		CEB9372717C40CCE00E825B9 /* MongoDBCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9370517C40CCD00E825B9 /* MongoDBCollection.m */; };
+		CEB9372817C40CCE00E825B9 /* MongoFindRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9370717C40CCD00E825B9 /* MongoFindRequest.m */; };
+		CEB9372917C40CCE00E825B9 /* MongoKeyedPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9370917C40CCD00E825B9 /* MongoKeyedPredicate.m */; };
+		CEB9372A17C40CCE00E825B9 /* MongoPredicate.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9370B17C40CCD00E825B9 /* MongoPredicate.m */; };
+		CEB9372B17C40CCE00E825B9 /* MongoTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9370D17C40CCD00E825B9 /* MongoTypes.m */; };
+		CEB9372C17C40CCE00E825B9 /* MongoUpdateRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9370F17C40CCD00E825B9 /* MongoUpdateRequest.m */; };
+		CEB9372D17C40CCE00E825B9 /* MongoWriteConcern.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9371117C40CCD00E825B9 /* MongoWriteConcern.m */; };
+		CEB9372E17C40CCE00E825B9 /* NSArray+MongoAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9371317C40CCD00E825B9 /* NSArray+MongoAdditions.m */; };
+		CEB9372F17C40CCE00E825B9 /* OrderedDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9371717C40CCE00E825B9 /* OrderedDictionary.m */; };
+		CEB9373217C40CDE00E825B9 /* MongoDbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9373117C40CDE00E825B9 /* MongoDbConnection.m */; };
+		CEB9373617C47E0B00E825B9 /* ProfileTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9373517C47E0B00E825B9 /* ProfileTableCell.m */; };
+		CEB9373A17C50F5D00E825B9 /* ValidateValue.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9373917C50F5D00E825B9 /* ValidateValue.m */; };
+		CEB9373E17C51E7600E825B9 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9373D17C51E7600E825B9 /* GroupsViewController.m */; };
+		CEB9374617C531F900E825B9 /* GroupTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9374517C531F900E825B9 /* GroupTableCell.m */; };
+		CEB9375417C5522E00E825B9 /* BSONParser.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9375317C5522E00E825B9 /* BSONParser.m */; };
+		CEB9375717C5580D00E825B9 /* ShowGroupTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9375617C5580D00E825B9 /* ShowGroupTableCell.m */; };
+		CEB9375917C55CB000E825B9 /* savegroupsbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB9375817C55CAF00E825B9 /* savegroupsbutton.png */; };
+		CEB9375D17C5D2FF00E825B9 /* InfinitePagingView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9375C17C5D2FF00E825B9 /* InfinitePagingView.m */; };
+		CEB9375F17C6806D00E825B9 /* CommentStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEB9375E17C6806C00E825B9 /* CommentStoryboard.storyboard */; };
+		CEB9376317C686A100E825B9 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9376217C686A100E825B9 /* CommentViewController.m */; };
+		CEB9376717C68A1800E825B9 /* CommentTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9376617C68A1800E825B9 /* CommentTextView.m */; };
+		CEB9376917C68AFF00E825B9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEB9376817C68AFE00E825B9 /* QuartzCore.framework */; };
 		CEEEDF331739AEE200A4DE20 /* iosbluebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEEDF311739AEE200A4DE20 /* iosbluebutton.png */; };
 		CEEEDF3F1739BD5D00A4DE20 /* spraycan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CEEEDF3E1739BD5D00A4DE20 /* spraycan.jpg */; };
 		CEEEDF451739BFC300A4DE20 /* spraycan.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEEDF441739BFC300A4DE20 /* spraycan.png */; };
@@ -135,6 +181,98 @@
 		CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spraycannoalpha.png; path = Graffiti/spraycannoalpha.png; sourceTree = "<group>"; };
 		CE9B92EB1763ED5C007FA4CF /* tagit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tagit.png; path = images/tagit.png; sourceTree = "<group>"; };
 		CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = graffitilogo.jpg; sourceTree = "<group>"; };
+		CEB9358817C3077700E825B9 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		CEB9358917C3077700E825B9 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		CEB936CA17C40BF100E825B9 /* bcon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bcon.c; sourceTree = "<group>"; };
+		CEB936CB17C40BF100E825B9 /* bcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bcon.h; sourceTree = "<group>"; };
+		CEB936CC17C40BF100E825B9 /* bson.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bson.c; sourceTree = "<group>"; };
+		CEB936CD17C40BF100E825B9 /* bson.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bson.h; sourceTree = "<group>"; };
+		CEB936CE17C40BF100E825B9 /* encoding.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = encoding.c; sourceTree = "<group>"; };
+		CEB936CF17C40BF100E825B9 /* encoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = encoding.h; sourceTree = "<group>"; };
+		CEB936D017C40BF100E825B9 /* env.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = env.c; sourceTree = "<group>"; };
+		CEB936D117C40BF100E825B9 /* env.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = env.h; sourceTree = "<group>"; };
+		CEB936D217C40BF100E825B9 /* gridfs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = gridfs.c; sourceTree = "<group>"; };
+		CEB936D317C40BF100E825B9 /* gridfs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gridfs.h; sourceTree = "<group>"; };
+		CEB936D417C40BF100E825B9 /* md5.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
+		CEB936D517C40BF100E825B9 /* md5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
+		CEB936D617C40BF100E825B9 /* mongo.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = mongo.c; sourceTree = "<group>"; };
+		CEB936D717C40BF100E825B9 /* mongo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mongo.h; sourceTree = "<group>"; };
+		CEB936D817C40BF100E825B9 /* numbers.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = numbers.c; sourceTree = "<group>"; };
+		CEB936E217C40CCC00E825B9 /* BSON_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSON_Helper.h; sourceTree = "<group>"; };
+		CEB936E317C40CCC00E825B9 /* BSON_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSON_Helper.m; sourceTree = "<group>"; };
+		CEB936E417C40CCC00E825B9 /* BSON_PrivateInterfaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSON_PrivateInterfaces.h; sourceTree = "<group>"; };
+		CEB936E517C40CCC00E825B9 /* BSONCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONCoding.h; sourceTree = "<group>"; };
+		CEB936E617C40CCC00E825B9 /* BSONDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONDecoder.h; sourceTree = "<group>"; };
+		CEB936E717C40CCC00E825B9 /* BSONDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONDecoder.m; sourceTree = "<group>"; };
+		CEB936E817C40CCC00E825B9 /* BSONDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONDocument.h; sourceTree = "<group>"; };
+		CEB936E917C40CCC00E825B9 /* BSONDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONDocument.m; sourceTree = "<group>"; };
+		CEB936EA17C40CCC00E825B9 /* BSONEncoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONEncoder.h; sourceTree = "<group>"; };
+		CEB936EB17C40CCC00E825B9 /* BSONEncoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONEncoder.m; sourceTree = "<group>"; };
+		CEB936EC17C40CCC00E825B9 /* BSONIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONIterator.h; sourceTree = "<group>"; };
+		CEB936ED17C40CCC00E825B9 /* BSONIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONIterator.m; sourceTree = "<group>"; };
+		CEB936EE17C40CCC00E825B9 /* BSONTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONTypes.h; sourceTree = "<group>"; };
+		CEB936EF17C40CCC00E825B9 /* BSONTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONTypes.m; sourceTree = "<group>"; };
+		CEB936F017C40CCD00E825B9 /* NSData+BSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+BSONAdditions.h"; sourceTree = "<group>"; };
+		CEB936F117C40CCD00E825B9 /* NSData+BSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+BSONAdditions.m"; sourceTree = "<group>"; };
+		CEB936F217C40CCD00E825B9 /* NSDictionary+BSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+BSONAdditions.h"; sourceTree = "<group>"; };
+		CEB936F317C40CCD00E825B9 /* NSDictionary+BSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+BSONAdditions.m"; sourceTree = "<group>"; };
+		CEB936F417C40CCD00E825B9 /* NSManagedObject+BSONCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+BSONCoding.h"; sourceTree = "<group>"; };
+		CEB936F517C40CCD00E825B9 /* NSManagedObject+BSONCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+BSONCoding.m"; sourceTree = "<group>"; };
+		CEB936F617C40CCD00E825B9 /* NSString+BSONAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BSONAdditions.h"; sourceTree = "<group>"; };
+		CEB936F717C40CCD00E825B9 /* NSString+BSONAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BSONAdditions.m"; sourceTree = "<group>"; };
+		CEB936F817C40CCD00E825B9 /* ObjCBSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCBSON.h; sourceTree = "<group>"; };
+		CEB936F917C40CCD00E825B9 /* ObjCBSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjCBSON.m; sourceTree = "<group>"; };
+		CEB936FB17C40CCD00E825B9 /* Mongo_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mongo_Helper.h; sourceTree = "<group>"; };
+		CEB936FC17C40CCD00E825B9 /* Mongo_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mongo_Helper.m; sourceTree = "<group>"; };
+		CEB936FD17C40CCD00E825B9 /* Mongo_PrivateInterfaces.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mongo_PrivateInterfaces.h; sourceTree = "<group>"; };
+		CEB936FE17C40CCD00E825B9 /* MongoConnection+Diagnostics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MongoConnection+Diagnostics.h"; sourceTree = "<group>"; };
+		CEB936FF17C40CCD00E825B9 /* MongoConnection+Diagnostics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MongoConnection+Diagnostics.m"; sourceTree = "<group>"; };
+		CEB9370017C40CCD00E825B9 /* MongoConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoConnection.h; sourceTree = "<group>"; };
+		CEB9370117C40CCD00E825B9 /* MongoConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoConnection.m; sourceTree = "<group>"; };
+		CEB9370217C40CCD00E825B9 /* MongoCursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoCursor.h; sourceTree = "<group>"; };
+		CEB9370317C40CCD00E825B9 /* MongoCursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoCursor.m; sourceTree = "<group>"; };
+		CEB9370417C40CCD00E825B9 /* MongoDBCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoDBCollection.h; sourceTree = "<group>"; };
+		CEB9370517C40CCD00E825B9 /* MongoDBCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoDBCollection.m; sourceTree = "<group>"; };
+		CEB9370617C40CCD00E825B9 /* MongoFindRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoFindRequest.h; sourceTree = "<group>"; };
+		CEB9370717C40CCD00E825B9 /* MongoFindRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoFindRequest.m; sourceTree = "<group>"; };
+		CEB9370817C40CCD00E825B9 /* MongoKeyedPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoKeyedPredicate.h; sourceTree = "<group>"; };
+		CEB9370917C40CCD00E825B9 /* MongoKeyedPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoKeyedPredicate.m; sourceTree = "<group>"; };
+		CEB9370A17C40CCD00E825B9 /* MongoPredicate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoPredicate.h; sourceTree = "<group>"; };
+		CEB9370B17C40CCD00E825B9 /* MongoPredicate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoPredicate.m; sourceTree = "<group>"; };
+		CEB9370C17C40CCD00E825B9 /* MongoTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoTypes.h; sourceTree = "<group>"; };
+		CEB9370D17C40CCD00E825B9 /* MongoTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoTypes.m; sourceTree = "<group>"; };
+		CEB9370E17C40CCD00E825B9 /* MongoUpdateRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoUpdateRequest.h; sourceTree = "<group>"; };
+		CEB9370F17C40CCD00E825B9 /* MongoUpdateRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoUpdateRequest.m; sourceTree = "<group>"; };
+		CEB9371017C40CCD00E825B9 /* MongoWriteConcern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoWriteConcern.h; sourceTree = "<group>"; };
+		CEB9371117C40CCD00E825B9 /* MongoWriteConcern.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoWriteConcern.m; sourceTree = "<group>"; };
+		CEB9371217C40CCD00E825B9 /* NSArray+MongoAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MongoAdditions.h"; sourceTree = "<group>"; };
+		CEB9371317C40CCD00E825B9 /* NSArray+MongoAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MongoAdditions.m"; sourceTree = "<group>"; };
+		CEB9371417C40CCD00E825B9 /* ObjCMongoDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCMongoDB.h; sourceTree = "<group>"; };
+		CEB9371617C40CCE00E825B9 /* OrderedDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderedDictionary.h; sourceTree = "<group>"; };
+		CEB9371717C40CCE00E825B9 /* OrderedDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderedDictionary.m; sourceTree = "<group>"; };
+		CEB9373017C40CDE00E825B9 /* MongoDbConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MongoDbConnection.h; sourceTree = "<group>"; };
+		CEB9373117C40CDE00E825B9 /* MongoDbConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MongoDbConnection.m; sourceTree = "<group>"; };
+		CEB9373417C47E0B00E825B9 /* ProfileTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableCell.h; sourceTree = "<group>"; };
+		CEB9373517C47E0B00E825B9 /* ProfileTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableCell.m; sourceTree = "<group>"; };
+		CEB9373817C50F5D00E825B9 /* ValidateValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ValidateValue.h; sourceTree = "<group>"; };
+		CEB9373917C50F5D00E825B9 /* ValidateValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ValidateValue.m; sourceTree = "<group>"; };
+		CEB9373C17C51E7600E825B9 /* GroupsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupsViewController.h; sourceTree = "<group>"; };
+		CEB9373D17C51E7600E825B9 /* GroupsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupsViewController.m; sourceTree = "<group>"; };
+		CEB9374417C531F900E825B9 /* GroupTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupTableCell.h; sourceTree = "<group>"; };
+		CEB9374517C531F900E825B9 /* GroupTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupTableCell.m; sourceTree = "<group>"; };
+		CEB9375217C5522E00E825B9 /* BSONParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSONParser.h; sourceTree = "<group>"; };
+		CEB9375317C5522E00E825B9 /* BSONParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSONParser.m; sourceTree = "<group>"; };
+		CEB9375517C5580D00E825B9 /* ShowGroupTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowGroupTableCell.h; sourceTree = "<group>"; };
+		CEB9375617C5580D00E825B9 /* ShowGroupTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowGroupTableCell.m; sourceTree = "<group>"; };
+		CEB9375817C55CAF00E825B9 /* savegroupsbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = savegroupsbutton.png; path = Graffiti/images/savegroupsbutton.png; sourceTree = "<group>"; };
+		CEB9375B17C5D2FF00E825B9 /* InfinitePagingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfinitePagingView.h; sourceTree = "<group>"; };
+		CEB9375C17C5D2FF00E825B9 /* InfinitePagingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfinitePagingView.m; sourceTree = "<group>"; };
+		CEB9375E17C6806C00E825B9 /* CommentStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CommentStoryboard.storyboard; sourceTree = "<group>"; };
+		CEB9376117C686A100E825B9 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		CEB9376217C686A100E825B9 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		CEB9376517C68A1800E825B9 /* CommentTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentTextView.h; sourceTree = "<group>"; };
+		CEB9376617C68A1800E825B9 /* CommentTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTextView.m; sourceTree = "<group>"; };
+		CEB9376817C68AFE00E825B9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CEEEDF311739AEE200A4DE20 /* iosbluebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iosbluebutton.png; sourceTree = "<group>"; };
 		CEEEDF3E1739BD5D00A4DE20 /* spraycan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = spraycan.jpg; sourceTree = "<group>"; };
 		CEEEDF441739BFC300A4DE20 /* spraycan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spraycan.png; sourceTree = "<group>"; };
@@ -153,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEB9376917C68AFF00E825B9 /* QuartzCore.framework in Frameworks */,
 				CE9B4578175970890094BC9A /* libCoreDataAI.a in Frameworks */,
 				CE107C1E173C475500691F0C /* CoreData.framework in Frameworks */,
 				CEEEDF58173C459400A4DE20 /* AWSRuntime.framework in Frameworks */,
@@ -180,6 +319,8 @@
 		CE9A067A17398B2D00783843 = {
 			isa = PBXGroup;
 			children = (
+				CEB9376817C68AFE00E825B9 /* QuartzCore.framework */,
+				CEB9375817C55CAF00E825B9 /* savegroupsbutton.png */,
 				CE9B92E51763E2ED007FA4CF /* images */,
 				CE9B455917595FC70094BC9A /* CoreDataAI.xcodeproj */,
 				CEEEDF441739BFC300A4DE20 /* spraycan.png */,
@@ -223,30 +364,35 @@
 		CE9A068C17398B2D00783843 /* Graffiti */ = {
 			isa = PBXGroup;
 			children = (
+				CEB9375A17C5D2FE00E825B9 /* Classes */,
+				CEB9375117C5522100E825B9 /* BSONParser */,
+				CEB9373F17C52E0A00E825B9 /* UI Classes */,
+				CEB9373717C50F2600E825B9 /* ValidationClasses */,
+				CEB936E117C40CCC00E825B9 /* BSON */,
+				CEB936FA17C40CCD00E825B9 /* Mongo */,
+				CEB9371517C40CCD00E825B9 /* OrderedDictionary */,
+				CEB936C817C40BB600E825B9 /* ObjCMongoDB */,
+				CEB935F517C3FCE700E825B9 /* MongoDbConnection */,
+				CEB9358617C3071300E825B9 /* View Controllers */,
 				CE9A06CF17398B5B00783843 /* Graffiti.entitlements */,
 				CE9A069517398B2D00783843 /* AppDelegate.h */,
 				CE9A069617398B2D00783843 /* AppDelegate.m */,
 				CE9A069E17398B2D00783843 /* MainStoryboard_iPhone.storyboard */,
+				CEB9375E17C6806C00E825B9 /* CommentStoryboard.storyboard */,
 				CE8FC6FB17BEB9E3001F9B69 /* chainFence.png */,
-				CE8FC6F817BD7382001F9B69 /* GraffitiTabBarController.h */,
-				CE8FC6F917BD7383001F9B69 /* GraffitiTabBarController.m */,
 				CE8FC6A017BC0357001F9B69 /* background.png */,
-				CE08DD241795DF450061201F /* ViewAllTagDetailView.h */,
-				CE08DD251795DF450061201F /* ViewAllTagDetailView.m */,
+				CEB9376C17C68CAE00E825B9 /* View All Tag Detail View */,
 				CE8FC6A817BC3267001F9B69 /* TagCell.h */,
 				CE8FC6A917BC3267001F9B69 /* TagCell.m */,
-				CE08DD1F1795DE850061201F /* ViewTagsWithDetailViewController.h */,
-				CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */,
+				CEB9376D17C68CCE00E825B9 /* View Tags With Details */,
 				CE8FC6FD17BFE21A001F9B69 /* commentbutton.png */,
 				CE8FC6AB17BC38B7001F9B69 /* ViewTags.h */,
 				CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */,
 				CE9A06A117398B2D00783843 /* MainStoryboard_iPad.storyboard */,
-				CE9A06A417398B2D00783843 /* FirstViewController.h */,
-				CE9A06A517398B2D00783843 /* FirstViewController.m */,
+				CEB9376E17C68CF100E825B9 /* Login */,
 				CE9A06A717398B2D00783843 /* first.png */,
 				CE9A06A917398B2D00783843 /* first@2x.png */,
-				CE9A06AB17398B2D00783843 /* SecondViewController.h */,
-				CE9A06AC17398B2D00783843 /* SecondViewController.m */,
+				CEB9376F17C68D0F00E825B9 /* Tag Location */,
 				CEEEDF53173C387600A4DE20 /* AmazonS3Handler.h */,
 				CEEEDF54173C387600A4DE20 /* AmazonS3Handler.m */,
 				CE9947E31753F62000447989 /* Tag.h */,
@@ -302,6 +448,277 @@
 				CE9B456117595FC70094BC9A /* CoreDataAITests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CEB9358617C3071300E825B9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9376A17C68C8500E825B9 /* Graffiti Tab Bar Controller */,
+				CEB9376017C6867700E825B9 /* Comment View Controller */,
+				CEB9373B17C51E4D00E825B9 /* Groups */,
+				CEB9358717C3074500E825B9 /* Profile */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		CEB9358717C3074500E825B9 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9373317C47DE200E825B9 /* Profile Table Cell */,
+				CEB9358817C3077700E825B9 /* ProfileViewController.h */,
+				CEB9358917C3077700E825B9 /* ProfileViewController.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		CEB935F517C3FCE700E825B9 /* MongoDbConnection */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9373017C40CDE00E825B9 /* MongoDbConnection.h */,
+				CEB9373117C40CDE00E825B9 /* MongoDbConnection.m */,
+			);
+			name = MongoDbConnection;
+			sourceTree = "<group>";
+		};
+		CEB936C817C40BB600E825B9 /* ObjCMongoDB */ = {
+			isa = PBXGroup;
+			children = (
+				CEB936C917C40BF100E825B9 /* mongo-c-driver */,
+			);
+			name = ObjCMongoDB;
+			sourceTree = "<group>";
+		};
+		CEB936C917C40BF100E825B9 /* mongo-c-driver */ = {
+			isa = PBXGroup;
+			children = (
+				CEB936CA17C40BF100E825B9 /* bcon.c */,
+				CEB936CB17C40BF100E825B9 /* bcon.h */,
+				CEB936CC17C40BF100E825B9 /* bson.c */,
+				CEB936CD17C40BF100E825B9 /* bson.h */,
+				CEB936CE17C40BF100E825B9 /* encoding.c */,
+				CEB936CF17C40BF100E825B9 /* encoding.h */,
+				CEB936D017C40BF100E825B9 /* env.c */,
+				CEB936D117C40BF100E825B9 /* env.h */,
+				CEB936D217C40BF100E825B9 /* gridfs.c */,
+				CEB936D317C40BF100E825B9 /* gridfs.h */,
+				CEB936D417C40BF100E825B9 /* md5.c */,
+				CEB936D517C40BF100E825B9 /* md5.h */,
+				CEB936D617C40BF100E825B9 /* mongo.c */,
+				CEB936D717C40BF100E825B9 /* mongo.h */,
+				CEB936D817C40BF100E825B9 /* numbers.c */,
+			);
+			name = "mongo-c-driver";
+			path = src;
+			sourceTree = "<group>";
+		};
+		CEB936E117C40CCC00E825B9 /* BSON */ = {
+			isa = PBXGroup;
+			children = (
+				CEB936E217C40CCC00E825B9 /* BSON_Helper.h */,
+				CEB936E317C40CCC00E825B9 /* BSON_Helper.m */,
+				CEB936E417C40CCC00E825B9 /* BSON_PrivateInterfaces.h */,
+				CEB936E517C40CCC00E825B9 /* BSONCoding.h */,
+				CEB936E617C40CCC00E825B9 /* BSONDecoder.h */,
+				CEB936E717C40CCC00E825B9 /* BSONDecoder.m */,
+				CEB936E817C40CCC00E825B9 /* BSONDocument.h */,
+				CEB936E917C40CCC00E825B9 /* BSONDocument.m */,
+				CEB936EA17C40CCC00E825B9 /* BSONEncoder.h */,
+				CEB936EB17C40CCC00E825B9 /* BSONEncoder.m */,
+				CEB936EC17C40CCC00E825B9 /* BSONIterator.h */,
+				CEB936ED17C40CCC00E825B9 /* BSONIterator.m */,
+				CEB936EE17C40CCC00E825B9 /* BSONTypes.h */,
+				CEB936EF17C40CCC00E825B9 /* BSONTypes.m */,
+				CEB936F017C40CCD00E825B9 /* NSData+BSONAdditions.h */,
+				CEB936F117C40CCD00E825B9 /* NSData+BSONAdditions.m */,
+				CEB936F217C40CCD00E825B9 /* NSDictionary+BSONAdditions.h */,
+				CEB936F317C40CCD00E825B9 /* NSDictionary+BSONAdditions.m */,
+				CEB936F417C40CCD00E825B9 /* NSManagedObject+BSONCoding.h */,
+				CEB936F517C40CCD00E825B9 /* NSManagedObject+BSONCoding.m */,
+				CEB936F617C40CCD00E825B9 /* NSString+BSONAdditions.h */,
+				CEB936F717C40CCD00E825B9 /* NSString+BSONAdditions.m */,
+				CEB936F817C40CCD00E825B9 /* ObjCBSON.h */,
+				CEB936F917C40CCD00E825B9 /* ObjCBSON.m */,
+			);
+			path = BSON;
+			sourceTree = "<group>";
+		};
+		CEB936FA17C40CCD00E825B9 /* Mongo */ = {
+			isa = PBXGroup;
+			children = (
+				CEB936FB17C40CCD00E825B9 /* Mongo_Helper.h */,
+				CEB936FC17C40CCD00E825B9 /* Mongo_Helper.m */,
+				CEB936FD17C40CCD00E825B9 /* Mongo_PrivateInterfaces.h */,
+				CEB936FE17C40CCD00E825B9 /* MongoConnection+Diagnostics.h */,
+				CEB936FF17C40CCD00E825B9 /* MongoConnection+Diagnostics.m */,
+				CEB9370017C40CCD00E825B9 /* MongoConnection.h */,
+				CEB9370117C40CCD00E825B9 /* MongoConnection.m */,
+				CEB9370217C40CCD00E825B9 /* MongoCursor.h */,
+				CEB9370317C40CCD00E825B9 /* MongoCursor.m */,
+				CEB9370417C40CCD00E825B9 /* MongoDBCollection.h */,
+				CEB9370517C40CCD00E825B9 /* MongoDBCollection.m */,
+				CEB9370617C40CCD00E825B9 /* MongoFindRequest.h */,
+				CEB9370717C40CCD00E825B9 /* MongoFindRequest.m */,
+				CEB9370817C40CCD00E825B9 /* MongoKeyedPredicate.h */,
+				CEB9370917C40CCD00E825B9 /* MongoKeyedPredicate.m */,
+				CEB9370A17C40CCD00E825B9 /* MongoPredicate.h */,
+				CEB9370B17C40CCD00E825B9 /* MongoPredicate.m */,
+				CEB9370C17C40CCD00E825B9 /* MongoTypes.h */,
+				CEB9370D17C40CCD00E825B9 /* MongoTypes.m */,
+				CEB9370E17C40CCD00E825B9 /* MongoUpdateRequest.h */,
+				CEB9370F17C40CCD00E825B9 /* MongoUpdateRequest.m */,
+				CEB9371017C40CCD00E825B9 /* MongoWriteConcern.h */,
+				CEB9371117C40CCD00E825B9 /* MongoWriteConcern.m */,
+				CEB9371217C40CCD00E825B9 /* NSArray+MongoAdditions.h */,
+				CEB9371317C40CCD00E825B9 /* NSArray+MongoAdditions.m */,
+				CEB9371417C40CCD00E825B9 /* ObjCMongoDB.h */,
+			);
+			path = Mongo;
+			sourceTree = "<group>";
+		};
+		CEB9371517C40CCD00E825B9 /* OrderedDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9371617C40CCE00E825B9 /* OrderedDictionary.h */,
+				CEB9371717C40CCE00E825B9 /* OrderedDictionary.m */,
+			);
+			path = OrderedDictionary;
+			sourceTree = "<group>";
+		};
+		CEB9373317C47DE200E825B9 /* Profile Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9373417C47E0B00E825B9 /* ProfileTableCell.h */,
+				CEB9373517C47E0B00E825B9 /* ProfileTableCell.m */,
+			);
+			name = "Profile Table Cell";
+			sourceTree = "<group>";
+		};
+		CEB9373717C50F2600E825B9 /* ValidationClasses */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9373817C50F5D00E825B9 /* ValidateValue.h */,
+				CEB9373917C50F5D00E825B9 /* ValidateValue.m */,
+			);
+			name = ValidationClasses;
+			sourceTree = "<group>";
+		};
+		CEB9373B17C51E4D00E825B9 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9374317C531DA00E825B9 /* Groups Table Cell */,
+				CEB9373C17C51E7600E825B9 /* GroupsViewController.h */,
+				CEB9373D17C51E7600E825B9 /* GroupsViewController.m */,
+			);
+			name = Groups;
+			sourceTree = "<group>";
+		};
+		CEB9373F17C52E0A00E825B9 /* UI Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9374017C52E1100E825B9 /* TextView */,
+			);
+			name = "UI Classes";
+			sourceTree = "<group>";
+		};
+		CEB9374017C52E1100E825B9 /* TextView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TextView;
+			sourceTree = "<group>";
+		};
+		CEB9374317C531DA00E825B9 /* Groups Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9374417C531F900E825B9 /* GroupTableCell.h */,
+				CEB9374517C531F900E825B9 /* GroupTableCell.m */,
+				CEB9375517C5580D00E825B9 /* ShowGroupTableCell.h */,
+				CEB9375617C5580D00E825B9 /* ShowGroupTableCell.m */,
+			);
+			name = "Groups Table Cell";
+			sourceTree = "<group>";
+		};
+		CEB9375117C5522100E825B9 /* BSONParser */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9375217C5522E00E825B9 /* BSONParser.h */,
+				CEB9375317C5522E00E825B9 /* BSONParser.m */,
+			);
+			name = BSONParser;
+			sourceTree = "<group>";
+		};
+		CEB9375A17C5D2FE00E825B9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9375B17C5D2FF00E825B9 /* InfinitePagingView.h */,
+				CEB9375C17C5D2FF00E825B9 /* InfinitePagingView.m */,
+			);
+			name = Classes;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		CEB9376017C6867700E825B9 /* Comment View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9376417C68A0100E825B9 /* Text View */,
+				CEB9376117C686A100E825B9 /* CommentViewController.h */,
+				CEB9376217C686A100E825B9 /* CommentViewController.m */,
+			);
+			name = "Comment View Controller";
+			sourceTree = "<group>";
+		};
+		CEB9376417C68A0100E825B9 /* Text View */ = {
+			isa = PBXGroup;
+			children = (
+				CEB9376517C68A1800E825B9 /* CommentTextView.h */,
+				CEB9376617C68A1800E825B9 /* CommentTextView.m */,
+			);
+			name = "Text View";
+			sourceTree = "<group>";
+		};
+		CEB9376A17C68C8500E825B9 /* Graffiti Tab Bar Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CE8FC6F817BD7382001F9B69 /* GraffitiTabBarController.h */,
+				CE8FC6F917BD7383001F9B69 /* GraffitiTabBarController.m */,
+			);
+			name = "Graffiti Tab Bar Controller";
+			sourceTree = "<group>";
+		};
+		CEB9376C17C68CAE00E825B9 /* View All Tag Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				CE08DD241795DF450061201F /* ViewAllTagDetailView.h */,
+				CE08DD251795DF450061201F /* ViewAllTagDetailView.m */,
+			);
+			name = "View All Tag Detail View";
+			sourceTree = "<group>";
+		};
+		CEB9376D17C68CCE00E825B9 /* View Tags With Details */ = {
+			isa = PBXGroup;
+			children = (
+				CE08DD1F1795DE850061201F /* ViewTagsWithDetailViewController.h */,
+				CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */,
+			);
+			name = "View Tags With Details";
+			sourceTree = "<group>";
+		};
+		CEB9376E17C68CF100E825B9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CE9A06A417398B2D00783843 /* FirstViewController.h */,
+				CE9A06A517398B2D00783843 /* FirstViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		CEB9376F17C68D0F00E825B9 /* Tag Location */ = {
+			isa = PBXGroup;
+			children = (
+				CE9A06AB17398B2D00783843 /* SecondViewController.h */,
+				CE9A06AC17398B2D00783843 /* SecondViewController.m */,
+			);
+			name = "Tag Location";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -420,6 +837,8 @@
 				CE8FC6A117BC0357001F9B69 /* background.png in Resources */,
 				CE8FC6FC17BEB9E4001F9B69 /* chainFence.png in Resources */,
 				CE8FC6FE17BFE21B001F9B69 /* commentbutton.png in Resources */,
+				CEB9375917C55CB000E825B9 /* savegroupsbutton.png in Resources */,
+				CEB9375F17C6806D00E825B9 /* CommentStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +886,49 @@
 				CE8FC6AA17BC3267001F9B69 /* TagCell.m in Sources */,
 				CE8FC6AD17BC38B7001F9B69 /* ViewTags.m in Sources */,
 				CE8FC6FA17BD7383001F9B69 /* GraffitiTabBarController.m in Sources */,
+				CEB9358A17C3077700E825B9 /* ProfileViewController.m in Sources */,
+				CEB936D917C40C7E00E825B9 /* bcon.c in Sources */,
+				CEB936DA17C40C8200E825B9 /* bson.c in Sources */,
+				CEB936DB17C40C8500E825B9 /* encoding.c in Sources */,
+				CEB936DC17C40C8900E825B9 /* env.c in Sources */,
+				CEB936DD17C40C8C00E825B9 /* gridfs.c in Sources */,
+				CEB936DE17C40C8F00E825B9 /* md5.c in Sources */,
+				CEB936DF17C40C9200E825B9 /* mongo.c in Sources */,
+				CEB936E017C40C9500E825B9 /* numbers.c in Sources */,
+				CEB9371817C40CCE00E825B9 /* BSON_Helper.m in Sources */,
+				CEB9371917C40CCE00E825B9 /* BSONDecoder.m in Sources */,
+				CEB9371A17C40CCE00E825B9 /* BSONDocument.m in Sources */,
+				CEB9371B17C40CCE00E825B9 /* BSONEncoder.m in Sources */,
+				CEB9371C17C40CCE00E825B9 /* BSONIterator.m in Sources */,
+				CEB9371D17C40CCE00E825B9 /* BSONTypes.m in Sources */,
+				CEB9371E17C40CCE00E825B9 /* NSData+BSONAdditions.m in Sources */,
+				CEB9371F17C40CCE00E825B9 /* NSDictionary+BSONAdditions.m in Sources */,
+				CEB9372017C40CCE00E825B9 /* NSManagedObject+BSONCoding.m in Sources */,
+				CEB9372117C40CCE00E825B9 /* NSString+BSONAdditions.m in Sources */,
+				CEB9372217C40CCE00E825B9 /* ObjCBSON.m in Sources */,
+				CEB9372317C40CCE00E825B9 /* Mongo_Helper.m in Sources */,
+				CEB9372417C40CCE00E825B9 /* MongoConnection+Diagnostics.m in Sources */,
+				CEB9372517C40CCE00E825B9 /* MongoConnection.m in Sources */,
+				CEB9372617C40CCE00E825B9 /* MongoCursor.m in Sources */,
+				CEB9372717C40CCE00E825B9 /* MongoDBCollection.m in Sources */,
+				CEB9372817C40CCE00E825B9 /* MongoFindRequest.m in Sources */,
+				CEB9372917C40CCE00E825B9 /* MongoKeyedPredicate.m in Sources */,
+				CEB9372A17C40CCE00E825B9 /* MongoPredicate.m in Sources */,
+				CEB9372B17C40CCE00E825B9 /* MongoTypes.m in Sources */,
+				CEB9372C17C40CCE00E825B9 /* MongoUpdateRequest.m in Sources */,
+				CEB9372D17C40CCE00E825B9 /* MongoWriteConcern.m in Sources */,
+				CEB9372E17C40CCE00E825B9 /* NSArray+MongoAdditions.m in Sources */,
+				CEB9372F17C40CCE00E825B9 /* OrderedDictionary.m in Sources */,
+				CEB9373217C40CDE00E825B9 /* MongoDbConnection.m in Sources */,
+				CEB9373617C47E0B00E825B9 /* ProfileTableCell.m in Sources */,
+				CEB9373A17C50F5D00E825B9 /* ValidateValue.m in Sources */,
+				CEB9373E17C51E7600E825B9 /* GroupsViewController.m in Sources */,
+				CEB9374617C531F900E825B9 /* GroupTableCell.m in Sources */,
+				CEB9375417C5522E00E825B9 /* BSONParser.m in Sources */,
+				CEB9375717C5580D00E825B9 /* ShowGroupTableCell.m in Sources */,
+				CEB9375D17C5D2FF00E825B9 /* InfinitePagingView.m in Sources */,
+				CEB9376317C686A100E825B9 /* CommentViewController.m in Sources */,
+				CEB9376717C68A1800E825B9 /* CommentTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,10 +1049,12 @@
 		CE9A06CA17398B2E00783843 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = Graffiti/Graffiti.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Programming/Frameworks/aws-ios-sdk-1.5.0\"",
+					"\"$(SRCROOT)/../../Programming/ObjCMongoDB\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Graffiti/Graffiti-Prefix.pch";
@@ -607,6 +1071,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Programming/Frameworks/aws-ios-sdk-1.5.0\"",
+					"\"$(SRCROOT)/../../Programming/ObjCMongoDB\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Graffiti/Graffiti-Prefix.pch";

@@ -32,9 +32,14 @@
 @synthesize background;
 @synthesize mainView;
 @synthesize imageView;
+@synthesize txtMessageNotes;
 
 @synthesize scrollView = _scrollView;
 @synthesize containerView = _containerView;
+
+#define FONT_SIZE 14.0f
+#define CELL_CONTENT_WIDTH 320.0f
+#define CELL_CONTENT_MARGIN 10.0f
 
 - (void)viewDidLoad
 {
@@ -92,8 +97,17 @@
     
     [myButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
     
+    [myButton addTarget:self action:@selector(commentButtonPressed) forControlEvents:UIControlEventTouchDown];
+    myButton.userInteractionEnabled = YES;
     [self.containerView addSubview:myButton];
     
+}
+
+- (void) commentButtonPressed
+{
+    UIViewController *commentViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"commentViewController"];
+    
+    [self.navigationController pushViewController:commentViewController animated:YES];
 }
 
 - (void)centerScrollViewContents {
@@ -140,8 +154,9 @@
     self.scrollView.zoomScale = 1.0f;
     
     [self centerScrollViewContents];
-    myTags = [dataLayer GetFiftyRecords];
-    [myTableView reloadData];
+    //Fetch the values from the CoreData Database
+    // - Entity Name - Sort Descriptor - Number Of rows to get
+    myTags = [dataLayer fetchValues:@"Tag" : @"name" : 20];
 }
 
 //Select the first row of the table view
@@ -188,7 +203,15 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return cellHeight;
+    NSString *myConversation = [[myTags objectAtIndex:indexPath.row] valueForKey:@"conversation"];
+    
+    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
+    
+    CGSize size = [myConversation sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
+    
+    CGFloat height = MAX(size.height, 44.0f);
+    
+    return height + (CELL_CONTENT_MARGIN * 2);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -206,7 +229,9 @@
     NSString *myGroup = [[myTags objectAtIndex:indexPath.row] valueForKey:@"groups"];
     
     //If an image is stored here, than get the image from the data table in the database
-    NSMutableString *myTagDetails = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"Tagger - %@\nDate Uploaded - %@\nContent - %@\nConversation - %@\nLocation - %@, %@\nGroup - %@", myTagger, myDate, myContent, myConversation, myLatitude, myLongitude, myGroup]];
+    NSString *myTagDetails = myConversation;
+    
+    txtMessageNotes.text = myContent;
     
     //Set the height of the TableViewCell to the height of the text containing the content
     [cell.txtTagContent sizeToFit];
@@ -218,9 +243,11 @@
     CGRect frame =  cell.txtTagContent.frame;
     frame.size.height = cell.txtTagContent.contentSize.height;
     cell.txtTagContent.frame = frame;
+    
     cellHeight = cell.txtTagContent.frame.size.height;
     
-    [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    
     
     return cell;
 }
@@ -228,6 +255,7 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     imgContent.image = [UIImage imageWithData:[[myTags objectAtIndex:indexPath.row] valueForKey:@"data"]];
+    txtMessageNotes.text = [[myTags objectAtIndex:indexPath.row] valueForKey:@"content"];
 }
 
 @end

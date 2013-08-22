@@ -21,7 +21,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         dataLayer = [[DataLayer alloc] init];
-        myTags = [dataLayer GetFiftyRecords];
+//        myTags = [dataLayer GetFiftyRecords];
     }
     
     return self;

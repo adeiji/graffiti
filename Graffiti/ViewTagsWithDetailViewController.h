@@ -23,5 +23,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *background;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 @property (strong, nonatomic) IBOutlet UIView *imageView;
+@property (strong, nonatomic) IBOutlet UITextView *txtMessageNotes;
 
 @end

@@ -10,18 +10,37 @@
 #import "DataLayer.h"
 #import "SecondViewController.h"
 #import "ViewTagsWithDetailViewController.h"
-
+#import "FirstViewController.h"
 
 @implementation AppDelegate
 
-
 @synthesize window = __window;
-
+@synthesize tagger = __tagger;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //If this is the first time that the user is using the application then we load the login page and after this we add a UDID number to their database
+    
+    //Check to see if the database contains a UDID number
+    DataLayer *myDataLayer = [[DataLayer alloc] init];
+    NSArray *myUDID = [myDataLayer fetchValues:@"Login" : @"udid" : 1];
+    
     [self.window makeKeyAndVisible];
     
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+    
+    //If this is the first time that this app is being run on this device then we open the login screen, otherwise, we set the tagger to the value stored on the device.
+    if ([myUDID count] == 0)
+    {
+        FirstViewController *loginScreen = [mainStoryboard instantiateViewControllerWithIdentifier:@"Login"];
+        [self.window.rootViewController presentViewController:loginScreen animated:YES completion:nil];
+    }
+    else
+    {
+        //Get the tagger name from the database
+        NSArray *myTagger = [myDataLayer fetchValues:@"Login" : @"username" : 1];
+        self.tagger = [myTagger objectAtIndex:0];
+    }
     return YES;
 }
 

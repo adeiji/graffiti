@@ -26,11 +26,31 @@
     return self;
 }
 
+- (void) SaveContext : (NSString *) userId : (NSString *) password : (NSUUID *) UDID
+{
+    
+    NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+ 
+    NSManagedObject *loginCredential;
+    loginCredential = [NSEntityDescription insertNewObjectForEntityForName:@"Login" inManagedObjectContext:context];
+    
+    //Save the tag in the database
+    [loginCredential setValue:userId forKey:@"username"];
+    [loginCredential setValue:password forKey:@"password"];
+    [loginCredential setValue:[UDID UUIDString] forKey:@"udid"];
+    
+    NSError *error;
+    
+    if (![context save:&error])
+    {
+        NSLog([NSString stringWithFormat:@"%@", error]);
+    }
+    NSLog(@"Information Saved");
+
+}
 - (void) SaveContext  :(Tag *) myTag
 {
     //First we create the app delegate
-    
-    
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     
@@ -48,6 +68,7 @@
     [newTag setValue:[myTag latitude] forKey:@"latitude"];
     [newTag setValue:[myTag longitude] forKey:@"longitude"];
     [newTag setValue:(__bridge id)(myId) forKey:@"uid"];
+    [newTag setValue:[myTag data] forKey:@"data"];
     [newTag setValue:[myTag conversation] forKey:@"conversation"];
     [newTag setValue:[myTag expirationDate] forKey:@"expirationDate"];
     [newTag setValue:[myTag dateTime] forKey:@"dateTime"];
@@ -66,28 +87,28 @@
     NSLog(@"Information Saved");
 }
 
-
-- (NSArray *) GetFiftyRecords
+- (void) controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
-    if (fetchedResultsController != nil)
-    {
-        return fetchedResultsController.fetchedObjects;
-    }
-    
+    [NSFetchedResultsController deleteCacheWithName:self.fetchedResultsController.cacheName];
+}
+
+//Receives a number of rows wanted, which tag, and which sort descriptor, and then returns the fetched objects
+- (NSArray *) fetchValues : (NSString *) entityName : (NSString *) sortDescriptorName : (int) numOfRows
+{
     /*
      Set up the fetched results controller.
      */
     // Create the fetch request for the entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setFetchBatchSize:numOfRows];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:sortDescriptorName ascending:NO];
     NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -97,8 +118,6 @@
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Root"];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
-    
-    
     
     NSError *error = nil;
     if (![self.fetchedResultsController performFetch:&error])

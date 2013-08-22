@@ -19,6 +19,8 @@
     @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnTagIt;
     @property (strong, nonatomic) CLLocationManager *myLocationManager;
     @property (strong, nonatomic) DataLayer *myDataLayer;
+    @property (strong, nonatomic) AppDelegate *delegate;
+
     - (IBAction)CameraButtonPressed:(id)sender;
     - (IBAction)btnTagItPressed:(id)sender;
     - (IBAction)btnCancelPressed:(id)sender;

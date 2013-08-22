@@ -7,6 +7,8 @@
 //
 
 #import "FirstViewController.h"
+#import "DataLayer.h"
+#import "MongoDbConnection.h"
 
 @interface FirstViewController ()
 
@@ -17,6 +19,11 @@
 
 @synthesize scrollView;
 @synthesize activeField;
+@synthesize txtPassword;
+@synthesize txtUserId;
+@synthesize delegate = __delegate;
+
+#define mongoDbCollectionName @"Graffiti.LoginCredentials"
 
 - (void)viewDidLoad
 {
@@ -87,11 +94,30 @@
     activeField = textField;
 }
 
-
 -(void)textFieldDidEndEditing:(UITextField *)textField
 {
     activeField = nil;
     [textField resignFirstResponder];
+}
+
+//User signs in, and we create the login information
+- (IBAction)signInPressed:(id)sender {
+    
+    DataLayer *myDataLayer = [[DataLayer alloc] init];
+    MongoDbConnection *myDbConnection = [[MongoDbConnection alloc] init];
+    
+    [myDbConnection setUpConnection:mongoDbCollectionName];
+    
+    //Save the login in the mongoDbDatabase
+    [myDbConnection insertCredential:txtUserId.text :txtPassword.text : (NSString *) [[UIDevice currentDevice] identifierForVendor]];
+    
+    //Save the login in the CoreData database on the device
+    [myDataLayer SaveContext : txtUserId.text : txtPassword.text : [[UIDevice currentDevice] identifierForVendor]];
+    
+    self.delegate = [[UIApplication sharedApplication] delegate];
+    self.delegate.tagger = txtUserId.text;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField

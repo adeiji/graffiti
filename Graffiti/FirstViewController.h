@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface FirstViewController : UIViewController <UITextFieldDelegate>
 
@@ -14,8 +15,10 @@
 @property (strong, nonatomic) UITextField *activeField;
 @property (strong, nonatomic) IBOutlet UITextField *txtUserId;
 @property (strong, nonatomic) IBOutlet UITextField *txtPassword;
+@property (strong, nonatomic) AppDelegate *delegate;
 
 -(void) textFieldDidBeginEditing:(UITextField *)textField;
 -(void) textFieldDidEndEditing:(UITextField *)textField;
+- (IBAction)signInPressed:(id)sender;
 
 @end
