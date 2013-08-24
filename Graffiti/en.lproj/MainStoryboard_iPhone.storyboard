@@ -93,6 +93,28 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGs-sT-YLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" restorationIdentifier="" id="1K6-ER-rln" userLabel="Main View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background.png" id="MxE-J2-idg">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" bouncesZoom="NO" id="sMv-1t-cY1">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <outlet property="delegate" destination="N1b-Ck-EMG" id="SR6-dW-x3q"/>
+                            </connections>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <accessibility key="accessibilityConfiguration" label="">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
+                </view>
                 <view alpha="0.5" contentMode="scaleToFill" id="qDc-RX-H9E" userLabel="View Tags">
                     <rect key="frame" x="0.0" y="0.0" width="280" height="260"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -134,28 +156,6 @@
                     <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration" label="viewConversationViewController"/>
                     <gestureRecognizers/>
-                </view>
-                <view contentMode="scaleToFill" restorationIdentifier="" id="1K6-ER-rln" userLabel="Main View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background.png" id="MxE-J2-idg">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" bouncesZoom="NO" id="sMv-1t-cY1">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
-                            <connections>
-                                <outlet property="delegate" destination="N1b-Ck-EMG" id="SR6-dW-x3q"/>
-                            </connections>
-                        </scrollView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <accessibility key="accessibilityConfiguration" label="">
-                        <bool key="isElement" value="YES"/>
-                    </accessibility>
                 </view>
             </objects>
             <point key="canvasLocation" x="1302" y="-1286"/>
@@ -631,22 +631,13 @@
         <class className="TagCell" superclassName="UITableViewCell">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/TagCell.h"/>
         </class>
-        <class className="ViewAllTagDetailView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewAllTagDetailView.h"/>
-        </class>
         <class className="ViewTagsWithDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewTagsWithDetailViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="background" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="imgContent" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="mainView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="txtMessageNotes" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="viewAllTagsDetailView" candidateClass="ViewAllTagDetailView"/>
-                <relationship kind="outlet" name="viewConversationView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="viewTags" candidateClass="UIView"/>
             </relationships>
         </class>
     </classes>

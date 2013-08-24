@@ -10,6 +10,7 @@
 #import "ViewAllTagDetailView.h"
 #import "TagCell.h"
 #import "MainViewTagsView.h" 
+#import "ViewConversation.h"
 
 @interface ViewTagsWithDetailViewController ()
 
@@ -82,8 +83,10 @@
     mainViewTagsView.view.backgroundColor = [UIColor clearColor];
     mainViewTagsView.backgroundColor = [UIColor clearColor];
     
+    ViewConversation *viewConversationView = [[ViewConversation alloc] initWithFrame:CGRectMake(20, 20, 280, 260)];
+    
     [self addViewToScrollView : mainViewTagsView.view: @"" : VIEW_MAIN_X_POSITION : VIEW_MAIN_Y_POSITION];
-    //[self addViewToScrollView : self.viewConversationView :@"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
+    [self addViewToScrollView : viewConversationView.view :@"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
     
     //Add our swipe left gesture recognizer to our scroll view
     UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft)];
