@@ -101,6 +101,8 @@
 		CEEEDF52173C383E00A4DE20 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEEDF51173C383D00A4DE20 /* AWSS3.framework */; };
 		CEEEDF56173C44C600A4DE20 /* AmazonS3Handler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEEDF54173C387600A4DE20 /* AmazonS3Handler.m */; };
 		CEEEDF58173C459400A4DE20 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEEDF57173C459400A4DE20 /* AWSRuntime.framework */; };
+		CEF9D86E17C91E24002457DF /* MainViewTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D86D17C91E24002457DF /* MainViewTagsView.m */; };
+		CEF9D87017C921AC002457DF /* MainViewTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF9D86F17C921AC002457DF /* MainViewTags.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -284,6 +286,9 @@
 		CEEEDF53173C387600A4DE20 /* AmazonS3Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonS3Handler.h; sourceTree = "<group>"; };
 		CEEEDF54173C387600A4DE20 /* AmazonS3Handler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonS3Handler.m; sourceTree = "<group>"; };
 		CEEEDF57173C459400A4DE20 /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = "../../Programming/Frameworks/aws-ios-sdk-1.5.0/AWSRuntime.framework"; sourceTree = "<group>"; };
+		CEF9D86C17C91E24002457DF /* MainViewTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewTagsView.h; sourceTree = "<group>"; };
+		CEF9D86D17C91E24002457DF /* MainViewTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewTagsView.m; sourceTree = "<group>"; };
+		CEF9D86F17C921AC002457DF /* MainViewTags.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewTags.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,6 +679,7 @@
 		CEB9376D17C68CCE00E825B9 /* View Tags With Details */ = {
 			isa = PBXGroup;
 			children = (
+				CEF9D86B17C91DF8002457DF /* View */,
 				CE08DD1F1795DE850061201F /* ViewTagsWithDetailViewController.h */,
 				CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */,
 			);
@@ -740,6 +746,7 @@
 			children = (
 				CE9A06A117398B2D00783843 /* MainStoryboard_iPad.storyboard */,
 				CE9A069E17398B2D00783843 /* MainStoryboard_iPhone.storyboard */,
+				CEF9D86F17C921AC002457DF /* MainViewTags.xib */,
 				CEB9375E17C6806C00E825B9 /* CommentStoryboard.storyboard */,
 			);
 			name = Storyboards;
@@ -791,6 +798,15 @@
 				CE9947E41753F62000447989 /* Tag.m */,
 			);
 			name = "Tag Class";
+			sourceTree = "<group>";
+		};
+		CEF9D86B17C91DF8002457DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9D86C17C91E24002457DF /* MainViewTagsView.h */,
+				CEF9D86D17C91E24002457DF /* MainViewTagsView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -911,6 +927,7 @@
 				CE8FC6FE17BFE21B001F9B69 /* commentbutton.png in Resources */,
 				CEB9375917C55CB000E825B9 /* savegroupsbutton.png in Resources */,
 				CEB9375F17C6806D00E825B9 /* CommentStoryboard.storyboard in Resources */,
+				CEF9D87017C921AC002457DF /* MainViewTags.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,6 +1018,7 @@
 				CEB9375D17C5D2FF00E825B9 /* InfinitePagingView.m in Sources */,
 				CEB9376317C686A100E825B9 /* CommentViewController.m in Sources */,
 				CEB9376717C68A1800E825B9 /* CommentTextView.m in Sources */,
+				CEF9D86E17C91E24002457DF /* MainViewTagsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

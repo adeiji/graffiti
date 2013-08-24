@@ -87,80 +87,12 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="background" destination="MxE-J2-idg" id="Ydl-RL-ucZ"/>
-                        <outlet property="imageView" destination="Np0-LC-yAj" id="mcs-WY-e4H"/>
-                        <outlet property="imgContent" destination="el9-tR-GUh" id="Mgm-dx-5OO"/>
                         <outlet property="mainView" destination="1K6-ER-rln" id="uwk-60-EoX"/>
                         <outlet property="myTableView" destination="yIb-lU-2la" id="q8U-Sl-n28"/>
                         <outlet property="scrollView" destination="sMv-1t-cY1" id="Q4m-cS-SA6"/>
-                        <outlet property="txtMessageNotes" destination="74z-Hi-fro" id="Kly-52-hZt"/>
-                        <outlet property="viewConversationView" destination="qDc-RX-H9E" id="lcD-H0-FSF"/>
-                        <outlet property="viewTags" destination="s9P-K1-KlI" id="ang-g9-OaU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IGs-sT-YLa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" restorationIdentifier="" id="1K6-ER-rln" userLabel="Main View">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background.png" id="MxE-J2-idg">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" bouncesZoom="NO" id="sMv-1t-cY1">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" id="s9P-K1-KlI" customClass="ViewTags">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="820"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="center" image="chainFence.png" id="qaK-mf-VQC">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <view contentMode="scaleToFill" id="Np0-LC-yAj">
-                                            <rect key="frame" x="67" y="0.0" width="185" height="411"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="graffitilogo.jpg" id="el9-tR-GUh">
-                                                    <rect key="frame" x="10" y="79" width="165" height="165"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Jimmy" id="qAH-ud-bp8">
-                                                    <rect key="frame" x="0.0" y="33" width="185" height="47"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="adeiji - This this was crazy son!!  I couldn't believe my eyes when I seen this dude.  Everybody's gotta write somethin here." id="74z-Hi-fro">
-                                                    <rect key="frame" x="10" y="245" width="166" height="134"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        </view>
-                                    </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                    <accessibility key="accessibilityConfiguration">
-                                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
-                                    </accessibility>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
-                            <connections>
-                                <outlet property="delegate" destination="N1b-Ck-EMG" id="SR6-dW-x3q"/>
-                            </connections>
-                        </scrollView>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    <accessibility key="accessibilityConfiguration" label=""/>
-                </view>
                 <view alpha="0.5" contentMode="scaleToFill" id="qDc-RX-H9E" userLabel="View Tags">
                     <rect key="frame" x="0.0" y="0.0" width="280" height="260"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -202,6 +134,28 @@
                     <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
                     <accessibility key="accessibilityConfiguration" label="viewConversationViewController"/>
                     <gestureRecognizers/>
+                </view>
+                <view contentMode="scaleToFill" restorationIdentifier="" id="1K6-ER-rln" userLabel="Main View">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background.png" id="MxE-J2-idg">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" bouncesZoom="NO" id="sMv-1t-cY1">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <outlet property="delegate" destination="N1b-Ck-EMG" id="SR6-dW-x3q"/>
+                            </connections>
+                        </scrollView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <accessibility key="accessibilityConfiguration" label="">
+                        <bool key="isElement" value="YES"/>
+                    </accessibility>
                 </view>
             </objects>
             <point key="canvasLocation" x="1302" y="-1286"/>
@@ -608,7 +562,6 @@
     </scenes>
     <resources>
         <image name="background.png" width="320" height="480"/>
-        <image name="chainFence.png" width="320" height="520"/>
         <image name="graffitilogo.jpg" width="450" height="449"/>
         <image name="homeButtonimage.png" width="29" height="27"/>
         <image name="iosbluebutton.png" width="487" height="97"/>
@@ -680,9 +633,6 @@
         </class>
         <class className="ViewAllTagDetailView" superclassName="UIView">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewAllTagDetailView.h"/>
-        </class>
-        <class className="ViewTags" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewTags.h"/>
         </class>
         <class className="ViewTagsWithDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewTagsWithDetailViewController.h"/>

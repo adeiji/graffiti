@@ -9,6 +9,7 @@
 #import "ViewTagsWithDetailViewController.h"
 #import "ViewAllTagDetailView.h"
 #import "TagCell.h"
+#import "MainViewTagsView.h" 
 
 @interface ViewTagsWithDetailViewController ()
 
@@ -23,16 +24,11 @@
 @implementation ViewTagsWithDetailViewController
 
 @synthesize myTags;
-@synthesize viewTags;
 @synthesize dataLayer;
-@synthesize imgContent;
-@synthesize viewAllTagsDetailView;
 @synthesize myTableView;
 @synthesize cellHeight;
 @synthesize background;
 @synthesize mainView;
-@synthesize imageView;
-@synthesize txtMessageNotes;
 
 @synthesize scrollView = _scrollView;
 @synthesize containerView = _containerView;
@@ -53,8 +49,6 @@
 
 - (void)viewDidLoad
 {
-//    viewAllTagsDetailView = [[ViewAllTagDetailView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y , self.view.frame.size.width, self.view.frame.size.height)];
-    
     //Add the main view to the entire view
     [self.view addSubview:self.mainView];
     
@@ -65,11 +59,9 @@
 
     //set the UI specs of the mainView view controllers
     {
-        viewTags.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
         //Set the background to the background image
         self.mainView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
         self.scrollView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
-        self.imageView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:.5f];
     }
     
     dataLayer = [[DataLayer alloc] init];
@@ -84,9 +76,14 @@
     
     [self addButtonToViewTags];
     
-    //add the views to the scroll view
-    [self addViewToScrollView : self.viewTags : @"" : VIEW_MAIN_X_POSITION : VIEW_MAIN_Y_POSITION];
-    [self addViewToScrollView : self.viewConversationView :@"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
+    //You have to instantiate the mainViewTagsView first so that you can set the owner when you load the view from the nib, otherwise you will receive a not key-value coding compliant error
+    MainViewTagsView *mainViewTagsView = [[MainViewTagsView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    
+    mainViewTagsView.view.backgroundColor = [UIColor clearColor];
+    mainViewTagsView.backgroundColor = [UIColor clearColor];
+    
+    [self addViewToScrollView : mainViewTagsView.view: @"" : VIEW_MAIN_X_POSITION : VIEW_MAIN_Y_POSITION];
+    //[self addViewToScrollView : self.viewConversationView :@"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
     
     //Add our swipe left gesture recognizer to our scroll view
     UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft)];
@@ -110,12 +107,15 @@
 - (void) addViewToScrollView : (UIView *) view : (NSString *) gestureDirection : (int) x : (int) y
 {
     //Set the container size to initialize only the first time with these parameters
-    static CGSize containerSize = { 0.0f, CELL_CONTENT_HEIGHT };
+    static CGSize containerSize = { 640.0f, CELL_CONTENT_HEIGHT };
+    //setup your custom view hierarchy
+    static CGRect frame = (CGRect){ { 320.0f , 480.0f }, { 0.0f , 0.0f  } } ;
     
     if ([gestureDirection isEqualToString:SWIPE_LEFT])
     {
-        //Add the height of the iPhone screen
+        //Add the width of the iPhone screen so that now we can scroll to the proper location
         containerSize.width += CELL_CONTENT_WIDTH;
+        frame.origin.x = x + 320.0f;
     }
     else if ([gestureDirection isEqualToString:SWIPE_RIGHT])
     {
@@ -123,16 +123,14 @@
     }
     else
     {
-        containerSize.width = 320.0f;
+        frame.origin.x = x;
     }
-    
-    //setup your custom view hierarchy
-    CGRect frame = view.frame;
-    
+    //Set the position of the y, this will change between the main view and the view conversation view
     frame.origin.y = y;
-    frame.origin.x = x;
-    
+    //the width will always be the same no matter the view for now
     frame.size.width = 280;
+    //Set the height so that the frame does not read the height at zero
+    frame.size.height = view.frame.size.height;
     
     view.frame = frame;
     view.hidden = false;
@@ -146,6 +144,10 @@
 - (void) swipeLeft
 {
     
+    
+    //add the views to the scroll view
+   // [self addViewToScrollView : myNewMainView : SWIPE_LEFT : VIEW_MAIN_X_POSITION : VIEW_MAIN_Y_POSITION];
+    //[self addViewToScrollView : myViewTags : @"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
     
     NSLog(@"Gesture Swiped Left");
 }
@@ -302,7 +304,7 @@
     //If an image is stored here, than get the image from the data table in the database
     NSString *myTagDetails = myConversation;
     
-    txtMessageNotes.text = myContent;
+    //txtMessageNotes.text = myContent;
     
     //Set the height of the TableViewCell to the height of the text containing the content
     [cell.txtTagContent sizeToFit];
@@ -325,8 +327,8 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    imgContent.image = [UIImage imageWithData:[[myTags objectAtIndex:indexPath.row] valueForKey:@"data"]];
-    txtMessageNotes.text = [[myTags objectAtIndex:indexPath.row] valueForKey:@"content"];
+    //imgContent.image = [UIImage imageWithData:[[myTags objectAtIndex:indexPath.row] valueForKey:@"data"]];
+    //txtMessageNotes.text = [[myTags objectAtIndex:indexPath.row] valueForKey:@"content"];
 }
 
 @end
