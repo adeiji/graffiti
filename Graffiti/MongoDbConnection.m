@@ -16,7 +16,9 @@
 @synthesize collection;
 
 //Set the address to the ip of my mac or whatever the ip address is of the server
-#define address @"192.168.1.129"
+#define address @"54.213.167.56"
+
+//mac home address - 192.168.1.129
 
 - (void) setUpConnection : (NSString *) collectionName
 {

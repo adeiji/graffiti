@@ -40,21 +40,37 @@
 #define FONT_SIZE 14.0f
 #define CELL_CONTENT_WIDTH 320.0f
 #define CELL_CONTENT_MARGIN 10.0f
+#define CELL_CONTENT_HEIGHT 822.0f
+
+#define VIEW_MAIN_X_POSITION 0
+#define VIEW_SUB_X_POSITION 20
+#define VIEW_MAIN_Y_POSITION 0
+#define VIEW_SUB_Y_POSITION 550
+
+#define SWIPE_LEFT @"LEFT"
+#define SWIPE_RIGHT @"RIGHT"
+
 
 - (void)viewDidLoad
 {
 //    viewAllTagsDetailView = [[ViewAllTagDetailView alloc] initWithFrame:CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y , self.view.frame.size.width, self.view.frame.size.height)];
     
+    //Add the main view to the entire view
+    [self.view addSubview:self.mainView];
+    
     [self.scrollView setScrollEnabled:YES];
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    viewTags.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
-    //Set the background to the background image
-    self.mainView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
-    self.scrollView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
-    self.imageView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:.5f];
+
+    //set the UI specs of the mainView view controllers
+    {
+        viewTags.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
+        //Set the background to the background image
+        self.mainView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
+        self.scrollView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
+        self.imageView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:.5f];
+    }
     
     dataLayer = [[DataLayer alloc] init];
     
@@ -62,28 +78,83 @@
     
     //Set up the container view to hold your custom view hierarchy
     CGSize containerSize = CGSizeMake(320.0f, 822.0f);
+    
     self.containerView = [[UIView alloc] initWithFrame:(CGRect){.origin = CGPointMake(0.0f, 0.0f), .size = containerSize}];
     [self.scrollView addSubview:self.containerView];
     
     [self addButtonToViewTags];
     
-    //setup your custom view hierarchy
-    CGRect frame = viewTags.frame;
+    //add the views to the scroll view
+    [self addViewToScrollView : self.viewTags : @"" : VIEW_MAIN_X_POSITION : VIEW_MAIN_Y_POSITION];
+    [self addViewToScrollView : self.viewConversationView :@"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
     
-    frame.origin.y = 550;
-    frame.origin.x = 20;
+    //Add our swipe left gesture recognizer to our scroll view
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft)];
+    
+    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    
+    [self.scrollView addGestureRecognizer:swipeGestureRecognizer];
+    
+    
+    //Add our swipe right gesture recognizer to our scroll view
+    
+    swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight)];
+    
+    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    
+    [self.scrollView addGestureRecognizer:swipeGestureRecognizer];
+    
+}
+
+//Add a view to the scroll view.  This will be called every time there is a swipe
+- (void) addViewToScrollView : (UIView *) view : (NSString *) gestureDirection : (int) x : (int) y
+{
+    //Set the container size to initialize only the first time with these parameters
+    static CGSize containerSize = { 0.0f, CELL_CONTENT_HEIGHT };
+    
+    if ([gestureDirection isEqualToString:SWIPE_LEFT])
+    {
+        //Add the height of the iPhone screen
+        containerSize.width += CELL_CONTENT_WIDTH;
+    }
+    else if ([gestureDirection isEqualToString:SWIPE_RIGHT])
+    {
+        containerSize.width -= CELL_CONTENT_WIDTH;
+    }
+    else
+    {
+        containerSize.width = 320.0f;
+    }
+    
+    //setup your custom view hierarchy
+    CGRect frame = view.frame;
+    
+    frame.origin.y = y;
+    frame.origin.x = x;
     
     frame.size.width = 280;
     
-    viewTags.frame = frame;
-    viewTags.hidden = false;
+    view.frame = frame;
+    view.hidden = false;
     
-    [self.containerView addSubview:viewTags];
+    [self.containerView addSubview:view];
     
     //Tell the scroll view the size of the contents
     self.scrollView.contentSize = containerSize;
-    
 }
+
+- (void) swipeLeft
+{
+    
+    
+    NSLog(@"Gesture Swiped Left");
+}
+
+- (void) swipeRight
+{
+    NSLog(@"Gesture swiped right");
+}
+
 //Add the add comment button
 - (void) addButtonToViewTags
 {
@@ -94,7 +165,7 @@
     myButton.frame = frame;
     
     UIImage *backgroundImage = [UIImage imageNamed:@"commentbutton.png"];
-    
+    //Set the image background
     [myButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
     
     [myButton addTarget:self action:@selector(commentButtonPressed) forControlEvents:UIControlEventTouchDown];
