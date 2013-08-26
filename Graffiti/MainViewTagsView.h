@@ -15,6 +15,6 @@
 @property (strong, nonatomic) UITextView *txtTagger;
 @property (strong, nonatomic) UIImageView *txtContent;
 @property (strong, nonatomic) UIView *containerView;
-@property (strong, nonatomic) IBOutlet MainViewTagsView *view;
+@property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @end

@@ -103,6 +103,8 @@
 		CEEEDF58173C459400A4DE20 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEEDF57173C459400A4DE20 /* AWSRuntime.framework */; };
 		CEF9D86E17C91E24002457DF /* MainViewTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D86D17C91E24002457DF /* MainViewTagsView.m */; };
 		CEF9D87017C921AC002457DF /* MainViewTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF9D86F17C921AC002457DF /* MainViewTags.xib */; };
+		CEF9D8D717CBACC6002457DF /* MainViewTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D8D617CBACC6002457DF /* MainViewTagsViewController.m */; };
+		CEF9D96D17CBCBF1002457DF /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D96B17CBCA1B002457DF /* ConversationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -289,6 +291,10 @@
 		CEF9D86C17C91E24002457DF /* MainViewTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewTagsView.h; sourceTree = "<group>"; };
 		CEF9D86D17C91E24002457DF /* MainViewTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewTagsView.m; sourceTree = "<group>"; };
 		CEF9D86F17C921AC002457DF /* MainViewTags.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewTags.xib; sourceTree = "<group>"; };
+		CEF9D8D517CBACC5002457DF /* MainViewTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewTagsViewController.h; sourceTree = "<group>"; };
+		CEF9D8D617CBACC6002457DF /* MainViewTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewTagsViewController.m; sourceTree = "<group>"; };
+		CEF9D96A17CBCA1B002457DF /* ConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationViewController.h; sourceTree = "<group>"; };
+		CEF9D96B17CBCA1B002457DF /* ConversationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -440,6 +446,8 @@
 				CEB9376017C6867700E825B9 /* Comment View Controller */,
 				CEB9373B17C51E4D00E825B9 /* Groups */,
 				CEB9358717C3074500E825B9 /* Profile */,
+				CEF9D8D517CBACC5002457DF /* MainViewTagsViewController.h */,
+				CEF9D8D617CBACC6002457DF /* MainViewTagsViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -804,6 +812,7 @@
 		CEF9D86B17C91DF8002457DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CEF9D96917CBC9F4002457DF /* View Conversation */,
 				CEF9D8BC17C97878002457DF /* View Tag */,
 			);
 			name = Views;
@@ -823,6 +832,15 @@
 			children = (
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		CEF9D96917CBC9F4002457DF /* View Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9D96A17CBCA1B002457DF /* ConversationViewController.h */,
+				CEF9D96B17CBCA1B002457DF /* ConversationViewController.m */,
+			);
+			name = "View Conversation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -978,6 +996,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEF9D96D17CBCBF1002457DF /* ConversationViewController.m in Sources */,
 				CEEEDF56173C44C600A4DE20 /* AmazonS3Handler.m in Sources */,
 				CE9A069317398B2D00783843 /* main.m in Sources */,
 				CE9A069717398B2D00783843 /* AppDelegate.m in Sources */,
@@ -1035,6 +1054,7 @@
 				CEB9376317C686A100E825B9 /* CommentViewController.m in Sources */,
 				CEB9376717C68A1800E825B9 /* CommentTextView.m in Sources */,
 				CEF9D86E17C91E24002457DF /* MainViewTagsView.m in Sources */,
+				CEF9D8D717CBACC6002457DF /* MainViewTagsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
