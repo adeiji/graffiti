@@ -148,13 +148,14 @@
     //Get the Url of the image that was saved onto the server and then save this url into the database
     NSString *url = [myS3Handler GetUrl];
     tag.image = url;
-    //tag.conversation = @"This crazy right here man";
+    tag.conversation = @"This crazy right here man";
     tag.expirationDate =  [self getNextYear];
     tag.dateTime = [[NSDate alloc] init];
-    tag.tagger = self.delegate.tagger;
-    //tag.notes = @"NOTES";
+    //tag.tagger = self.delegate.tagger;
+    tag.tagger = @"adeiji";
+    tag.notes = @"NOTES";
     tag.restrictions = @"PUBLIC";
-    //tag.groups = @"NONE";
+    tag.groups = @"NONE";
     
     //Save the content of this tag
     [myDataLayer SaveContext:tag];

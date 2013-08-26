@@ -34,8 +34,8 @@
     
     NSString *dateString = [NSDateFormatter localizedStringFromDate:myTag.dateTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     NSString *expirationDateString = [NSDateFormatter localizedStringFromDate:myTag.expirationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-    
-    NSDictionary *loginInfo = @{
+
+    NSDictionary *tagInfo = @{
                                 @"content" : [NSString stringWithFormat:@"\"%@\"", myTag.content],
                                 @"conversation" : [NSString stringWithFormat:@"\"%@\"", myTag.conversation],
                                 @"dateTime" : [NSString stringWithFormat:@"\"%@\"", dateString ],
@@ -55,7 +55,7 @@
                                         ]
                                 };
     
-    [collection insertDictionary:loginInfo writeConcern:nil error:&error];
+    [collection insertDictionary:tagInfo writeConcern:nil error:&error];
     
     //Deallocate strings
     dateString =  nil;

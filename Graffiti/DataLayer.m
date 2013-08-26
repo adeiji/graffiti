@@ -77,7 +77,6 @@
     [newTag setValue:[myTag restrictions] forKey:@"restrictions"];
     [newTag setValue:[myTag groups] forKey:@"groups"];
     
-    
     NSError *error;
     
     if (![context save:&error])
