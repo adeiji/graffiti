@@ -10,6 +10,7 @@
 #import "DataLayer.h"
 #import "ViewAllTagDetailView.h"
 #import "TagCell.h"
+#import "MainViewTagsView.h"
 
 @interface ViewTagsWithDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, UIScrollViewDelegate>
 
@@ -20,6 +21,8 @@
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) IBOutlet UIImageView *background;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
-@property (strong, nonatomic) UIView *viewConversationView;
+
+@property (strong, nonatomic) IBOutlet UIView *conversationView;
+@property (strong, nonatomic) MainViewTagsView *mainViewTagsView;
 
 @end

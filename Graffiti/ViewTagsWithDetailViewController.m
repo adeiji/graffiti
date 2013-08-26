@@ -9,8 +9,7 @@
 #import "ViewTagsWithDetailViewController.h"
 #import "ViewAllTagDetailView.h"
 #import "TagCell.h"
-#import "MainViewTagsView.h" 
-#import "ViewConversation.h"
+#import "MainViewTagsView.h"
 
 @interface ViewTagsWithDetailViewController ()
 
@@ -33,6 +32,7 @@
 
 @synthesize scrollView = _scrollView;
 @synthesize containerView = _containerView;
+@synthesize mainViewTagsView;
 
 #define FONT_SIZE 14.0f
 #define CELL_CONTENT_WIDTH 320.0f
@@ -57,7 +57,7 @@
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    
     //set the UI specs of the mainView view controllers
     {
         //Set the background to the background image
@@ -78,33 +78,36 @@
     [self addButtonToViewTags];
     
     //You have to instantiate the mainViewTagsView first so that you can set the owner when you load the view from the nib, otherwise you will receive a not key-value coding compliant error
-    MainViewTagsView *mainViewTagsView = [[MainViewTagsView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    mainViewTagsView = [[MainViewTagsView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
     
     mainViewTagsView.view.backgroundColor = [UIColor clearColor];
     mainViewTagsView.backgroundColor = [UIColor clearColor];
     
-    ViewConversation *viewConversationView = [[ViewConversation alloc] initWithFrame:CGRectMake(20, 20, 280, 260)];
     
     [self addViewToScrollView : mainViewTagsView.view: @"" : VIEW_MAIN_X_POSITION : VIEW_MAIN_Y_POSITION];
-    [self addViewToScrollView : viewConversationView.view :@"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
+    [self addViewToScrollView : self.conversationView :@"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
     
     //Add our swipe left gesture recognizer to our scroll view
-    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft)];
+   // UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft)];
     
-    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+   
+    //swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
     
-    [self.scrollView addGestureRecognizer:swipeGestureRecognizer];
-    
+    //[self.scrollView addGestureRecognizer:swipeGestureRecognizer];
     
     //Add our swipe right gesture recognizer to our scroll view
     
-    swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight)];
+    //swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight)];
     
-    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    //swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
     
-    [self.scrollView addGestureRecognizer:swipeGestureRecognizer];
+    //swipeGestureRecognizer.delaysTouchesBegan = TRUE;
     
+   // [self.scrollView addGestureRecognizer:swipeGestureRecognizer];
+    [self.scrollView delaysContentTouches];
+  
 }
+
 
 //Add a view to the scroll view.  This will be called every time there is a swipe
 - (void) addViewToScrollView : (UIView *) view : (NSString *) gestureDirection : (int) x : (int) y
@@ -147,10 +150,17 @@
 - (void) swipeLeft
 {
     
+    mainViewTagsView = [[MainViewTagsView alloc] initWithFrame:CGRectMake(0, 0, mainViewTagsView.view.frame.origin.x + 320, 480)];
     
+    mainViewTagsView.view.backgroundColor = [UIColor clearColor];
+    mainViewTagsView.backgroundColor = [UIColor clearColor];
+
     //add the views to the scroll view
-   // [self addViewToScrollView : myNewMainView : SWIPE_LEFT : VIEW_MAIN_X_POSITION : VIEW_MAIN_Y_POSITION];
-    //[self addViewToScrollView : myViewTags : @"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
+     [self addViewToScrollView : mainViewTagsView.view : SWIPE_LEFT : VIEW_MAIN_X_POSITION : VIEW_MAIN_Y_POSITION];
+    
+  //  [self.conversationView removeFromSuperview];
+    
+   // [self addViewToScrollView : self.conversationView : @"" : VIEW_SUB_X_POSITION : VIEW_SUB_Y_POSITION];
     
     NSLog(@"Gesture Swiped Left");
 }

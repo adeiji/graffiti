@@ -103,8 +103,6 @@
 		CEEEDF58173C459400A4DE20 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEEDF57173C459400A4DE20 /* AWSRuntime.framework */; };
 		CEF9D86E17C91E24002457DF /* MainViewTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D86D17C91E24002457DF /* MainViewTagsView.m */; };
 		CEF9D87017C921AC002457DF /* MainViewTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF9D86F17C921AC002457DF /* MainViewTags.xib */; };
-		CEF9D8BA17C9785D002457DF /* ViewConversation.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF9D8B917C9785D002457DF /* ViewConversation.xib */; };
-		CEF9D8BF17C97889002457DF /* ViewConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D8BE17C97889002457DF /* ViewConversation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,9 +289,6 @@
 		CEF9D86C17C91E24002457DF /* MainViewTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewTagsView.h; sourceTree = "<group>"; };
 		CEF9D86D17C91E24002457DF /* MainViewTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewTagsView.m; sourceTree = "<group>"; };
 		CEF9D86F17C921AC002457DF /* MainViewTags.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewTags.xib; sourceTree = "<group>"; };
-		CEF9D8B917C9785D002457DF /* ViewConversation.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewConversation.xib; sourceTree = "<group>"; };
-		CEF9D8BD17C97889002457DF /* ViewConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewConversation.h; sourceTree = "<group>"; };
-		CEF9D8BE17C97889002457DF /* ViewConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewConversation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -367,6 +362,7 @@
 		CE9A068C17398B2D00783843 /* Graffiti */ = {
 			isa = PBXGroup;
 			children = (
+				CEF9D8C717C98933002457DF /* Categories */,
 				CEB9375A17C5D2FE00E825B9 /* Classes */,
 				CEB9375117C5522100E825B9 /* BSONParser */,
 				CEB9373F17C52E0A00E825B9 /* UI Classes */,
@@ -752,7 +748,6 @@
 				CE9A06A117398B2D00783843 /* MainStoryboard_iPad.storyboard */,
 				CE9A069E17398B2D00783843 /* MainStoryboard_iPhone.storyboard */,
 				CEF9D86F17C921AC002457DF /* MainViewTags.xib */,
-				CEF9D8B917C9785D002457DF /* ViewConversation.xib */,
 				CEB9375E17C6806C00E825B9 /* CommentStoryboard.storyboard */,
 			);
 			name = Storyboards;
@@ -809,19 +804,9 @@
 		CEF9D86B17C91DF8002457DF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CEF9D8BB17C97869002457DF /* View Conversation */,
 				CEF9D8BC17C97878002457DF /* View Tag */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		CEF9D8BB17C97869002457DF /* View Conversation */ = {
-			isa = PBXGroup;
-			children = (
-				CEF9D8BD17C97889002457DF /* ViewConversation.h */,
-				CEF9D8BE17C97889002457DF /* ViewConversation.m */,
-			);
-			name = "View Conversation";
 			sourceTree = "<group>";
 		};
 		CEF9D8BC17C97878002457DF /* View Tag */ = {
@@ -831,6 +816,13 @@
 				CEF9D86D17C91E24002457DF /* MainViewTagsView.m */,
 			);
 			name = "View Tag";
+			sourceTree = "<group>";
+		};
+		CEF9D8C717C98933002457DF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -952,7 +944,6 @@
 				CEB9375917C55CB000E825B9 /* savegroupsbutton.png in Resources */,
 				CEB9375F17C6806D00E825B9 /* CommentStoryboard.storyboard in Resources */,
 				CEF9D87017C921AC002457DF /* MainViewTags.xib in Resources */,
-				CEF9D8BA17C9785D002457DF /* ViewConversation.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1044,7 +1035,6 @@
 				CEB9376317C686A100E825B9 /* CommentViewController.m in Sources */,
 				CEB9376717C68A1800E825B9 /* CommentTextView.m in Sources */,
 				CEF9D86E17C91E24002457DF /* MainViewTagsView.m in Sources */,
-				CEF9D8BF17C97889002457DF /* ViewConversation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
