@@ -30,5 +30,6 @@
 @property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
 
 @property (strong, nonatomic) NSArray *contentList;
+@property (strong, nonatomic) NSArray *tags;
 
 @end

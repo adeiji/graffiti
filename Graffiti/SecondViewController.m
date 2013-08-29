@@ -31,6 +31,11 @@
 @synthesize myLocationManager;
 @synthesize myDataLayer;
 
+#define MONGODB_COLLECTION_NAME @"Graffiti.Tags"
+#define CONTENT @"content"
+#define CONTENT_TYPE @"contentType"
+#define TAG_NAME @"tagName"
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -137,28 +142,43 @@
 //Create the tag with the specific name that's given
 -(void) CreateTag: (NSString *) name
 {
+    NSMutableDictionary *contentDictionary = [[NSMutableDictionary alloc] init];
     tag.name = name;
     //Use this where explicit transactions are not allowed.  This creates a unique ID and stores it as an ID using core data
     tag.uid = (__bridge NSString *)(CFUUIDCreate(NULL));
     tag.type = @"image";
     tag.content = txtTag.text;
-    tag.data = UIImageJPEGRepresentation(myImage, 1.0);
+    tag.data = UIImageJPEGRepresentation(myImage, .2);
+    
+    //Add the content information to a dictionary and then send this information to the Amazon S3 Handler so that it can asynchronously upload this data to the S3 server.
+    [contentDictionary setObject:myImage forKey:CONTENT];
+    [contentDictionary setObject:tag.type forKey:CONTENT_TYPE];
+    [contentDictionary setObject:tag.name forKey:TAG_NAME];
+    
     //Call the AmazonS3Handler which will add the file to the Amazon Server
-    AmazonS3Handler *myS3Handler = [[AmazonS3Handler alloc] init:myImage :tag.type :tag.name];
+    AmazonS3Handler *myS3Handler = [[AmazonS3Handler alloc] init:contentDictionary];
+    
+    //[myS3Handler performSelectorInBackground:@selector(init:) withObject:contentDictionary];
+    
     //Get the Url of the image that was saved onto the server and then save this url into the database
     NSString *url = [myS3Handler GetUrl];
     tag.image = url;
-    tag.conversation = @"This crazy right here man";
+    [tag.conversation addObject:@"This crazy right here man"];
     tag.expirationDate =  [self getNextYear];
     tag.dateTime = [[NSDate alloc] init];
     //tag.tagger = self.delegate.tagger;
     tag.tagger = @"adeiji";
     tag.notes = @"NOTES";
     tag.restrictions = @"PUBLIC";
-    tag.groups = @"NONE";
+    [tag.groups addObject:@"NOTHING"];
     
     //Save the content of this tag
-    [myDataLayer SaveContext:tag];
+    MongoDbConnection *myDbConnection = [[MongoDbConnection alloc] init];
+    
+    [myDbConnection setUpConnection:MONGODB_COLLECTION_NAME];
+    
+    //Save the login in the mongoDbDatabase
+    [myDbConnection insertTag:tag];
 }
 
 - (NSDate *) getNextYear
@@ -181,8 +201,8 @@
         if ([view isKindOfClass:[UITextField class]])
         {
             NSString *name = [alertView textFieldAtIndex:0].text;
-        
-            [self CreateTag:name];
+            //Create the actual tag asyncronously
+            [self performSelectorInBackground:@selector(CreateTag:) withObject:name];
         }
     }
 }
@@ -191,10 +211,10 @@
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     myImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    myImage = [UIImage imageWithCGImage:myImage.CGImage scale:1.0f orientation:UIImageOrientationLeft];
     
     //Display the image at the top of the page
     [self DisplayImage:myImage];
-    
     [cameraButton setTintColor:[UIColor redColor]];
 
     [picker dismissViewControllerAnimated:YES completion:nil];

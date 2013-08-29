@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tag.h"
 
-@interface ConversationViewController : UIViewController
+@interface ConversationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) Tag* tag;
+@property (strong, nonatomic) NSArray *conversation;
+
+- (Tag*) tag;
 
 
 @end

@@ -28,7 +28,7 @@
 @synthesize groups;
 
 
-- (NSManagedObject*) init
+- (NSObject *) init
 {
     return self;
 }
@@ -41,13 +41,13 @@
                  :(NSNumber *) myLongitude
                  :(NSString *) myName
                  :(NSData *) myData
-                 :(NSString *) myConversation
+                 :(NSMutableArray *) myConversation
                  :(NSDate *) myExpirationDate
                  :(NSDate *) myDateTime
                  :(NSString *) myTagger
                  :(NSString *) myNotes
                  :(NSString *) myRestrictions
-                 :(NSString *) myGroups;
+                 :(NSMutableArray *) myGroups;
 
 {
     type = myType;

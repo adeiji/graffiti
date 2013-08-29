@@ -40,7 +40,7 @@
     [self.connection setUpConnection:@"Graffiti.groups"];
 
     BSONParser *parse = [[BSONParser alloc] init];
-    self.groups = [parse parseBSONFiles:[self.connection getAllValuesFromTable:@"group"]];
+    self.groups = [parse parseBSONFiles:[self.connection getAllValuesFromTable]];
 }
 
 - (void)didReceiveMemoryWarning

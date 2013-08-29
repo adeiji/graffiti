@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tag.h"
 
 @interface MainViewTagsViewController : UIViewController
 
-- (id) initWithPageNumber:(NSUInteger) page;
+- (id) initWithPageNumber:(NSUInteger) page : (NSDictionary *) tag;
 
 @end

@@ -10,7 +10,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface Tag : NSManagedObject
+@interface Tag : NSObject
 
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) NSString * uid;
@@ -20,15 +20,15 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSData *data;
-@property (nonatomic, retain) NSString *groups;
-@property (nonatomic, retain) NSString *conversation;
+@property (nonatomic, retain) NSMutableArray *groups;
+@property (nonatomic, retain) NSMutableArray *conversation;
 @property (nonatomic, retain) NSDate *expirationDate;
 @property (nonatomic, retain) NSDate *dateTime;
 @property (nonatomic, retain) NSString *tagger;
 @property (nonatomic, retain) NSString *notes;
 @property (nonatomic, retain) NSString *restrictions;
 
-- (NSManagedObject *) init;
+- (NSObject *) init;
 
 -(void) init    :(NSString *) myType
                 :(NSString *) myId
@@ -38,11 +38,11 @@
                 :(NSNumber *) myLongitude
                 :(NSString *) myName
                 :(NSData *) data
-                :(NSString *) conversation
+                :(NSMutableArray *) conversation
                 :(NSDate *) expirationDate
                 :(NSDate *) dateTime
                 :(NSString *) tagger
                 :(NSString *) notes
                 :(NSString *) restrictions
-                :(NSString *) groups;
+                :(NSMutableArray *) groups;
 @end

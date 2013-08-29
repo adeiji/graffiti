@@ -12,9 +12,15 @@
 #import "MainViewTagsViewController.h"
 #import "MainViewTagsView.h" 
 #import "ConversationViewController.h"
+#import "MongoDbConnection.h"
+#import "BSONParser.h"
+#import "CommentViewController.h"
 
 @interface ViewTagsWithDetailViewController ()
-
+{
+    int previousTagCount;
+    int currentTagCount;
+}
 @property float cellHeight;
 
 @property (strong, nonatomic) UIView *containerView;
@@ -25,7 +31,7 @@
 
 @implementation ViewTagsWithDetailViewController
 
-@synthesize myTags;
+@synthesize tags;
 @synthesize dataLayer;
 @synthesize myTableView;
 @synthesize cellHeight;
@@ -49,9 +55,11 @@
 #define SWIPE_LEFT @"LEFT"
 #define SWIPE_RIGHT @"RIGHT"
 
+#define mongoDbCollectionName @"Graffiti.Tags"
 
 - (void)viewDidLoad
 {
+    
     //Add the main view to the entire view
     [self.view addSubview:self.mainView];
     
@@ -70,16 +78,21 @@
     dataLayer = [[DataLayer alloc] init];
     
     [self gotoFirstRowInTable];
-    
     [self.scrollView addSubview:self.pageControl];
-    
-    [self setUpPaging];
 }
 
+- (void) loadTags
+{
+    BSONParser *parse = [[BSONParser alloc] init];
+    MongoDbConnection *connection = [[MongoDbConnection alloc] init];
+    
+    [connection setUpConnection:mongoDbCollectionName];
+    tags = [[NSArray alloc] initWithArray:[parse parseBSONFiles:[connection getAllValuesFromTable]]];
+}
 
 - (void) setUpPaging
 {
-    NSUInteger numberOfPages = 10;
+    NSUInteger numberOfPages = [tags count];
     
     //View controllers are created lazily
     NSMutableArray *controllers = [[NSMutableArray alloc] init];
@@ -103,28 +116,24 @@
     
     self.pageControl.numberOfPages = numberOfPages;
     self.pageControl.currentPage = 0;
-    
-    //Pages are created on demand
-    //load the visible page and the next one so that the user doesn't get a flash when scrolling
-    [self loadScrollViewWithPage:0];
-    [self loadScrollViewWithPage:1];
 }
 
 
 - (void) loadScrollViewWithPage:(NSUInteger) page
 {
     //Number of pages we're going to load
-    if (page >= 5)
+    if (page >= [tags count])
         return;
     
     // replace the placeholder if necessary
     MainViewTagsViewController *controller = [self.viewControllers objectAtIndex:page];
     if ((NSNull *)controller == [NSNull null])
     {
-        controller = [[MainViewTagsViewController alloc] initWithPageNumber:page];
+        controller = [[MainViewTagsViewController alloc] initWithPageNumber:page:[tags objectAtIndex:page]];
         //Create the view that will contain the table to show the conversations had on this tag.
         ConversationViewController *conversationViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"ConversationViewController"];
         
+        conversationViewController.tag = [tags objectAtIndex:page];
         //Change the orientation of the view so that it fits on the next page
         CGRect frame = conversationViewController.view.frame;
         
@@ -157,7 +166,6 @@
         [self addChildViewController:controller];
         [self.scrollView addSubview:controller.view];
         [controller didMoveToParentViewController:self];
-        
     }
 }
 
@@ -235,8 +243,10 @@
 
 - (void) commentButtonPressed
 {
-    UIViewController *commentViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"commentViewController"];
+    CommentViewController *commentViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"commentViewController"];
     
+    //Set the tag to send to the comment view controller so that way the user can comment on the tag
+    [commentViewController setTag:[tags objectAtIndex:self.pageControl.currentPage]];
     [self.navigationController pushViewController:commentViewController animated:YES];
 }
 
@@ -272,13 +282,42 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    myTags = [dataLayer fetchValues:@"Tag" : @"name" : 20];
+  //  [super viewDidLoad];
+    [self loadTags];
+    
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //Load the tags from the MonogoDb
+    
+    [self setUpPaging];
+    
+    //Get the current page
+    NSUInteger page = self.pageControl.currentPage;
+    
+    // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+    if (page > 0)
+    {
+        [self loadScrollViewWithPage:page - 1];
+    }
+    
+    [self loadScrollViewWithPage:page];
+    [self loadScrollViewWithPage:page + 1];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    previousTagCount = [tags count];
 }
 
 //Select the first row of the table view
 - (void) gotoFirstRowInTable
 {
-    if ([myTags count] > 0)
+    if ([tags count] > 0)
     {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [myTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
@@ -314,12 +353,12 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [myTags count];
+    return [tags count];
 }
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *myConversation = [[myTags objectAtIndex:indexPath.row] valueForKey:@"conversation"];
+    NSString *myConversation = [[tags objectAtIndex:indexPath.row] valueForKey:@"conversation"];
     
     CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
     
@@ -332,46 +371,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"displayTagCell";
-    TagCell *cell = (TagCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    //Get the correct information from the database specific to this tag
-    NSString *myTagger = [[myTags objectAtIndex:indexPath.row] valueForKey:@"tagger"];
-    NSString *myDate = [[myTags objectAtIndex:indexPath.row] valueForKey:@"dateTime"];
-    NSString *myContent = [[myTags objectAtIndex:indexPath.row] valueForKey:@"content"];
-    NSString *myConversation = [[myTags objectAtIndex:indexPath.row] valueForKey:@"conversation"];
-    NSString *myLatitude = [[myTags objectAtIndex:indexPath.row] valueForKey:@"latitude"];
-    NSString *myLongitude = [[myTags objectAtIndex:indexPath.row] valueForKey:@"longitude"];
-    NSString *myGroup = [[myTags objectAtIndex:indexPath.row] valueForKey:@"groups"];
-    
-    //If an image is stored here, than get the image from the data table in the database
-    NSString *myTagDetails = myConversation;
-    
-    //txtMessageNotes.text = myContent;
-    
-    //Set the height of the TableViewCell to the height of the text containing the content
-    [cell.txtTagContent sizeToFit];
-    
-    cell.txtTagContent.text = myTagDetails;
-   // [cell.contentView addSubview:cell.txtTagContent];
-    
-    //Set the height of the cell's text view to the height of the content within it.  Dynamic height.
-    CGRect frame =  cell.txtTagContent.frame;
-    frame.size.height = cell.txtTagContent.contentSize.height;
-    cell.txtTagContent.frame = frame;
-    
-    cellHeight = cell.txtTagContent.frame.size.height;
-    
-    //[tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    
-    
-    return cell;
-}
+    }
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //imgContent.image = [UIImage imageWithData:[[myTags objectAtIndex:indexPath.row] valueForKey:@"data"]];
-    //txtMessageNotes.text = [[myTags objectAtIndex:indexPath.row] valueForKey:@"content"];
+    //imgContent.image = [UIImage imageWithData:[[tags objectAtIndex:indexPath.row] valueForKey:@"data"]];
+    //txtMessageNotes.text = [[tags objectAtIndex:indexPath.row] valueForKey:@"content"];
 }
 
 @end

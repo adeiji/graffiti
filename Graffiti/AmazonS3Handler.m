@@ -11,17 +11,32 @@
 
 @implementation AmazonS3Handler 
 
-- (AmazonS3Handler *) init : (id) content : (NSString *) contentType : (NSString *) tagName
+#define CONTENT @"content"
+#define CONTENT_TYPE @"contentType"
+#define TAG_NAME @"tagName"
+
+- (AmazonS3Handler *) init:(NSDictionary *)myContent
 {
+    id content = [myContent valueForKey:CONTENT];
+    NSString *contentType = [myContent valueForKey:CONTENT_TYPE];
+    NSString *tagName = [myContent valueForKey:TAG_NAME];
     
     [AmazonErrorHandler shouldNotThrowExceptions];
     
     NSData *contentData = UIImageJPEGRepresentation(content, 1.0);
     
     [self UploadContentToServer:contentData :contentType :tagName];
-
+    
     return self;
 }
+
+//- (AmazonS3Handler *) init : (id) content
+//               contentType : (NSString *) contentType
+//                   tagName : (NSString *) tagName
+//{
+//    
+//    
+//}
 
 - (void) UploadContentToServer : (NSData *) contentData : (NSString *) contentType : (NSString *) tagName
 {
@@ -47,7 +62,6 @@
     [s3 putObject:por];
     
     [self AssignUrl:bucketName :tagName :s3];
-    
 }
 
 -(void) AssignUrl : (NSString *) bucketName : (NSString *) tagName : (AmazonS3Client *) s3

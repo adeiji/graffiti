@@ -21,7 +21,7 @@
 {
     //If this is the first time that the user is using the application then we load the login page and after this we add a UDID number to their database
     
-    //Check to see if the database contains a UDID number
+    //Check to .see if the database contains a UDID number
     DataLayer *myDataLayer = [[DataLayer alloc] init];
     NSArray *myUDID = [myDataLayer fetchValues:@"Login" : @"udid" : 1];
     

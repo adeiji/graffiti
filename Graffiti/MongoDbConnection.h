@@ -20,9 +20,9 @@
                           : (NSString *) password
                           : (NSString *) device;
 - (NSDictionary *) getValues : (NSString *) valueToGet : (NSString *) keyPathToSearch;
-- (NSArray *) getAllValuesFromTable : (NSString *) keyPath;
+- (NSArray *) getAllValuesFromTable;
 - (void) changeUserName : (NSString*) oldUserName : (NSString *) newUserName;
 - (void) setUpConnection : (NSString *) collectionName;
 - (void) insertTag : (Tag *) myTag;
-
+- (void) changeValue : (NSDictionary *) oldValue : (NSDictionary *) newValue;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "GraffitiTabBarController.h"
+#import "CollectionViewController.h"
 
 @interface GraffitiTabBarController ()
 
@@ -31,6 +32,8 @@
 	// Do any additional setup after loading the view.
     
     self.delegate = self;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning

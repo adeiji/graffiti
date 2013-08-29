@@ -29,30 +29,12 @@
     <entity name="Restrictions" syncable="YES">
         <attribute name="restriction" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Tag" representedClassName="Tag" syncable="YES">
-        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="conversation" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="data" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="dateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="expirationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="groups" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="restrictions" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tagger" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <elements>
+        <element name="Followers" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Following" positionX="160" positionY="192" width="128" height="60"/>
+        <element name="Groups" positionX="160" positionY="192" width="128" height="60"/>
         <element name="Login" positionX="160" positionY="192" width="128" height="90"/>
         <element name="Profile" positionX="160" positionY="192" width="128" height="195"/>
-        <element name="Tag" positionX="160" positionY="192" width="128" height="270"/>
-        <element name="Groups" positionX="160" positionY="192" width="128" height="60"/>
         <element name="Restrictions" positionX="160" positionY="192" width="128" height="60"/>
-        <element name="Following" positionX="160" positionY="192" width="128" height="60"/>
-        <element name="Followers" positionX="160" positionY="192" width="128" height="60"/>
     </elements>
 </model>

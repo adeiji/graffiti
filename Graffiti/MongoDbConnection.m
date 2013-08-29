@@ -9,6 +9,7 @@
 #import "MongoDbConnection.h"
 #import "ObjCMongoDB.h"
 #import "Tag.h"
+#import "NSArray+MongoAdditions.h"
 
 @implementation MongoDbConnection
 
@@ -34,13 +35,18 @@
     
     NSString *dateString = [NSDateFormatter localizedStringFromDate:myTag.dateTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     NSString *expirationDateString = [NSDateFormatter localizedStringFromDate:myTag.expirationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-
+    
     NSDictionary *tagInfo = @{
+                                @"uid" : [NSString stringWithFormat:@"\"%@\"", myTag.uid],
+                                @"comments" : [NSNull null],
                                 @"content" : [NSString stringWithFormat:@"\"%@\"", myTag.content],
-                                @"conversation" : [NSString stringWithFormat:@"\"%@\"", myTag.conversation],
                                 @"dateTime" : [NSString stringWithFormat:@"\"%@\"", dateString ],
                                 @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
-                                @"groups" : [NSString stringWithFormat:@"\"%@\"", myTag.groups],
+                                @"groups" : @[
+                                        @{
+                                            @"group" : [[NSArray alloc ] initWithArray:myTag.groups]
+                                            }
+                                        ],
                                 @"image" : [NSString stringWithFormat:@"\"%@\"", myTag.image],
                                 @"longitude" : [NSString stringWithFormat:@"\"%@\"", myTag.longitude],
                                 @"latitude" : [NSString stringWithFormat:@"\"%@\"", myTag.latitude],
@@ -95,9 +101,8 @@
 }
 
 //Returns all the values from a given table given a specific key path
-- (NSArray *) getAllValuesFromTable : (NSString *) keyPath
+- (NSArray *) getAllValuesFromTable
 {
-    
     NSError *error = nil;
     //Gets an array of BSON documents
     NSArray *result = [collection findAllWithError:&error];
@@ -120,6 +125,25 @@
     BSONDocument *resultDoc = [collection findOneWithPredicate:predicate error:&error];
     NSDictionary *result = [BSONDecoder decodeDictionaryWithDocument:resultDoc];
     NSLog(@"fetch result after update: %@", result);
+}
+
+- (void) changeValue : (NSDictionary *) oldValue
+                     : (NSDictionary *) newValue
+{
+    //This dictionary contains all the Column names and dictionaries that contain the old and new values
+    for (NSString *columnName in [oldValue allKeys])
+    {
+        NSError *error = nil;
+        MongoKeyedPredicate *predicate = [MongoKeyedPredicate predicate];
+        //Set the predicate to search for the given column name with the old value
+        [predicate keyPath:columnName matches:[oldValue objectForKey:columnName]];
+        
+        MongoUpdateRequest *updateRequest = [MongoUpdateRequest updateRequestWithPredicate:predicate firstMatchOnly:YES];
+        //Update the old value with the new value.
+        [updateRequest keyPath:columnName setValue:[newValue objectForKey:columnName]];
+        [collection updateWithRequest:updateRequest error:&error];
+    }
+   
 }
 
 

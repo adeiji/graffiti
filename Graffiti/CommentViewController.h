@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Tag.h"
+#import "CommentTextView.h"
 
-@interface CommentViewController : UIViewController
+@interface CommentViewController : UIViewController <UITextViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITextView *txtComment;
+@property (strong, nonatomic) IBOutlet CommentTextView *txtComment;
 - (IBAction)viewTagsPressed:(id)sender;
+- (void) setTag : (Tag *) tag;
+- (IBAction)sendButtonPressed:(id)sender;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) IBOutlet UIButton *sendButton;
 @end
