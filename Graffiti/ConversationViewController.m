@@ -21,6 +21,7 @@
     [super viewDidLoad];
     
     cellHeights = [[NSMutableArray alloc] init];
+    conversation = [[NSArray alloc] init];
 }
 
 
@@ -33,7 +34,12 @@
 {
     conversation =  [self.tag valueForKey:@"comments"];
     
-    return [conversation count];
+    if (![conversation isEqual:[NSNull null]])
+    {
+        return [conversation count];
+    }
+    
+    return 0;
 }
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -42,7 +48,7 @@
     TagCell *cell = (TagCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     //Open up what was said in the conversation
     cell.txtConversation.text = [conversation objectAtIndex:indexPath.row];
-
+    [cell.txtConversation setFont:[UIFont systemFontOfSize:14.0f]];
     CGRect frame = cell.txtConversation.frame;
     
     frame.size.height = cell.txtConversation.contentSize.height;
@@ -50,18 +56,38 @@
     
     cell.txtConversation.frame = frame;
     
-    [cellHeights addObject:@(cell.txtConversation.frame.size.height)];
+    if ((indexPath.row % 2) == 0)
+    {
+        UIColor * color = [UIColor colorWithRed:255/255.0f green:226/255.0f blue:191/255.0f alpha:1.0f];
+        
+        cell.txtConversation.backgroundColor = color;
+    }
     
     return cell;
 }
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"Conversation View Controller Pressed");
+}
+
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *comment = [conversation objectAtIndex:indexPath.row];
-    
-    CGSize size = [comment sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(260, 1000) lineBreakMode:NSLineBreakByWordWrapping];
-    
-    return size.height;
+    if (indexPath != nil)
+    {
+        UITextView *text = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 260, 0)];
+        
+        [self.view addSubview:text];
+        
+        text.text = [conversation objectAtIndex:indexPath.row];
+        [text setFont:[UIFont systemFontOfSize:14.0]];
+        text.hidden = YES;
+        
+        CGSize size = text.contentSize;
+        
+        return size.height / 2.0;
+    }
+    return 0;
 }
 
 @end

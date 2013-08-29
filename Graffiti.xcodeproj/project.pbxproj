@@ -78,6 +78,10 @@
 		CE9B92EA1763EB26007FA4CF /* spraycannoalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */; };
 		CE9B92EC1763ED5C007FA4CF /* tagit.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92EB1763ED5C007FA4CF /* tagit.png */; };
 		CE9F38A9175ECA7E00656674 /* graffitilogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */; };
+		CEB21CC117CF8D0C007C6125 /* RefreshButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB21CC017CF8D0B007C6125 /* RefreshButtonView.xib */; };
+		CEB21CC317CF8D8D007C6125 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB21CC217CF8D8D007C6125 /* refresh.png */; };
+		CEB21CC817CF8F5E007C6125 /* RefreshButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB21CC717CF8F5E007C6125 /* RefreshButtonViewController.m */; };
+		CEB21CCC17CF9568007C6125 /* RefreshButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB21CCB17CF9568007C6125 /* RefreshButtonView.m */; };
 		CEB9358A17C3077700E825B9 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9358917C3077700E825B9 /* ProfileViewController.m */; };
 		CEB936D917C40C7E00E825B9 /* bcon.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936CA17C40BF100E825B9 /* bcon.c */; };
 		CEB936DA17C40C8200E825B9 /* bson.c in Sources */ = {isa = PBXBuildFile; fileRef = CEB936CC17C40BF100E825B9 /* bson.c */; };
@@ -267,6 +271,12 @@
 		CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spraycannoalpha.png; sourceTree = "<group>"; };
 		CE9B92EB1763ED5C007FA4CF /* tagit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tagit.png; path = ../images/tagit.png; sourceTree = "<group>"; };
 		CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = graffitilogo.jpg; path = ../graffitilogo.jpg; sourceTree = "<group>"; };
+		CEB21CC017CF8D0B007C6125 /* RefreshButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshButtonView.xib; sourceTree = "<group>"; };
+		CEB21CC217CF8D8D007C6125 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = refresh.png; path = images/refresh.png; sourceTree = "<group>"; };
+		CEB21CC617CF8F5E007C6125 /* RefreshButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshButtonViewController.h; sourceTree = "<group>"; };
+		CEB21CC717CF8F5E007C6125 /* RefreshButtonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshButtonViewController.m; sourceTree = "<group>"; };
+		CEB21CCA17CF9568007C6125 /* RefreshButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshButtonView.h; sourceTree = "<group>"; };
+		CEB21CCB17CF9568007C6125 /* RefreshButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshButtonView.m; sourceTree = "<group>"; };
 		CEB9358817C3077700E825B9 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		CEB9358917C3077700E825B9 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		CEB936CA17C40BF100E825B9 /* bcon.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = bcon.c; sourceTree = "<group>"; };
@@ -545,6 +555,8 @@
 		CE9A068C17398B2D00783843 /* Graffiti */ = {
 			isa = PBXGroup;
 			children = (
+				CEB21CC917CF954F007C6125 /* Views */,
+				CEB21CBC17CF8CC0007C6125 /* Refresh Button View Controller */,
 				CE3462CB17CE56F0009D92BF /* UIActivityIndicator-for-SDWebImage */,
 				CE34629B17CE4699009D92BF /* SDWebImage */,
 				CE34629717CE40B3009D92BF /* CircleProgressIndicator */,
@@ -618,6 +630,24 @@
 				CE9B456117595FC70094BC9A /* CoreDataAITests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CEB21CBC17CF8CC0007C6125 /* Refresh Button View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEB21CC617CF8F5E007C6125 /* RefreshButtonViewController.h */,
+				CEB21CC717CF8F5E007C6125 /* RefreshButtonViewController.m */,
+			);
+			name = "Refresh Button View Controller";
+			sourceTree = "<group>";
+		};
+		CEB21CC917CF954F007C6125 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEB21CCA17CF9568007C6125 /* RefreshButtonView.h */,
+				CEB21CCB17CF9568007C6125 /* RefreshButtonView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		CEB9358617C3071300E825B9 /* View Controllers */ = {
@@ -941,6 +971,7 @@
 				CEF9D86F17C921AC002457DF /* MainViewTags.xib */,
 				CEB9375E17C6806C00E825B9 /* CommentStoryboard.storyboard */,
 				CE34628417CD0C27009D92BF /* ViewTagsByImage.xib */,
+				CEB21CC017CF8D0B007C6125 /* RefreshButtonView.xib */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -948,6 +979,7 @@
 		CEF9D86717C9041D002457DF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CEB21CC217CF8D8D007C6125 /* refresh.png */,
 				CE9A06AE17398B2D00783843 /* second.png */,
 				CE9A06B017398B2D00783843 /* second@2x.png */,
 				CE8FC6FD17BFE21A001F9B69 /* commentbutton.png */,
@@ -1149,6 +1181,8 @@
 				CE3462D317CE56F0009D92BF /* LICENSE.txt in Resources */,
 				CE3462D417CE56F0009D92BF /* README.md in Resources */,
 				CE3462D517CE56F0009D92BF /* UIActivityIndicator-for-SDWebImage.podspec in Resources */,
+				CEB21CC117CF8D0C007C6125 /* RefreshButtonView.xib in Resources */,
+				CEB21CC317CF8D8D007C6125 /* refresh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1259,6 +1293,8 @@
 				CE3462C517CE469A009D92BF /* UIImage+WebP.m in Sources */,
 				CE3462C617CE469A009D92BF /* UIImageView+WebCache.m in Sources */,
 				CE3462D617CE56F0009D92BF /* UIImageView+UIActivityIndicatorForSDWebImage.m in Sources */,
+				CEB21CC817CF8F5E007C6125 /* RefreshButtonViewController.m in Sources */,
+				CEB21CCC17CF9568007C6125 /* RefreshButtonView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

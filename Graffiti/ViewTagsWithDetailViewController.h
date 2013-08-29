@@ -15,6 +15,8 @@
 
 @interface ViewTagsWithDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, UIScrollViewDelegate>
 
+- (void) loadTags;
+
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (strong, nonatomic) DataLayer *dataLayer;
 @property (strong, nonatomic) NSArray *myTags;

@@ -15,6 +15,8 @@
 #import "MongoDbConnection.h"
 #import "BSONParser.h"
 #import "CommentViewController.h"
+#import "RefreshButtonViewController.h"
+#import "RefreshButtonView.h"
 
 @interface ViewTagsWithDetailViewController ()
 {
@@ -92,7 +94,7 @@
 
 - (void) setUpPaging
 {
-    NSUInteger numberOfPages = [tags count];
+    NSUInteger numberOfPages = [tags count] + 1;
     
     //View controllers are created lazily
     NSMutableArray *controllers = [[NSMutableArray alloc] init];
@@ -115,43 +117,64 @@
     self.scrollView.scrollsToTop = NO;
     
     self.pageControl.numberOfPages = numberOfPages;
-    self.pageControl.currentPage = 0;
+    
+    // set the current page to whatever page is currently being displayed right now
+    CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
+    NSUInteger page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    self.pageControl.currentPage = page;;
 }
 
 
 - (void) loadScrollViewWithPage:(NSUInteger) page
 {
     //Number of pages we're going to load
-    if (page >= [tags count])
+    if (page > [tags count])
         return;
     
     // replace the placeholder if necessary
-    MainViewTagsViewController *controller = [self.viewControllers objectAtIndex:page];
+    UIViewController *controller = [self.viewControllers objectAtIndex:page];
+    
     if ((NSNull *)controller == [NSNull null])
     {
-        controller = [[MainViewTagsViewController alloc] initWithPageNumber:page:[tags objectAtIndex:page]];
-        //Create the view that will contain the table to show the conversations had on this tag.
-        ConversationViewController *conversationViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"ConversationViewController"];
-        
-        conversationViewController.tag = [tags objectAtIndex:page];
-        //Change the orientation of the view so that it fits on the next page
-        CGRect frame = conversationViewController.view.frame;
-        
-        frame.origin.x = 30;
-        frame.origin.y = 550;
-        
-        frame.size.width = 260;
-        frame.size.height = 250;
-        
-        conversationViewController.view.frame = frame;
-        
-        [controller.view addSubview:conversationViewController.view];
-        
-        [self.viewControllers replaceObjectAtIndex:page withObject:controller];
-        
-        frame = controller.view.frame;
-        
-        [self addButtonToViewTags : controller.view];
+        //If this is not the extra page created for the refresh button
+        if (page != [tags count])
+        {
+            controller = [[MainViewTagsViewController alloc] initWithPageNumber:page:[tags objectAtIndex:page]];
+            //Create the view that will contain the table to show the conversations had on this tag.
+            ConversationViewController *conversationViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"ConversationViewController"];
+            
+            conversationViewController.tag = [tags objectAtIndex:page];
+            //Change the orientation of the view so that it fits on the next page
+            CGRect frame = conversationViewController.view.frame;
+            
+            frame.origin.x = 30;
+            frame.origin.y = 550;
+            
+            frame.size.width = 260;
+            frame.size.height = 250;
+            
+            conversationViewController.view.frame = frame;
+            
+            [controller.view addSubview:conversationViewController.view];
+            
+            [self.viewControllers replaceObjectAtIndex:page withObject:controller];
+            
+            frame = controller.view.frame;
+            
+            [self addButtonToViewTags : controller.view];
+        }
+        else
+        {
+            //Add a refresh button to the very end of the scroll
+            controller = [[RefreshButtonViewController alloc] init];
+            
+            RefreshButtonView *refreshView = (RefreshButtonView*) controller.view;
+            [refreshView setControlToRefresh:self];
+            
+            controller.view = refreshView;
+            
+            [self.viewControllers replaceObjectAtIndex:page withObject:controller];
+        }
     }
     
     // add the controller's view to the scroll view
@@ -160,7 +183,9 @@
         CGRect frame = self.scrollView.frame;
         frame.origin.x = CGRectGetWidth(frame) * page;
         frame.origin.y = 0;
+        
         frame.size.height = 820;
+        
         controller.view.frame = frame;
         
         [self addChildViewController:controller];
@@ -287,11 +312,8 @@
     
 }
 
-- (void) viewDidAppear:(BOOL)animated
+- (void) refreshController
 {
-    [super viewDidAppear:animated];
-    //Load the tags from the MonogoDb
-    
     [self setUpPaging];
     
     //Get the current page
@@ -305,6 +327,14 @@
     
     [self loadScrollViewWithPage:page];
     [self loadScrollViewWithPage:page + 1];
+}
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //Load the tags from the MonogoDb
+    
+    [self refreshController];
 }
 
 - (void) viewWillDisappear:(BOOL)animated

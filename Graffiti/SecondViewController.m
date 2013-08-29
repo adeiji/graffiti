@@ -74,7 +74,6 @@
     myLocationManager.desiredAccuracy = kCLLocationAccuracyBest;
     //Notifice us only when the location changes by more than a certain amount, in this case 1000 meters.
     myLocationManager.distanceFilter = 1000.0f;
-    
 }
 
 
@@ -106,6 +105,11 @@
 }
 
 - (IBAction)btnCancelPressed:(id)sender {
+    [self gotoPreviousWindow];
+}
+
+- (void) gotoPreviousWindow
+{
     
     GraffitiTabBarController *myController = (GraffitiTabBarController *) self.parentViewController;
     
@@ -203,6 +207,7 @@
             NSString *name = [alertView textFieldAtIndex:0].text;
             //Create the actual tag asyncronously
             [self performSelectorInBackground:@selector(CreateTag:) withObject:name];
+            [self gotoPreviousWindow];
         }
     }
 }
@@ -211,7 +216,7 @@
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     myImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    myImage = [UIImage imageWithCGImage:myImage.CGImage scale:1.0f orientation:UIImageOrientationLeft];
+    myImage = [UIImage imageWithCGImage:myImage.CGImage scale:1.0f orientation:UIImageOrientationRight];
     
     //Display the image at the top of the page
     [self DisplayImage:myImage];

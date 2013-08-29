@@ -10,16 +10,20 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Tag.h"
 #import "MongoDbConnection.h"
+#import "TagCell.h"
 
 @interface CommentViewController ()
 {
-    Tag *tag;
+    Tag* tag;
+    NSMutableArray *cellHeights;
 }
+
 @end
 
 @implementation CommentViewController
 
 @synthesize txtComment;
+@synthesize initialConversationArray;
 
 #define MONGODB_COLLECTION_NAME @"Graffiti.Tags"
 
@@ -34,12 +38,10 @@
     return self;
 }
 
-- (void) setTag : (Tag *) myTag
+- (void) setTag:(Tag *)myTag
 {
     tag = myTag;
 }
-
-
 
 - (void)viewDidLoad
 {
@@ -49,6 +51,11 @@
     [txtComment becomeFirstResponder];
     txtComment.layer.borderWidth = 1.0f;
     txtComment.layer.borderColor = [[UIColor grayColor] CGColor];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    cellHeights = [[NSMutableArray alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,7 +134,7 @@
     
     NSMutableArray *updatedConversationArray ;
     
-    NSArray *initialConversationArray = [tag valueForKey:@"comments"];
+    initialConversationArray = [tag valueForKey:@"comments"];
     //If the initialConversationArray is null then the app will crash
     if (![initialConversationArray isEqual:[NSNull null]])
     {
@@ -151,5 +158,60 @@
     
     //Save the login in the mongoDbDatabase
     [myDbConnection changeValue:oldValue:newValue];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark - Table View Methods
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    initialConversationArray =  [tag valueForKey:@"comments"];
+    
+    if (![initialConversationArray isEqual:[NSNull null]])
+    {
+        return [initialConversationArray count];
+    }
+    
+    return 0;
+}
+
+- (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"displayCommentsCell";
+    TagCell *cell = (TagCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.txtConversation.backgroundColor = [UIColor clearColor];
+    [cell.txtConversation setTextColor:[UIColor whiteColor]];
+    [cell.txtConversation setFont:[UIFont systemFontOfSize:14.0f]];
+    [cell.txtConversation setEditable:NO];
+    
+    //Open up what was said in the initialConversationArray
+    cell.txtConversation.text = [initialConversationArray objectAtIndex:indexPath.row];
+    
+    CGRect frame = cell.txtConversation.frame;
+    
+    frame.size.height = cell.txtConversation.contentSize.height;
+    frame.origin.y = cell.frame.origin.y;
+    frame.size.width = 320;
+    cell.txtConversation.frame = frame;
+    
+    [cellHeights addObject:@(cell.txtConversation.frame.size.height)];
+    
+    return cell;
+}
+
+- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *comment = [initialConversationArray objectAtIndex:indexPath.row];
+    CGSize size = [comment sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(320, 1000) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    return size.height;
+}
+
+
 @end
