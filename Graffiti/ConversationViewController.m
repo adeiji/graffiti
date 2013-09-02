@@ -22,6 +22,8 @@
     
     cellHeights = [[NSMutableArray alloc] init];
     conversation = [[NSArray alloc] init];
+    
+    [self.tableView layoutIfNeeded];
 }
 
 
@@ -46,25 +48,32 @@
 {
     static NSString *CellIdentifier = @"displayTagCell";
     TagCell *cell = (TagCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    //Open up what was said in the conversation
-    cell.txtConversation.text = [conversation objectAtIndex:indexPath.row];
-    [cell.txtConversation setFont:[UIFont systemFontOfSize:14.0f]];
-    CGRect frame = cell.txtConversation.frame;
     
-    frame.size.height = cell.txtConversation.contentSize.height;
-    frame.origin.y = cell.frame.origin.y;
-    
-    cell.txtConversation.frame = frame;
-    
-    if ((indexPath.row % 2) == 0)
+    if (cell == nil)
     {
-        UIColor * color = [UIColor colorWithRed:255/255.0f green:226/255.0f blue:191/255.0f alpha:1.0f];
+        //Open up what was said in the conversation
+        cell.txtConversation.text = [conversation objectAtIndex:indexPath.row];
+        [cell.txtConversation setFont:[UIFont systemFontOfSize:14.0f]];
+        CGRect frame = cell.txtConversation.frame;
         
-        cell.txtConversation.backgroundColor = color;
+        frame.size.height = cell.txtConversation.contentSize.height;
+        frame.origin.y = cell.frame.origin.y;
+        
+        cell.txtConversation.frame = frame;
+        
+        if ((indexPath.row % 2) == 0)
+        {
+            UIColor * color = [UIColor colorWithRed:255/255.0f green:226/255.0f blue:191/255.0f alpha:1.0f];
+            
+            cell.txtConversation.backgroundColor = color;
+        }
+        
+        NSLog(@"Content size: %@", NSStringFromCGSize(self.tableView.contentSize) );
     }
     
     return cell;
 }
+
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -85,9 +94,15 @@
         
         CGSize size = text.contentSize;
         
-        return size.height / 2.0;
+        text = nil;
+        
+        return size.height;
     }
     return 0;
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}
 @end

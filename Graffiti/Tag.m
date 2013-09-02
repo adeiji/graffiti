@@ -13,7 +13,7 @@
 
 @synthesize content;
 @synthesize uid;
-@synthesize image;
+@synthesize url;
 @synthesize latitude;
 @synthesize longitude;
 @synthesize name;
@@ -36,7 +36,7 @@
 - (void) init    :(NSString *) myType
                  :(NSString *) myId
                  :(NSString *) myContent
-                 :(NSString *) myImage
+                 :(NSString *) myUrl
                  :(NSNumber *) myLatitude
                  :(NSNumber *) myLongitude
                  :(NSString *) myName
@@ -53,7 +53,7 @@
     type = myType;
     uid = myId;
     content = myContent;
-    image = myImage;
+    url = myUrl;
     latitude = myLatitude;
     longitude = myLongitude;
     name = myName;

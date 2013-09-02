@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GroupsViewController.h"
+
+@class GroupsViewController;
 
 @interface ProfileViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
@@ -21,5 +22,10 @@ typedef enum
 } ProfileCellType;
 
 @property (strong, nonatomic) GroupsViewController *groupsViewController;
+
+@property (strong, nonatomic) NSArray *rows;
+@property (strong, nonatomic) NSArray *groups;
+- (IBAction)saveButtonPressed:(id)sender;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

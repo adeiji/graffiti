@@ -14,9 +14,6 @@
     NSURL *url;
 }
 
-//- (AmazonS3Handler *) init : (id) content
-//               contentType : (NSString *) contentType
-//                   tagName : (NSString *) tagName;
 - (AmazonS3Handler *) init : (NSDictionary *) myContent;
 
 -(NSString *) GetUrl;

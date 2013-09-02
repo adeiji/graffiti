@@ -35,7 +35,6 @@
 
 @synthesize tags;
 @synthesize dataLayer;
-@synthesize myTableView;
 @synthesize cellHeight;
 @synthesize background;
 @synthesize mainView;
@@ -57,7 +56,7 @@
 #define SWIPE_LEFT @"LEFT"
 #define SWIPE_RIGHT @"RIGHT"
 
-#define mongoDbCollectionName @"Graffiti.Tags"
+#define mongoDbCollectionName @"Graffiti.tags"
 
 - (void)viewDidLoad
 {
@@ -79,7 +78,6 @@
     
     dataLayer = [[DataLayer alloc] init];
     
-    [self gotoFirstRowInTable];
     [self.scrollView addSubview:self.pageControl];
 }
 
@@ -89,7 +87,7 @@
     MongoDbConnection *connection = [[MongoDbConnection alloc] init];
     
     [connection setUpConnection:mongoDbCollectionName];
-    tags = [[NSArray alloc] initWithArray:[parse parseBSONFiles:[connection getAllValuesFromTable]]];
+    tags = [[NSArray alloc] initWithArray:[parse parseBSONFiles:[MongoDbConnection getValues:[TagEnumValue getStringValue:GETTER_GET_ALL_VALUES] keyPathToSearch:[TagEnumValue getStringValue:GETTER_NO_KEY] collectionName:[TagEnumValue getStringValue:TAGS_TABLE]]]];
 }
 
 - (void) setUpPaging
@@ -98,7 +96,7 @@
     
     //View controllers are created lazily
     NSMutableArray *controllers = [[NSMutableArray alloc] init];
-
+    
     for (NSUInteger i = 0; i < numberOfPages; i++ )
     {
         //Load with placeholder objects, and they will be replaced on demand
@@ -106,6 +104,8 @@
     }
     
     self.viewControllers = controllers;
+    //This array will hold the conversation Controllers so that they are not released and we cannot scroll because the delegate will be set to nil.
+    self.conversationControllers = [[NSMutableArray alloc] init];
     
     self.scrollView.pagingEnabled = YES;
     self.scrollView.contentSize =
@@ -123,7 +123,6 @@
     NSUInteger page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
     self.pageControl.currentPage = page;;
 }
-
 
 - (void) loadScrollViewWithPage:(NSUInteger) page
 {
@@ -162,6 +161,9 @@
             frame = controller.view.frame;
             
             [self addButtonToViewTags : controller.view];
+            [self.conversationControllers addObject:conversationViewController];
+            
+         
         }
         else
         {
@@ -174,6 +176,7 @@
             controller.view = refreshView;
             
             [self.viewControllers replaceObjectAtIndex:page withObject:controller];
+
         }
     }
     
@@ -344,15 +347,6 @@
     previousTagCount = [tags count];
 }
 
-//Select the first row of the table view
-- (void) gotoFirstRowInTable
-{
-    if ([tags count] > 0)
-    {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [myTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
-    }
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -369,44 +363,6 @@
     float height = [string sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(widthOfTextView, 999999.0f) lineBreakMode:NSLineBreakByWordWrapping].height + verticalPadding;
     
     return height;
-}
-
-
-
-#pragma mark - Table View Delegate Methods
-
-//TableDataSource protocal method
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [tags count];
-}
-
-- (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *myConversation = [[tags objectAtIndex:indexPath.row] valueForKey:@"conversation"];
-    
-    CGSize constraint = CGSizeMake(CELL_CONTENT_WIDTH - (CELL_CONTENT_MARGIN * 2), 20000.0f);
-    
-    CGSize size = [myConversation sizeWithFont:[UIFont systemFontOfSize:FONT_SIZE] constrainedToSize:constraint lineBreakMode:UILineBreakModeWordWrap];
-    
-    CGFloat height = MAX(size.height, 44.0f);
-    
-    return height + (CELL_CONTENT_MARGIN * 2);
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    }
-
-- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //imgContent.image = [UIImage imageWithData:[[tags objectAtIndex:indexPath.row] valueForKey:@"data"]];
-    //txtMessageNotes.text = [[tags objectAtIndex:indexPath.row] valueForKey:@"content"];
 }
 
 @end

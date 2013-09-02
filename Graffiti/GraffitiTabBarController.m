@@ -8,6 +8,8 @@
 
 #import "GraffitiTabBarController.h"
 #import "CollectionViewController.h"
+#import "CreateGroupViewController.h"
+#import "SecondViewController.h"
 
 @interface GraffitiTabBarController ()
 
@@ -33,7 +35,31 @@
     
     self.delegate = self;
     
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithArray:self.viewControllers];
     
+    //Create the view that will contain the table to show the conversations had on this tag.
+    CreateGroupViewController  *createGroupViewController = [[UIStoryboard storyboardWithName:@"CreateGroup" bundle:nil] instantiateViewControllerWithIdentifier:@"CreateGroupViewController"];
+    
+    createGroupViewController.title = @"Create Group";
+    createGroupViewController.tabBarItem.image = [UIImage imageNamed:@"spraycan.png"];
+    
+    [viewControllers addObject:createGroupViewController];
+    //Create the view that will handle creating tags
+    SecondViewController *tagLocationViewController = [[UIStoryboard storyboardWithName:@"TagLocationStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"TagLocationViewController"];
+    
+    tagLocationViewController.title = @"Tag";
+    tagLocationViewController.tabBarItem.image = [UIImage imageNamed:@"spraycan.png"];
+    
+    [viewControllers addObject:tagLocationViewController];
+    
+    UINavigationController *profileNavigationController = [[UIStoryboard storyboardWithName:@"ProfileStoryboard" bundle:nil] instantiateInitialViewController];
+    
+    profileNavigationController.title = @"Profile";
+    profileNavigationController.tabBarItem.image = [UIImage imageNamed:@"spraycan.png"];
+    
+    [viewControllers addObject:profileNavigationController];
+    
+    self.viewControllers = viewControllers;
 }
 
 - (void)didReceiveMemoryWarning

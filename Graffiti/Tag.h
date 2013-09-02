@@ -14,7 +14,7 @@
 
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) NSString * uid;
-@property (nonatomic, retain) NSString * image;
+@property (nonatomic, retain) NSString * url;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSString * name;
@@ -33,7 +33,7 @@
 -(void) init    :(NSString *) myType
                 :(NSString *) myId
                 :(NSString *) myContent
-                :(NSString *) myImage
+                :(NSString *) myUrl
                 :(NSNumber *) myLatitude
                 :(NSNumber *) myLongitude
                 :(NSString *) myName

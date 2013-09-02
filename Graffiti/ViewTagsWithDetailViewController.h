@@ -12,16 +12,16 @@
 #import "TagCell.h"
 #import "MainViewTagsViewController.h"
 #import "MainViewTagsView.h"
+#import "ScrollViewWithSubViewScrolling.h"
 
-@interface ViewTagsWithDetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, UITextViewDelegate, UIScrollViewDelegate>
+@interface ViewTagsWithDetailViewController : UIViewController <UIGestureRecognizerDelegate, UITextViewDelegate, UIScrollViewDelegate>
 
 - (void) loadTags;
 
-@property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet ScrollViewWithSubViewScrolling *scrollView;
 @property (strong, nonatomic) DataLayer *dataLayer;
 @property (strong, nonatomic) NSArray *myTags;
 
-@property (strong, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) IBOutlet UIImageView *background;
 @property (strong, nonatomic) IBOutlet UIView *mainView;
 
@@ -33,5 +33,6 @@
 
 @property (strong, nonatomic) NSArray *contentList;
 @property (strong, nonatomic) NSArray *tags;
+@property (strong, nonatomic) NSMutableArray *conversationControllers;
 
 @end

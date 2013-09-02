@@ -196,12 +196,12 @@
     CGRect frame = cell.txtConversation.frame;
     
     frame.size.height = cell.txtConversation.contentSize.height;
-    frame.origin.y = cell.frame.origin.y;
+    //frame.origin.y = cell.frame.origin.y;
     frame.size.width = 320;
     cell.txtConversation.frame = frame;
     
-    [cellHeights addObject:@(cell.txtConversation.frame.size.height)];
-    
+    NSLog(@"Table content height is %@", NSStringFromCGSize(self.tableView.contentSize));
+    NSLog(@"Cell Subview : %@", [cell.subviews description]);
     return cell;
 }
 

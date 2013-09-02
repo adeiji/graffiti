@@ -31,7 +31,7 @@
 @synthesize myLocationManager;
 @synthesize myDataLayer;
 
-#define MONGODB_COLLECTION_NAME @"Graffiti.Tags"
+#define MONGODB_COLLECTION_NAME @"Graffiti.tags"
 #define CONTENT @"content"
 #define CONTENT_TYPE @"contentType"
 #define TAG_NAME @"tagName"
@@ -147,6 +147,8 @@
 -(void) CreateTag: (NSString *) name
 {
     NSMutableDictionary *contentDictionary = [[NSMutableDictionary alloc] init];
+    
+    
     tag.name = name;
     //Use this where explicit transactions are not allowed.  This creates a unique ID and stores it as an ID using core data
     tag.uid = (__bridge NSString *)(CFUUIDCreate(NULL));
@@ -166,7 +168,7 @@
     
     //Get the Url of the image that was saved onto the server and then save this url into the database
     NSString *url = [myS3Handler GetUrl];
-    tag.image = url;
+    tag.url = url;
     [tag.conversation addObject:@"This crazy right here man"];
     tag.expirationDate =  [self getNextYear];
     tag.dateTime = [[NSDate alloc] init];
@@ -176,13 +178,26 @@
     tag.restrictions = @"PUBLIC";
     [tag.groups addObject:@"NOTHING"];
     
-    //Save the content of this tag
-    MongoDbConnection *myDbConnection = [[MongoDbConnection alloc] init];
+    contentDictionary = [[NSMutableDictionary alloc] init];
     
-    [myDbConnection setUpConnection:MONGODB_COLLECTION_NAME];
+    [contentDictionary setObject:tag.uid forKey:[TagEnumValue getStringValue:TAG_ID_COLUMN]];
+    [contentDictionary setObject:tag.name forKey:[TagEnumValue getStringValue:TAG_NAME_COLUMN]];
+    [contentDictionary setObject:tag.type forKey:[TagEnumValue getStringValue:TAG_CONTENT_TYPE_COLUMN]];
+    [contentDictionary setObject:tag.content forKey:[TagEnumValue getStringValue:TAG_CONTENT_COLUMN]];
+//    [contentDictionary setObject:tag.data forKey:[TagEnumValue getStringValue:--DATA COLUMN--]];
+    [contentDictionary setObject:tag.url forKey:[TagEnumValue getStringValue:TAG_DATA_URL_COLUMN]];
+    [contentDictionary setValue:tag.conversation forKey:[TagEnumValue getStringValue:TAG_CONVERSATION_COLUMN]];
+    [contentDictionary setObject:tag.expirationDate forKey:[TagEnumValue getStringValue:TAG_EXPIRATION_DATE_COLUMN]];
+    [contentDictionary setObject:tag.dateTime forKey:[TagEnumValue getStringValue:TAG_TIME_DROPPED_COLUMN]];
+    [contentDictionary setObject:tag.tagger forKey:[TagEnumValue getStringValue:TAG_TAGGER_COLUMN]];
+    [contentDictionary setObject:tag.notes forKey:[TagEnumValue getStringValue:TAG_NOTES_COLUMN]];
+    [contentDictionary setObject:tag.restrictions forKey:[TagEnumValue getStringValue:TAG_RESTRICTED_BY_COLUMN]];
+    [contentDictionary setValue:tag.groups forKey:[TagEnumValue getStringValue:TAG_GROUP_COLUMN]];
     
-    //Save the login in the mongoDbDatabase
-    [myDbConnection insertTag:tag];
+    //Add the tag to the mongo database
+    [MongoDbConnection insertInfo:contentDictionary collectionName:MONGODB_COLLECTION_NAME];
+    
+    NSLog(@"Tag saved");
 }
 
 - (NSDate *) getNextYear

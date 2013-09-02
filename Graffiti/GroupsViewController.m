@@ -12,6 +12,9 @@
 #import "BSONDocument.h" 
 #import "BSONParser.h"
 #import "ShowGroupTableCell.h"
+#import "MongoDbTags.h"
+#import "TagEnumValue.h"
+#import "ProfileViewController.h"
 
 @interface GroupsViewController ()
 
@@ -19,8 +22,12 @@
 
 @implementation GroupsViewController
 
-@synthesize connection = __connection;
+@synthesize groupsSelected = __groupsSelected;
 @synthesize groups = __groups;
+@synthesize profileViewController;
+
+static NSString* const cellIdentifier = @"displayGroupCell";
+static NSString* const collectionName = @"graffiti.groups";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,12 +42,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
-    self.connection = [[MongoDbConnection alloc] init];
-    [self.connection setUpConnection:@"Graffiti.groups"];
-
+    
     BSONParser *parse = [[BSONParser alloc] init];
-    self.groups = [parse parseBSONFiles:[self.connection getAllValuesFromTable]];
+    self.groups = [parse parseBSONFiles:[MongoDbConnection getValues:[TagEnumValue getStringValue:GETTER_GET_ALL_VALUES] keyPathToSearch:[TagEnumValue getStringValue:GETTER_NO_KEY] collectionName:collectionName]];
 }
 
 - (void)didReceiveMemoryWarning
@@ -61,14 +65,34 @@
 
 - (UITableViewCell *) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"displayGroupCell";
+    NSString *groupCol = [TagEnumValue getStringValue:GROUP_NAME_COLUMN];
+ 
     ShowGroupTableCell *cell = (ShowGroupTableCell *) [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
     NSDictionary *dictionary = [self.groups objectAtIndex:indexPath.row];
     
-    cell.lblGroup.text = [dictionary objectForKey:@"group"];
+    cell.lblGroup.text = [dictionary objectForKey:groupCol];
     
     return cell;
 }
 
+
+- (IBAction)saveGroupsPressed:(id)sender {
+    NSMutableArray *selectedRows = [[NSMutableArray alloc] init];
+    NSArray *indexPaths = [self.tableView indexPathsForSelectedRows];
+    
+    for (NSInteger i = 0; i < [indexPaths count]; i++)
+    {
+        ShowGroupTableCell *cell = (ShowGroupTableCell *)[self.tableView cellForRowAtIndexPath:[indexPaths objectAtIndex:i]];
+        
+        [selectedRows addObject:cell.lblGroup.text];
+    }
+    
+    profileViewController.groups = selectedRows;
+    
+    NSLog(@"User selected groups - %@", [selectedRows description]);
+    NSLog(@"Information added to the profile view controller groups array.");
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

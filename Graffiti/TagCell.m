@@ -28,13 +28,30 @@
     [super layoutSubviews];
     self.txtConversation = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 260, 0)];
     self.txtConversation.font = [UIFont systemFontOfSize:14.0f];
-    [self addSubview:self.txtConversation];
+    
+    __block BOOL containsObject = NO;
+    
+    //[self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+    [self.contentView.subviews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        if ([obj isKindOfClass:[self.txtConversation class]])
+        {
+            containsObject = YES;
+            //stop the enumeration
+            *stop = YES;
+        }
+    }];
+    //If the cell doesn't contain an object of type UITextView then continue
+    if (containsObject == NO)
+    {
+        [[self contentView] addSubview:self.txtConversation];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 

@@ -30,21 +30,19 @@
     return self;
 }
 
-//- (AmazonS3Handler *) init : (id) content
-//               contentType : (NSString *) contentType
-//                   tagName : (NSString *) tagName
-//{
-//    
-//    
-//}
-
 - (void) UploadContentToServer : (NSData *) contentData : (NSString *) contentType : (NSString *) tagName
 {
     //create an Amazon S3 client to communicate with the service.
     AmazonS3Client *s3 = [[AmazonS3Client alloc] initWithAccessKey:@"AKIAJ7RF4BNC4O2XJH6Q" withSecretKey:@"kH8GPq5Vm4RG0DolhUWZC5SNaRynjrycT4NYrqU9"];
     
+    //We need to remove all the dashes from the vendorId and replace them with periods to adhere to the bucket naming rules.
+    NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    vendorId = [vendorId stringByReplacingOccurrencesOfString:@"-" withString:@"" ];
     
-    NSString *bucketName = [NSString stringWithFormat:@"%@bucket", tagName];
+    NSLog(@"Reformatted vendor id - %@", vendorId);
+    
+    //Set the bucketname to the device's vendor identifier so that we add all the files to the same bucket
+    NSString *bucketName = [NSString stringWithFormat:@"%@bucket", vendorId];
     
     //Create the bucket to store the image
     [s3 createBucket:[[S3CreateBucketRequest alloc] initWithName:bucketName]];
@@ -81,6 +79,7 @@
 //Return the url of the content that you've just loaded
 -(NSString *) GetUrl
 {
+    NSLog(@"Tag URL - %@", [url absoluteString]);
     return [url absoluteString];
 }
 

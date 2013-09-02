@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExpandingTextView.h"
 
 @interface TagCell : UITableViewCell <UITextViewDelegate>
 

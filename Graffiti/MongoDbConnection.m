@@ -10,6 +10,8 @@
 #import "ObjCMongoDB.h"
 #import "Tag.h"
 #import "NSArray+MongoAdditions.h"
+#import "MongoDbTags.h"
+#import "TagEnumValue.h"
 
 @implementation MongoDbConnection
 
@@ -29,44 +31,52 @@
     collection = [dbConn collectionWithName:collectionName];
 }
 
-- (void) insertTag : (Tag*) myTag
++ (void) insertInfo : (NSDictionary *) dataToEnter
+      collectionName:(NSString *) collectionName
 {
-    NSError *error = nil;
+    NSError *error;
     
-    NSString *dateString = [NSDateFormatter localizedStringFromDate:myTag.dateTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-    NSString *expirationDateString = [NSDateFormatter localizedStringFromDate:myTag.expirationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-    
-    NSDictionary *tagInfo = @{
-                                @"uid" : [NSString stringWithFormat:@"\"%@\"", myTag.uid],
-                                @"comments" : [NSNull null],
-                                @"content" : [NSString stringWithFormat:@"\"%@\"", myTag.content],
-                                @"dateTime" : [NSString stringWithFormat:@"\"%@\"", dateString ],
-                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
-                                @"groups" : @[
-                                        @{
-                                            @"group" : [[NSArray alloc ] initWithArray:myTag.groups]
-                                            }
-                                        ],
-                                @"image" : [NSString stringWithFormat:@"\"%@\"", myTag.image],
-                                @"longitude" : [NSString stringWithFormat:@"\"%@\"", myTag.longitude],
-                                @"latitude" : [NSString stringWithFormat:@"\"%@\"", myTag.latitude],
-                                @"name" : [NSString stringWithFormat:@"\"%@\"", myTag.name],
-                                @"notes" : [NSString stringWithFormat:@"\"%@\"", myTag.notes],
-                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
-                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
-                                @"device" : @[
-                                        @{
-                                            @"device" : [NSString stringWithFormat:@"\"%@\"", @"THIS"]
-                                            }
-                                        ]
-                                };
-    
-    [collection insertDictionary:tagInfo writeConcern:nil error:&error];
-    
-    //Deallocate strings
-    dateString =  nil;
-    expirationDateString = nil;
+    [[[MongoConnection connectionForServer:address error:&error] collectionWithName:collectionName ] insertDictionary:dataToEnter writeConcern:nil error:&error];
 }
+
+//- (void) insertTag : (Tag*) myTag
+//{
+//    NSError *error = nil;
+//    
+//    NSString *dateString = [NSDateFormatter localizedStringFromDate:myTag.dateTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+//    NSString *expirationDateString = [NSDateFormatter localizedStringFromDate:myTag.expirationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+//    
+//    NSDictionary *tagInfo = @{
+//                                @"uid" : [NSString stringWithFormat:@"\"%@\"", myTag.uid],
+//                                @"comments" : [NSNull null],
+//                                @"content" : [NSString stringWithFormat:@"\"%@\"", myTag.content],
+//                                @"dateTime" : [NSString stringWithFormat:@"\"%@\"", dateString ],
+//                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
+//                                @"groups" : @[
+//                                        @{
+//                                            @"group" : [[NSArray alloc ] initWithArray:myTag.groups]
+//                                            }
+//                                        ],
+//                                @"image" : [NSString stringWithFormat:@"\"%@\"", myTag.image],
+//                                @"longitude" : [NSString stringWithFormat:@"\"%@\"", myTag.longitude],
+//                                @"latitude" : [NSString stringWithFormat:@"\"%@\"", myTag.latitude],
+//                                @"name" : [NSString stringWithFormat:@"\"%@\"", myTag.name],
+//                                @"notes" : [NSString stringWithFormat:@"\"%@\"", myTag.notes],
+//                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
+//                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
+//                                @"device" : @[
+//                                        @{
+//                                            @"device" : [NSString stringWithFormat:@"\"%@\"", @"THIS"]
+//                                            }
+//                                        ]
+//                                };
+//    
+//    [collection insertDictionary:tagInfo writeConcern:nil error:&error];
+//    
+//    //Deallocate strings
+//    dateString =  nil;
+//    expirationDateString = nil;
+//}
 
 //Receieve the credential information and store it into the mongodb database
 - (void) insertCredential : (NSString *) userName
@@ -87,28 +97,32 @@
     [collection insertDictionary:loginInfo writeConcern:nil error:&error];
 }
 
-- (NSDictionary *) getValues : (NSString *) valueToGet : (NSString *) keyPathToSearch
++ (id) getValues :(NSString *) valueToGet
+              keyPathToSearch:(NSString *) keyPathToSearch
+               collectionName:(NSString *) collectionName
+
 {
+    
+    if ([valueToGet isEqualToString:[TagEnumValue getStringValue:GETTER_GET_ALL_VALUES]])
+    {
+        NSError *error = nil;
+        MongoDBCollection *collection = [[MongoConnection connectionForServer:address error:&error] collectionWithName:collectionName];
+        
+        //Gets an array of BSON documents
+        NSArray *result = [collection findAllWithError:&error];
+        NSLog(@"fetch result: %@", result);
+        
+        return [collection findAllWithError:&error];
+    }
+    
     NSError *error = nil;
     MongoKeyedPredicate *predicate = [MongoKeyedPredicate predicate];
     [predicate keyPath:keyPathToSearch matches:valueToGet];
-    BSONDocument *resultDoc = [collection findOneWithPredicate:predicate error:&error];
+    BSONDocument *resultDoc = [[[MongoConnection connectionForServer:address error:&error] collectionWithName:collectionName ] findOneWithPredicate:predicate error:&error];
     NSDictionary * result = [BSONDecoder decodeDictionaryWithDocument:resultDoc];
     NSLog(@"fetch result: %@", result);
     
-    
     return result;
-}
-
-//Returns all the values from a given table given a specific key path
-- (NSArray *) getAllValuesFromTable
-{
-    NSError *error = nil;
-    //Gets an array of BSON documents
-    NSArray *result = [collection findAllWithError:&error];
-    NSLog(@"fetch result: %@", result);
-    
-    return [collection findAllWithError:&error];
 }
 
 - (void) changeUserName : (NSString*) oldUserName : (NSString *) newUserName : (NSString *) keyPathToSearch
