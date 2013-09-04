@@ -39,44 +39,6 @@
     [[[MongoConnection connectionForServer:address error:&error] collectionWithName:collectionName ] insertDictionary:dataToEnter writeConcern:nil error:&error];
 }
 
-//- (void) insertTag : (Tag*) myTag
-//{
-//    NSError *error = nil;
-//    
-//    NSString *dateString = [NSDateFormatter localizedStringFromDate:myTag.dateTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-//    NSString *expirationDateString = [NSDateFormatter localizedStringFromDate:myTag.expirationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
-//    
-//    NSDictionary *tagInfo = @{
-//                                @"uid" : [NSString stringWithFormat:@"\"%@\"", myTag.uid],
-//                                @"comments" : [NSNull null],
-//                                @"content" : [NSString stringWithFormat:@"\"%@\"", myTag.content],
-//                                @"dateTime" : [NSString stringWithFormat:@"\"%@\"", dateString ],
-//                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
-//                                @"groups" : @[
-//                                        @{
-//                                            @"group" : [[NSArray alloc ] initWithArray:myTag.groups]
-//                                            }
-//                                        ],
-//                                @"image" : [NSString stringWithFormat:@"\"%@\"", myTag.image],
-//                                @"longitude" : [NSString stringWithFormat:@"\"%@\"", myTag.longitude],
-//                                @"latitude" : [NSString stringWithFormat:@"\"%@\"", myTag.latitude],
-//                                @"name" : [NSString stringWithFormat:@"\"%@\"", myTag.name],
-//                                @"notes" : [NSString stringWithFormat:@"\"%@\"", myTag.notes],
-//                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
-//                                @"expirationDate" : [NSString stringWithFormat:@"\"%@\"", expirationDateString],
-//                                @"device" : @[
-//                                        @{
-//                                            @"device" : [NSString stringWithFormat:@"\"%@\"", @"THIS"]
-//                                            }
-//                                        ]
-//                                };
-//    
-//    [collection insertDictionary:tagInfo writeConcern:nil error:&error];
-//    
-//    //Deallocate strings
-//    dateString =  nil;
-//    expirationDateString = nil;
-//}
 
 //Receieve the credential information and store it into the mongodb database
 - (void) insertCredential : (NSString *) userName

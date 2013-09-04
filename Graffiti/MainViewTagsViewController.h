@@ -13,4 +13,10 @@
 
 - (id) initWithPageNumber:(NSUInteger) page : (NSDictionary *) tag;
 
+@property (strong, nonatomic) IBOutlet UIImageView *tagContent;
+@property (strong, nonatomic) IBOutlet UITextView *txtTagger;
+@property (strong, nonatomic) IBOutlet UITextView *txtContent;
+
+- (IBAction)navigateButtonPressed:(id)sender;
+
 @end

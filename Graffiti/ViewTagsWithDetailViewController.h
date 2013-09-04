@@ -11,7 +11,6 @@
 #import "ViewAllTagDetailView.h"
 #import "TagCell.h"
 #import "MainViewTagsViewController.h"
-#import "MainViewTagsView.h"
 #import "ScrollViewWithSubViewScrolling.h"
 
 @interface ViewTagsWithDetailViewController : UIViewController <UIGestureRecognizerDelegate, UITextViewDelegate, UIScrollViewDelegate>

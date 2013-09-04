@@ -31,7 +31,6 @@
 @synthesize myLocationManager;
 @synthesize myDataLayer;
 
-#define MONGODB_COLLECTION_NAME @"Graffiti.tags"
 #define CONTENT @"content"
 #define CONTENT_TYPE @"contentType"
 #define TAG_NAME @"tagName"
@@ -148,7 +147,6 @@
 {
     NSMutableDictionary *contentDictionary = [[NSMutableDictionary alloc] init];
     
-    
     tag.name = name;
     //Use this where explicit transactions are not allowed.  This creates a unique ID and stores it as an ID using core data
     tag.uid = (__bridge NSString *)(CFUUIDCreate(NULL));
@@ -178,24 +176,28 @@
     tag.restrictions = @"PUBLIC";
     [tag.groups addObject:@"NOTHING"];
     
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:tag.dateTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    NSString *expirationDateString = [NSDateFormatter localizedStringFromDate:tag.expirationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
+    
     contentDictionary = [[NSMutableDictionary alloc] init];
     
-    [contentDictionary setObject:tag.uid forKey:[TagEnumValue getStringValue:TAG_ID_COLUMN]];
+    [contentDictionary setObject:[NSString stringWithFormat:@"%@",tag.uid] forKey:[TagEnumValue getStringValue:TAG_ID_COLUMN]];
     [contentDictionary setObject:tag.name forKey:[TagEnumValue getStringValue:TAG_NAME_COLUMN]];
     [contentDictionary setObject:tag.type forKey:[TagEnumValue getStringValue:TAG_CONTENT_TYPE_COLUMN]];
     [contentDictionary setObject:tag.content forKey:[TagEnumValue getStringValue:TAG_CONTENT_COLUMN]];
 //    [contentDictionary setObject:tag.data forKey:[TagEnumValue getStringValue:--DATA COLUMN--]];
     [contentDictionary setObject:tag.url forKey:[TagEnumValue getStringValue:TAG_DATA_URL_COLUMN]];
-    [contentDictionary setValue:tag.conversation forKey:[TagEnumValue getStringValue:TAG_CONVERSATION_COLUMN]];
-    [contentDictionary setObject:tag.expirationDate forKey:[TagEnumValue getStringValue:TAG_EXPIRATION_DATE_COLUMN]];
-    [contentDictionary setObject:tag.dateTime forKey:[TagEnumValue getStringValue:TAG_TIME_DROPPED_COLUMN]];
+    [contentDictionary setObject:tag.conversation forKey:[TagEnumValue getStringValue:TAG_COMMENTS_COLUMN]];
+    [contentDictionary setObject:expirationDateString forKey:[TagEnumValue getStringValue:TAG_EXPIRATION_DATE_COLUMN]];
+    [contentDictionary setObject:dateString forKey:[TagEnumValue getStringValue:TAG_TIME_DROPPED_COLUMN]];
     [contentDictionary setObject:tag.tagger forKey:[TagEnumValue getStringValue:TAG_TAGGER_COLUMN]];
     [contentDictionary setObject:tag.notes forKey:[TagEnumValue getStringValue:TAG_NOTES_COLUMN]];
     [contentDictionary setObject:tag.restrictions forKey:[TagEnumValue getStringValue:TAG_RESTRICTED_BY_COLUMN]];
-    [contentDictionary setValue:tag.groups forKey:[TagEnumValue getStringValue:TAG_GROUP_COLUMN]];
-    
+    [contentDictionary setObject:tag.groups forKey:[TagEnumValue getStringValue:TAG_GROUP_COLUMN]];
+    [contentDictionary setObject:tag.longitude forKey:[TagEnumValue getStringValue:TAG_LONGITUDE_COLUMN]];
+    [contentDictionary setObject:tag.latitude forKey:[TagEnumValue getStringValue:TAG_LATITUDE_COLUMN]];
     //Add the tag to the mongo database
-    [MongoDbConnection insertInfo:contentDictionary collectionName:MONGODB_COLLECTION_NAME];
+    [MongoDbConnection insertInfo:contentDictionary collectionName:[TagEnumValue getStringValue:TAGS_TABLE]];
     
     NSLog(@"Tag saved");
 }
@@ -221,6 +223,7 @@
         {
             NSString *name = [alertView textFieldAtIndex:0].text;
             //Create the actual tag asyncronously
+      //      [self CreateTag:name];
             [self performSelectorInBackground:@selector(CreateTag:) withObject:name];
             [self gotoPreviousWindow];
         }

@@ -18,7 +18,7 @@
             return @"graffiti.groups";
             break;
         case TAGS_TABLE:
-            return @"graffiti.tag";
+            return @"graffiti.tags";
             break;
         case LOGIN_CREDENTIALS_TABLE:
             return @"graffiti.logincreds";
@@ -29,8 +29,11 @@
         case TAGGER_TABLE:
             return @"graffiti.taggers";
             break;
-        case TAG_LOCATION_COLUMN:
-            return @"loc";
+        case TAG_LONGITUDE_COLUMN:
+            return @"longitude";
+            break;
+        case TAG_LATITUDE_COLUMN:
+            return @"latitude";
             break;
         case TAG_CONTENT_COLUMN:
             return @"content";
@@ -136,6 +139,15 @@
             break;
         case PROFILE_UUID_COLUMN:
             return @"uuid";
+            break;
+        case TAG_COMMENTS_COLUMN:
+            return @"comments";
+            break;
+        case CONTENT_TYPE_AUDIO:
+            return @"audio";
+            break;
+        case CONTENT_TYPE_IMAGE:
+            return @"image";
             break;
         default:
             return @"NO_SUCH_COLUMN";

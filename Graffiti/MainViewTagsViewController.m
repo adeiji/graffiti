@@ -7,11 +7,12 @@
 //
 
 #import "MainViewTagsViewController.h"
-#import "MainViewTagsView.h"
 #import "Tag.h"
 #import "MACircleProgressIndicator.h"
 #import "UIImageView+WebCache.h"
 #import "UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h"
+#import "MongoDbTags.h"
+#import "TagEnumValue.h"
 
 @interface MainViewTagsViewController ()
 {
@@ -26,28 +27,29 @@
 - (id) initWithPageNumber:(NSUInteger) page : (NSDictionary *) myTag
 {
     
-    if (self = [super init]) {
+    if ((self = [[UIStoryboard storyboardWithName:@"ViewTagsStoryboard" bundle:nil] instantiateInitialViewController])) {
         // Initialization code
         pageNumber = page;
-        //Set the visible view to the MainViewTagsView class
-        MainViewTagsView *view = [[MainViewTagsView alloc] initWithFrame:CGRectMake(0, 20, 320, 960)];
         
-        view.contentView.backgroundColor = [UIColor clearColor];
-    
+        
         //put the circle progress indicator on the view
-        circleProgressIndicator = [[MACircleProgressIndicator alloc] initWithFrame:CGRectMake((view.tagContent.frame.size.width / 2) - 25, (view.tagContent.frame.size.height / 2) - 25, 50, 50)];
+        circleProgressIndicator = [[MACircleProgressIndicator alloc] initWithFrame:CGRectMake((self.tagContent.frame.size.width / 2) - 25, (self.tagContent.frame.size.height / 2) - 25, 50, 50)];
         
         circleProgressIndicator.value = .1;
         circleProgressIndicator.color = [UIColor greenColor];
         
-        [view.tagContent addSubview:circleProgressIndicator];
-        
-        self.view = (MainViewTagsView *) view.contentView;;
         tag = myTag;
     
-        [self viewDidLoad];
+        //[self viewDidLoad];
     }
     return self;
+}
+//Open up Google Maps and show you the directions to how to get to this tag.
+- (IBAction)navigateButtonPressed:(id)sender {
+    NSNumber *longitude = [tag valueForKey:[TagEnumValue getStringValue:TAG_LONGITUDE_COLUMN]];
+    NSNumber *latitude = [tag valueForKey:[TagEnumValue getStringValue:TAG_LATITUDE_COLUMN]];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"comgooglemaps://?daddr=%f,%f&directionsmode=transit", [latitude doubleValue], [longitude doubleValue]]]];
 }
 
 - (void)viewDidLoad
@@ -60,26 +62,27 @@
 }
 
 - (void) fillOutObjects
-{
-    MainViewTagsView *mainViewTagsView = (MainViewTagsView*) self.view.superview;
-    
+{ 
     circleProgressIndicator.value = 0.4;
-    //We need to remove the quotation marks otherwise the application will say that this is not a valid URL.
-    NSString *urlString = [[tag valueForKey:@"image"] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\""]];
-    NSURL *url = [NSURL URLWithString:urlString];
     
-    //Show the progress of the image loading as it's loaded
-    circleProgressIndicator.value = 0.7;
-    
-    //Get the data from Amazon S3
-    [mainViewTagsView.tagContent setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-        circleProgressIndicator.value = 1;
-        //Remove the circle at finish of completion
-        [circleProgressIndicator removeFromSuperview];
-    }];
-    
-    mainViewTagsView.txtTagger.text = [tag valueForKey:@"name"];
-    mainViewTagsView.txtContent.text = [tag valueForKey:@"content"];
+    if ([[tag valueForKey:[TagEnumValue getStringValue:TAG_CONTENT_TYPE_COLUMN]] isEqualToString:[TagEnumValue getStringValue:CONTENT_TYPE_IMAGE]])
+    {
+        //We need to remove the quotation marks otherwise the application will say that this is not a valid URL.
+        NSString *urlString = [[tag valueForKey:[TagEnumValue getStringValue:TAG_DATA_URL_COLUMN]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\""]];
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        //Show the progress of the image loading as it's loaded
+        circleProgressIndicator.value = 0.7;
+        
+        //Get the data from Amazon S3
+        [self.tagContent setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
+            circleProgressIndicator.value = 1;
+            //Remove the circle at finish of completion
+            [circleProgressIndicator removeFromSuperview];
+        }];
+        }
+    self.txtTagger.text = [tag valueForKey:@"name"];
+    self.txtContent.text = [tag valueForKey:@"content"];
     
 }
 

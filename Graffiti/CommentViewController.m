@@ -11,6 +11,8 @@
 #import "Tag.h"
 #import "MongoDbConnection.h"
 #import "TagCell.h"
+#import "TagEnumValue.h"
+#import "MongoDbTags.h"
 
 @interface CommentViewController ()
 {
@@ -24,8 +26,6 @@
 
 @synthesize txtComment;
 @synthesize initialConversationArray;
-
-#define MONGODB_COLLECTION_NAME @"Graffiti.Tags"
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -134,7 +134,7 @@
     
     NSMutableArray *updatedConversationArray ;
     
-    initialConversationArray = [tag valueForKey:@"comments"];
+    initialConversationArray = [tag valueForKey:[TagEnumValue getStringValue:TAG_COMMENTS_COLUMN]];
     //If the initialConversationArray is null then the app will crash
     if (![initialConversationArray isEqual:[NSNull null]])
     {
@@ -147,14 +147,14 @@
     
     [updatedConversationArray addObject:txtComment.text];
     
-    NSMutableDictionary *oldValue = [[NSMutableDictionary alloc] initWithObjectsAndKeys:initialConversationArray, @"comments", nil];
+    NSMutableDictionary *oldValue = [[NSMutableDictionary alloc] initWithObjectsAndKeys:initialConversationArray, [TagEnumValue getStringValue:TAG_COMMENTS_COLUMN], nil];
     
-    NSMutableDictionary *newValue = [[NSMutableDictionary alloc] initWithObjectsAndKeys:updatedConversationArray, @"comments", nil];
+    NSMutableDictionary *newValue = [[NSMutableDictionary alloc] initWithObjectsAndKeys:updatedConversationArray, [TagEnumValue getStringValue:TAG_COMMENTS_COLUMN], nil];
     
     //Save the content of this tag
     MongoDbConnection *myDbConnection = [[MongoDbConnection alloc] init];
     
-    [myDbConnection setUpConnection:MONGODB_COLLECTION_NAME];
+    [myDbConnection setUpConnection:[TagEnumValue getStringValue:TAGS_TABLE]];
     
     //Save the login in the mongoDbDatabase
     [myDbConnection changeValue:oldValue:newValue];
@@ -170,7 +170,7 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    initialConversationArray =  [tag valueForKey:@"comments"];
+    initialConversationArray =  [tag valueForKey:[TagEnumValue getStringValue:TAG_COMMENTS_COLUMN]];
     
     if (![initialConversationArray isEqual:[NSNull null]])
     {

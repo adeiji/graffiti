@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE014AEE17D599E80032B9FF /* ViewTagsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE014AED17D599E80032B9FF /* ViewTagsStoryboard.storyboard */; };
 		CE08DD211795DE850061201F /* ViewTagsWithDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */; };
 		CE08DD261795DF450061201F /* ViewAllTagDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE08DD251795DF450061201F /* ViewAllTagDetailView.m */; };
 		CE107C1E173C475500691F0C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE107C1D173C475500691F0C /* CoreData.framework */; };
@@ -148,8 +149,8 @@
 		CEEEDF52173C383E00A4DE20 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEEDF51173C383D00A4DE20 /* AWSS3.framework */; };
 		CEEEDF56173C44C600A4DE20 /* AmazonS3Handler.m in Sources */ = {isa = PBXBuildFile; fileRef = CEEEDF54173C387600A4DE20 /* AmazonS3Handler.m */; };
 		CEEEDF58173C459400A4DE20 /* AWSRuntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEEEDF57173C459400A4DE20 /* AWSRuntime.framework */; };
-		CEF9D86E17C91E24002457DF /* MainViewTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D86D17C91E24002457DF /* MainViewTagsView.m */; };
-		CEF9D87017C921AC002457DF /* MainViewTags.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEF9D86F17C921AC002457DF /* MainViewTags.xib */; };
+		CEF896C117D574ED0058FC01 /* GoogleMapsDirectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF896C017D574ED0058FC01 /* GoogleMapsDirectionsViewController.m */; };
+		CEF896C517D577330058FC01 /* DirectionServices.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF896C417D577330058FC01 /* DirectionServices.m */; };
 		CEF9D8D717CBACC6002457DF /* MainViewTagsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D8D617CBACC6002457DF /* MainViewTagsViewController.m */; };
 		CEF9D96D17CBCBF1002457DF /* ConversationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEF9D96B17CBCA1B002457DF /* ConversationViewController.m */; };
 /* End PBXBuildFile section */
@@ -179,6 +180,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE014AED17D599E80032B9FF /* ViewTagsStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ViewTagsStoryboard.storyboard; path = ../ViewTagsStoryboard.storyboard; sourceTree = "<group>"; };
 		CE08DD1F1795DE850061201F /* ViewTagsWithDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewTagsWithDetailViewController.h; sourceTree = "<group>"; };
 		CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewTagsWithDetailViewController.m; sourceTree = "<group>"; };
 		CE08DD241795DF450061201F /* ViewAllTagDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewAllTagDetailView.h; sourceTree = "<group>"; };
@@ -408,9 +410,10 @@
 		CEEEDF53173C387600A4DE20 /* AmazonS3Handler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmazonS3Handler.h; sourceTree = "<group>"; };
 		CEEEDF54173C387600A4DE20 /* AmazonS3Handler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmazonS3Handler.m; sourceTree = "<group>"; };
 		CEEEDF57173C459400A4DE20 /* AWSRuntime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSRuntime.framework; path = "../../Programming/Frameworks/aws-ios-sdk-1.5.0/AWSRuntime.framework"; sourceTree = "<group>"; };
-		CEF9D86C17C91E24002457DF /* MainViewTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewTagsView.h; sourceTree = "<group>"; };
-		CEF9D86D17C91E24002457DF /* MainViewTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewTagsView.m; sourceTree = "<group>"; };
-		CEF9D86F17C921AC002457DF /* MainViewTags.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewTags.xib; sourceTree = "<group>"; };
+		CEF896BF17D574ED0058FC01 /* GoogleMapsDirectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapsDirectionsViewController.h; sourceTree = "<group>"; };
+		CEF896C017D574ED0058FC01 /* GoogleMapsDirectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsDirectionsViewController.m; sourceTree = "<group>"; };
+		CEF896C317D577330058FC01 /* DirectionServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DirectionServices.h; sourceTree = "<group>"; };
+		CEF896C417D577330058FC01 /* DirectionServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DirectionServices.m; sourceTree = "<group>"; };
 		CEF9D8D517CBACC5002457DF /* MainViewTagsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewTagsViewController.h; sourceTree = "<group>"; };
 		CEF9D8D617CBACC6002457DF /* MainViewTagsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewTagsViewController.m; sourceTree = "<group>"; };
 		CEF9D96A17CBCA1B002457DF /* ConversationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConversationViewController.h; sourceTree = "<group>"; };
@@ -583,6 +586,7 @@
 		CE9A068C17398B2D00783843 /* Graffiti */ = {
 			isa = PBXGroup;
 			children = (
+				CEF896C217D577180058FC01 /* Direction Service */,
 				CEB21CE617D3A99D007C6125 /* Get Column Values */,
 				CEB21CD817D11722007C6125 /* MongoDbTags */,
 				CEB21CD117CFE790007C6125 /* Scroll View With Sub View Scrolling Enabled */,
@@ -728,6 +732,7 @@
 		CEB9358617C3071300E825B9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CEF896BC17D574C40058FC01 /* Google Maps Directions Controller */,
 				CEB21CDE17D12086007C6125 /* Create Group View Controller */,
 				CEF9D96917CBC9F4002457DF /* View Conversation */,
 				CE27299D17CC262A0033DBE2 /* Collection View Controller */,
@@ -983,7 +988,6 @@
 			children = (
 				CE08DD1F1795DE850061201F /* ViewTagsWithDetailViewController.h */,
 				CE08DD201795DE850061201F /* ViewTagsWithDetailViewController.m */,
-				CEF9D86B17C91DF8002457DF /* Views */,
 			);
 			name = "View Tags With Details";
 			sourceTree = "<group>";
@@ -1033,6 +1037,24 @@
 			name = "Data Layer";
 			sourceTree = "<group>";
 		};
+		CEF896BC17D574C40058FC01 /* Google Maps Directions Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEF896BF17D574ED0058FC01 /* GoogleMapsDirectionsViewController.h */,
+				CEF896C017D574ED0058FC01 /* GoogleMapsDirectionsViewController.m */,
+			);
+			name = "Google Maps Directions Controller";
+			sourceTree = "<group>";
+		};
+		CEF896C217D577180058FC01 /* Direction Service */ = {
+			isa = PBXGroup;
+			children = (
+				CEF896C317D577330058FC01 /* DirectionServices.h */,
+				CEF896C417D577330058FC01 /* DirectionServices.m */,
+			);
+			name = "Direction Service";
+			sourceTree = "<group>";
+		};
 		CEF9D86317C9040B002457DF /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -1048,10 +1070,10 @@
 				CE9A06A117398B2D00783843 /* MainStoryboard_iPad.storyboard */,
 				CE9A069E17398B2D00783843 /* MainStoryboard_iPhone.storyboard */,
 				CEC146B517D413AF0055DF0B /* TagLocationStoryboard.storyboard */,
-				CEF9D86F17C921AC002457DF /* MainViewTags.xib */,
 				CEB9375E17C6806C00E825B9 /* CommentStoryboard.storyboard */,
 				CE34628417CD0C27009D92BF /* ViewTagsByImage.xib */,
 				CEB21CC017CF8D0B007C6125 /* RefreshButtonView.xib */,
+				CE014AED17D599E80032B9FF /* ViewTagsStoryboard.storyboard */,
 				CEC146AF17D3BE9A0055DF0B /* GoogleMapsDirections.xib */,
 				CEB21CDA17D11C10007C6125 /* CreateGroup.storyboard */,
 				CEC146B317D3BFCE0055DF0B /* Settings.xib */,
@@ -1099,23 +1121,6 @@
 				CE8FC6AC17BC38B7001F9B69 /* ViewTags.m */,
 			);
 			name = "View Tags";
-			sourceTree = "<group>";
-		};
-		CEF9D86B17C91DF8002457DF /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				CEF9D8BC17C97878002457DF /* View Tag */,
-			);
-			name = Views;
-			sourceTree = "<group>";
-		};
-		CEF9D8BC17C97878002457DF /* View Tag */ = {
-			isa = PBXGroup;
-			children = (
-				CEF9D86C17C91E24002457DF /* MainViewTagsView.h */,
-				CEF9D86D17C91E24002457DF /* MainViewTagsView.m */,
-			);
-			name = "View Tag";
 			sourceTree = "<group>";
 		};
 		CEF9D8C717C98933002457DF /* Categories */ = {
@@ -1252,7 +1257,6 @@
 				CE8FC6FE17BFE21B001F9B69 /* commentbutton.png in Resources */,
 				CEB9375917C55CB000E825B9 /* savegroupsbutton.png in Resources */,
 				CEB9375F17C6806D00E825B9 /* CommentStoryboard.storyboard in Resources */,
-				CEF9D87017C921AC002457DF /* MainViewTags.xib in Resources */,
 				CE34628517CD0C27009D92BF /* ViewTagsByImage.xib in Resources */,
 				CE34628E17CD0F61009D92BF /* Icon-72.png in Resources */,
 				CE34628F17CD0F61009D92BF /* Icon-72@2x.png in Resources */,
@@ -1274,6 +1278,7 @@
 				CEC146B417D3BFCE0055DF0B /* Settings.xib in Resources */,
 				CEC146B617D413AF0055DF0B /* TagLocationStoryboard.storyboard in Resources */,
 				CEC146B817D436170055DF0B /* ProfileStoryboard.storyboard in Resources */,
+				CE014AEE17D599E80032B9FF /* ViewTagsStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1365,7 +1370,6 @@
 				CEB9375D17C5D2FF00E825B9 /* InfinitePagingView.m in Sources */,
 				CEB9376317C686A100E825B9 /* CommentViewController.m in Sources */,
 				CEB9376717C68A1800E825B9 /* CommentTextView.m in Sources */,
-				CEF9D86E17C91E24002457DF /* MainViewTagsView.m in Sources */,
 				CEF9D8D717CBACC6002457DF /* MainViewTagsViewController.m in Sources */,
 				CE2728B817CBFF110033DBE2 /* Tag.m in Sources */,
 				CE34629A17CE40B4009D92BF /* MACircleProgressIndicator.m in Sources */,
@@ -1391,6 +1395,8 @@
 				CEB21CE117D1209E007C6125 /* CreateGroupViewController.m in Sources */,
 				CEB21CE517D14953007C6125 /* MongoDataLayer.m in Sources */,
 				CEB21CE917D3A9EB007C6125 /* TagEnumValue.m in Sources */,
+				CEF896C117D574ED0058FC01 /* GoogleMapsDirectionsViewController.m in Sources */,
+				CEF896C517D577330058FC01 /* DirectionServices.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,7 +18,8 @@ typedef enum {
 } MongoTable;
 
 typedef enum {
-    TAG_LOCATION_COLUMN = 5,
+    TAG_LONGITUDE_COLUMN = 5,
+    TAG_LATITUDE_COLUMN = 44,
     TAG_CONTENT_COLUMN = 6,
     TAG_CONTENT_TYPE_COLUMN = 7,
     TAG_TAGGER_COLUMN = 8,
@@ -30,7 +31,8 @@ typedef enum {
     TAG_NAME_COLUMN = 33,
     TAG_ID_COLUMN = 34,
     TAG_DATA_URL_COLUMN = 35,
-    TAG_CONVERSATION_COLUMN = 36
+    TAG_CONVERSATION_COLUMN = 36,
+    TAG_COMMENTS_COLUMN = 41
 } TagDatabaseColumn;
 
 typedef enum {
@@ -67,5 +69,10 @@ typedef enum {
     GETTER_GET_ALL_VALUES = 31,
     GETTER_NO_KEY = 32
 } Getters;
+
+typedef enum {
+    CONTENT_TYPE_IMAGE = 42,
+    CONTENT_TYPE_AUDIO = 43
+} TagContentType;
 
 #endif

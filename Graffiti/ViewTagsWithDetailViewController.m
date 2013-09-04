@@ -10,7 +10,6 @@
 #import "ViewAllTagDetailView.h"
 #import "TagCell.h"
 #import "MainViewTagsViewController.h"
-#import "MainViewTagsView.h" 
 #import "ConversationViewController.h"
 #import "MongoDbConnection.h"
 #import "BSONParser.h"

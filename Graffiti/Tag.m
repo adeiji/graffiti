@@ -30,6 +30,10 @@
 
 - (NSObject *) init
 {
+    //We have to create these two MutableArray objects otherwise we can't add objects to them.
+    self.conversation = [[NSMutableArray alloc] init];
+    self.groups = [[NSMutableArray alloc] init];
+    
     return self;
 }
 

@@ -21,7 +21,7 @@
     NSString *contentType = [myContent valueForKey:CONTENT_TYPE];
     NSString *tagName = [myContent valueForKey:TAG_NAME];
     
-    [AmazonErrorHandler shouldNotThrowExceptions];
+   // [AmazonErrorHandler shouldNotThrowExceptions];
     
     NSData *contentData = UIImageJPEGRepresentation(content, 1.0);
     
@@ -37,7 +37,7 @@
     
     //We need to remove all the dashes from the vendorId and replace them with periods to adhere to the bucket naming rules.
     NSString *vendorId = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-    vendorId = [vendorId stringByReplacingOccurrencesOfString:@"-" withString:@"" ];
+    vendorId = [[vendorId stringByReplacingOccurrencesOfString:@"-" withString:@"" ] lowercaseString];
     
     NSLog(@"Reformatted vendor id - %@", vendorId);
     
