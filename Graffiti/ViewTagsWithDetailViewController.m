@@ -77,7 +77,7 @@
     
     dataLayer = [[DataLayer alloc] init];
     
-    [self.scrollView addSubview:self.pageControl];
+    [self.scrollView addSubview:self.horizontalPageControl];
 }
 
 - (void) loadTags
@@ -115,12 +115,12 @@
     
     self.scrollView.scrollsToTop = NO;
     
-    self.pageControl.numberOfPages = numberOfPages;
+    self.horizontalPageControl.numberOfPages = numberOfPages;
     
     // set the current page to whatever page is currently being displayed right now
     CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
     NSUInteger page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    self.pageControl.currentPage = page;;
+    self.horizontalPageControl.currentPage = page;;
 }
 
 - (void) loadScrollViewWithPage:(NSUInteger) page
@@ -188,7 +188,7 @@
         
         //frame.size.height = 820;
         
-        //controller.view.frame = frame;
+        controller.view.frame = frame;
         
         [self addChildViewController:controller];
         [self.scrollView addSubview:controller.view];
@@ -203,7 +203,7 @@
     // switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = CGRectGetWidth(self.scrollView.frame);
     NSUInteger page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-    self.pageControl.currentPage = page;
+    self.horizontalPageControl.currentPage = page;
     
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
     [self loadScrollViewWithPage:page - 1];
@@ -273,7 +273,7 @@
     CommentViewController *commentViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"commentViewController"];
     
     //Set the tag to send to the comment view controller so that way the user can comment on the tag
-    [commentViewController setTag:[tags objectAtIndex:self.pageControl.currentPage]];
+    [commentViewController setTag:[tags objectAtIndex:self.horizontalPageControl.currentPage]];
     [self.navigationController pushViewController:commentViewController animated:YES];
 }
 
@@ -319,7 +319,7 @@
     [self setUpPaging];
     
     //Get the current page
-    NSUInteger page = self.pageControl.currentPage;
+    NSUInteger page = self.horizontalPageControl.currentPage;
     
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
     if (page > 0)

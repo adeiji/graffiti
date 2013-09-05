@@ -28,7 +28,8 @@
 @property (strong, nonatomic) MainViewTagsViewController *mainViewTagsView;
 //Stores all the view controllers that will be loaded for paging
 @property (strong, nonatomic) NSMutableArray *viewControllers;
-@property (strong, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (strong, nonatomic) IBOutlet UIPageControl *horizontalPageControl;
+
 
 @property (strong, nonatomic) NSArray *contentList;
 @property (strong, nonatomic) NSArray *tags;

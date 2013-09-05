@@ -14,20 +14,20 @@
                         <viewControllerLayoutGuide type="bottom" id="FUU-7M-eu4"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="un4-bo-hpW">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="chainFence.png" translatesAutoresizingMaskIntoConstraints="NO" id="cSn-vA-rkH">
-                                <rect key="frame" x="0.0" y="20" width="320" height="500"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" image="chainFence.png" translatesAutoresizingMaskIntoConstraints="NO" id="cSn-vA-rkH">
+                                <rect key="frame" x="0.0" y="20" width="320" height="412"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-lv-uQa">
-                                <rect key="frame" x="68" y="20" width="185" height="411"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfu-lv-uQa">
+                                <rect key="frame" x="68" y="20" width="185" height="374"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9a2-PX-qIH">
-                                        <rect key="frame" x="10" y="79" width="165" height="165"/>
+                                        <rect key="frame" x="10" y="74" width="165" height="165"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="graffitilogo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="g4e-yF-A5L">
@@ -38,7 +38,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Jimmy" translatesAutoresizingMaskIntoConstraints="NO" id="i9Y-kG-Peb">
-                                        <rect key="frame" x="0.0" y="33" width="185" height="47"/>
+                                        <rect key="frame" x="0.0" y="28" width="185" height="47"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,7 +46,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="adeiji - This this was crazy son!!  I couldn't believe my eyes when I seen this dude.  Everybody's gotta write somethin here." translatesAutoresizingMaskIntoConstraints="NO" id="eRT-cm-Wkb">
-                                        <rect key="frame" x="10" y="245" width="166" height="134"/>
+                                        <rect key="frame" x="10" y="240" width="166" height="134"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -54,7 +54,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6di-6T-dx1">
-                                        <rect key="frame" x="5" y="8" width="77" height="31"/>
+                                        <rect key="frame" x="5" y="3" width="77" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.40139619430000001" green="0.78554105299999999" blue="0.3505192956" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -74,12 +74,17 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FUU-7M-eu4" firstAttribute="top" secondItem="cSn-vA-rkH" secondAttribute="bottom" constant="-1" id="O9y-qD-Zkp"/>
+                            <constraint firstItem="cSn-vA-rkH" firstAttribute="top" secondItem="Bix-rn-sfP" secondAttribute="bottom" id="Owc-zs-jRx"/>
+                            <constraint firstItem="cSn-vA-rkH" firstAttribute="top" secondItem="Cfu-lv-uQa" secondAttribute="bottom" constant="-374" id="dKl-TY-UTn"/>
+                        </constraints>
                         <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                         <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="displayTagView" destination="9a2-PX-qIH" id="4rr-C4-HPH"/>
                         <outlet property="tagContent" destination="g4e-yF-A5L" id="ucb-ga-ewy"/>

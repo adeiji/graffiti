@@ -69,6 +69,7 @@ ProfileCellType myProfileCellType;
             break;
         case PASSWORD:
             cell.txtInputField.text = [_rows objectAtIndex:indexPath.row];
+            cell.txtInputField.secureTextEntry = YES;
             break;
         case EMAIL:
             cell.txtInputField.text = [_rows objectAtIndex:indexPath.row];

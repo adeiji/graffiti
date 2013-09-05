@@ -87,13 +87,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="homeButtonimage.png" id="2t1-ef-i1t"/>
+                    <tabBarItem key="tabBarItem" title="View Tags" image="homeButtonimage.png" id="2t1-ef-i1t"/>
                     <navigationItem key="navigationItem" title="Tag Details" id="kc0-Uf-WU8"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="background" destination="MxE-J2-idg" id="Ydl-RL-ucZ"/>
+                        <outlet property="horizontalPageControl" destination="Haz-nN-37w" id="s0L-AR-OBI"/>
                         <outlet property="mainView" destination="1K6-ER-rln" id="uwk-60-EoX"/>
-                        <outlet property="pageControl" destination="Haz-nN-37w" id="l5F-v4-4YE"/>
                         <outlet property="scrollView" destination="sMv-1t-cY1" id="Q4m-cS-SA6"/>
                     </connections>
                 </viewController>
@@ -103,11 +103,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="MxE-J2-idg">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMv-1t-cY1" customClass="ScrollViewWithSubViewScrolling">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="411"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="431"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" red="0.92941182850000004" green="0.92941182850000004" blue="0.92941182850000004" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
@@ -163,6 +163,7 @@
                         <accessibility key="accessibilityConfiguration" label="viewConversationViewController"/>
                         <gestureRecognizers/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="tableView" destination="yIb-lU-2la" id="ILW-F7-ckU"/>
                     </connections>

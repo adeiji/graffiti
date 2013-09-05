@@ -20,6 +20,7 @@
 		CE107C1E173C475500691F0C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE107C1D173C475500691F0C /* CoreData.framework */; };
 		CE13115917D51EC400AFE939 /* GroupsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB9373D17C51E7600E825B9 /* GroupsViewController.m */; };
 		CE1D4AC617D9189C00A2FB29 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE1D4AC517D9189C00A2FB29 /* AudioToolbox.framework */; };
+		CE1D4AC817D9427300A2FB29 /* ConversationViewStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1D4AC717D9427300A2FB29 /* ConversationViewStoryboard.storyboard */; };
 		CE2728B817CBFF110033DBE2 /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2728B717CBFF100033DBE2 /* Tag.m */; };
 		CE2729A117CD01630033DBE2 /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE27299F17CC26850033DBE2 /* CollectionViewController.m */; };
 		CE34628517CD0C27009D92BF /* ViewTagsByImage.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE34628417CD0C27009D92BF /* ViewTagsByImage.xib */; };
@@ -205,6 +206,7 @@
 		CE107C1D173C475500691F0C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CE1D4AC417D9144100A2FB29 /* TagTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagTypes.h; sourceTree = "<group>"; };
 		CE1D4AC517D9189C00A2FB29 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		CE1D4AC717D9427300A2FB29 /* ConversationViewStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConversationViewStoryboard.storyboard; sourceTree = "<group>"; };
 		CE2728B617CBFF100033DBE2 /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tag.h; sourceTree = "<group>"; };
 		CE2728B717CBFF100033DBE2 /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tag.m; sourceTree = "<group>"; };
 		CE27299E17CC26850033DBE2 /* CollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
@@ -1122,6 +1124,7 @@
 				CEC146B317D3BFCE0055DF0B /* Settings.xib */,
 				CEC146B717D436170055DF0B /* ProfileStoryboard.storyboard */,
 				CE014B4717D7C1210032B9FF /* TagAudioView.xib */,
+				CE1D4AC717D9427300A2FB29 /* ConversationViewStoryboard.storyboard */,
 			);
 			name = "User Interfaces";
 			sourceTree = "<group>";
@@ -1329,6 +1332,7 @@
 				CEC146B817D436170055DF0B /* ProfileStoryboard.storyboard in Resources */,
 				CE014AEE17D599E80032B9FF /* ViewTagsStoryboard.storyboard in Resources */,
 				CE014B4817D7C1210032B9FF /* TagAudioView.xib in Resources */,
+				CE1D4AC817D9427300A2FB29 /* ConversationViewStoryboard.storyboard in Resources */,
 				CE014B4A17D7C1DE0032B9FF /* playButton.png in Resources */,
 				CE014B4C17D7C5980032B9FF /* recordbutton.png in Resources */,
 				CE014B4E17D7C73F0032B9FF /* brickbackground.png in Resources */,
