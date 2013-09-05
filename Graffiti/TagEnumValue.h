@@ -12,4 +12,6 @@
 
 + (NSString *) getStringValue : (NSInteger) val;
 
++ (NSString *) getStringValueForTagType : (NSInteger) val;
+
 @end

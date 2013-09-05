@@ -14,11 +14,15 @@
 #import "AppDelegate.h"
 #import "GraffitiTabBarController.h"
 #import "MongoDbConnection.h"
+#import "TagAudioViewController.h"
+#import "TagTypes.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface SecondViewController ()
 {
     Tag *tag;
     UIImage *myImage;
+    NSURL *audioUrl;
 }
 
 @end
@@ -93,6 +97,8 @@
         picker.delegate = self;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:picker animated:YES completion:nil];
+        //Set the tag type to image
+        tag.type = [TagEnumValue getStringValueForTagType:TYPE_IMAGE];
     }
 }
 
@@ -107,10 +113,19 @@
     [self gotoPreviousWindow];
 }
 
+- (IBAction)audioButtonPressed:(id)sender {
+    
+    TagAudioViewController *tagAudioViewController = [[TagAudioViewController alloc] initWithNibName:@"TagAudioView" bundle:nil];
+    
+    tagAudioViewController.audioUrl = audioUrl;
+    tag.type = [TagEnumValue getStringValueForTagType:TYPE_AUDIO];
+    
+    [self.navigationController pushViewController:tagAudioViewController animated:YES];
+}
+
 - (void) gotoPreviousWindow
 {
-    
-    GraffitiTabBarController *myController = (GraffitiTabBarController *) self.parentViewController;
+    GraffitiTabBarController *myController = (GraffitiTabBarController *) self.tabBarController;
     
     [self.tabBarController setSelectedViewController:myController.myPreviousViewController];
 }
@@ -150,12 +165,21 @@
     tag.name = name;
     //Use this where explicit transactions are not allowed.  This creates a unique ID and stores it as an ID using core data
     tag.uid = (__bridge NSString *)(CFUUIDCreate(NULL));
-    tag.type = @"image";
     tag.content = txtTag.text;
-    tag.data = UIImageJPEGRepresentation(myImage, .2);
     
+    if ([tag.type isEqualToString:[TagEnumValue getStringValueForTagType:TYPE_IMAGE]])
+    {
+        tag.data = UIImageJPEGRepresentation(myImage, .2);
+    }
+    else if ([tag.type isEqualToString:[TagEnumValue getStringValueForTagType:TYPE_AUDIO]])
+    {
+        tag.data = [NSData dataWithContentsOfURL:audioUrl options:0 error:nil];
+        
+        NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], @"audio.m4a", nil];
+        NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    }
     //Add the content information to a dictionary and then send this information to the Amazon S3 Handler so that it can asynchronously upload this data to the S3 server.
-    [contentDictionary setObject:myImage forKey:CONTENT];
+    [contentDictionary setObject:tag.data forKey:CONTENT];
     [contentDictionary setObject:tag.type forKey:CONTENT_TYPE];
     [contentDictionary setObject:tag.name forKey:TAG_NAME];
     
@@ -219,7 +243,7 @@
     //Get the name of the Tag from the alertview textfield and then save this information to the database
     for (UIView* view in alertView.subviews)
     {
-        if ([view isKindOfClass:[UITextField class]])
+        if ([[alertView subviews] count] != 0)
         {
             NSString *name = [alertView textFieldAtIndex:0].text;
             //Create the actual tag asyncronously

@@ -8,8 +8,27 @@
 
 #import "TagEnumValue.h"
 #import "MongoDbTags.h"
+#import "TagTypes.h"
 
 @implementation TagEnumValue
+
++ (NSString *) getStringValueForTagType : (NSInteger) val
+{
+    switch (val) {
+        case TYPE_IMAGE:
+            return @"image";
+            break;
+        case TYPE_AUDIO:
+            return @"audio";
+            break;
+        case TYPE_VIDEO:
+            return @"video";
+            break;
+        default:
+            return @"NO_SUCH_TYPE";
+            break;
+    }
+}
 
 + (NSString *) getStringValue : (NSInteger) val
 {

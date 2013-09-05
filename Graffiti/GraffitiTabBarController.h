@@ -10,6 +10,6 @@
 
 @interface GraffitiTabBarController : UITabBarController <UITabBarControllerDelegate, UITabBarDelegate>
 
-@property (nonatomic, retain) UIViewController *myPreviousViewController;
+@property (nonatomic, strong) UIViewController *myPreviousViewController;
 
 @end

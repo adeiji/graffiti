@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="YGu-dC-8za">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4504" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="YGu-dC-8za">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3734.1"/>
     </dependencies>
     <scenes>
         <!--Create Group View Controller-->
         <scene sceneID="wsj-Yy-g1y">
             <objects>
                 <viewController storyboardIdentifier="CreateGroupViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YGu-dC-8za" customClass="CreateGroupViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2at-Xr-098"/>
+                        <viewControllerLayoutGuide type="bottom" id="VGJ-zE-QTC"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="POv-cE-EBM">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="yWV-PT-UNy"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="yWV-PT-UNy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYd-NK-6YL">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o3b-8I-McV">
+                                        <rect key="frame" x="125" y="472" width="75" height="76"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="ZdV-4h-XoU"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="76" id="fAK-YP-xll"/>
                                             <constraint firstAttribute="width" constant="75" id="nQD-vI-yzJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -32,20 +41,22 @@
                                             <action selector="createGroupButtonPressed:" destination="YGu-dC-8za" eventType="touchUpInside" id="vNq-AS-QZx"/>
                                         </connections>
                                     </button>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="E6m-e9-Lda">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="E6m-e9-Lda">
+                                        <rect key="frame" x="17" y="20" width="285" height="444"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="285" id="LNz-qr-Ecr"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="CreateGroupTableCell" id="3XD-Bf-xla" customClass="ProfileTableCell">
-                                                <rect key="frame" x="0.0" y="46" width="285" height="46"/>
+                                                <rect key="frame" x="0.0" y="55" width="285" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="10" y="1" width="265" height="43"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3XD-Bf-xla" id="QCJ-jI-anT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="285" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="eVl-AN-UcR">
+                                                            <rect key="frame" x="19" y="7" width="249" height="30"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="249" id="PSS-2n-bP6"/>
                                                                 <constraint firstAttribute="height" constant="30" id="WJY-jy-1Bo"/>
@@ -58,12 +69,11 @@
                                                             </connections>
                                                         </textField>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
+                                                </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstItem="eVl-AN-UcR" firstAttribute="centerY" secondItem="3XD-Bf-xla" secondAttribute="centerY" type="default" id="Pnp-VR-75G"/>
-                                                    <constraint firstItem="eVl-AN-UcR" firstAttribute="leading" secondItem="3XD-Bf-xla" secondAttribute="leading" constant="19" id="Uu6-So-Gos"/>
+                                                    <constraint firstItem="eVl-AN-UcR" firstAttribute="centerY" secondItem="3XD-Bf-xla" secondAttribute="centerY" id="93W-8w-HWN"/>
+                                                    <constraint firstItem="eVl-AN-UcR" firstAttribute="leading" secondItem="3XD-Bf-xla" secondAttribute="leading" constant="19" id="Xel-ok-19L"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="txtInputField" destination="eVl-AN-UcR" id="ANf-I7-L7Y"/>
@@ -78,26 +88,31 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="E6m-e9-Lda" firstAttribute="top" secondItem="RYd-NK-6YL" secondAttribute="top" constant="20" symbolic="YES" type="default" id="2aX-Oo-c3H"/>
+                                    <constraint firstItem="E6m-e9-Lda" firstAttribute="top" secondItem="RYd-NK-6YL" secondAttribute="top" constant="20" symbolic="YES" id="2aX-Oo-c3H"/>
+                                    <constraint firstAttribute="trailing" secondItem="o3b-8I-McV" secondAttribute="trailing" constant="120" id="4lv-ik-Bjy"/>
+                                    <constraint firstAttribute="width" constant="320" id="MZ6-el-fif"/>
                                     <constraint firstItem="o3b-8I-McV" firstAttribute="leading" secondItem="RYd-NK-6YL" secondAttribute="leading" constant="125" id="a6v-U1-DpZ"/>
-                                    <constraint firstItem="o3b-8I-McV" firstAttribute="top" secondItem="E6m-e9-Lda" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="fyf-f0-dAL"/>
-                                    <constraint firstItem="E6m-e9-Lda" firstAttribute="centerX" secondItem="RYd-NK-6YL" secondAttribute="centerX" type="default" id="pej-e5-SMk"/>
-                                    <constraint firstAttribute="bottom" secondItem="o3b-8I-McV" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="yhJ-bn-dFV"/>
+                                    <constraint firstItem="o3b-8I-McV" firstAttribute="top" secondItem="E6m-e9-Lda" secondAttribute="bottom" constant="8" symbolic="YES" id="fyf-f0-dAL"/>
+                                    <constraint firstItem="E6m-e9-Lda" firstAttribute="centerX" secondItem="RYd-NK-6YL" secondAttribute="centerX" id="pej-e5-SMk"/>
+                                    <constraint firstAttribute="bottom" secondItem="E6m-e9-Lda" secondAttribute="bottom" constant="104" id="qrd-3g-Z4W"/>
+                                    <constraint firstAttribute="bottom" secondItem="o3b-8I-McV" secondAttribute="bottom" constant="20" symbolic="YES" id="yhJ-bn-dFV"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="yWV-PT-UNy" firstAttribute="bottom" secondItem="POv-cE-EBM" secondAttribute="bottom" type="default" id="32A-kq-vce"/>
-                            <constraint firstItem="RYd-NK-6YL" firstAttribute="bottom" secondItem="POv-cE-EBM" secondAttribute="bottom" type="default" id="GmH-Mp-qXY"/>
-                            <constraint firstItem="RYd-NK-6YL" firstAttribute="trailing" secondItem="POv-cE-EBM" secondAttribute="trailing" type="default" id="LQo-wv-Tzk"/>
-                            <constraint firstItem="yWV-PT-UNy" firstAttribute="top" secondItem="POv-cE-EBM" secondAttribute="top" type="default" id="Qcz-DV-5H1"/>
-                            <constraint firstItem="RYd-NK-6YL" firstAttribute="leading" secondItem="POv-cE-EBM" secondAttribute="leading" type="default" id="bHS-po-kpN"/>
-                            <constraint firstItem="RYd-NK-6YL" firstAttribute="top" secondItem="POv-cE-EBM" secondAttribute="top" type="default" id="mHm-yg-pm7"/>
-                            <constraint firstItem="yWV-PT-UNy" firstAttribute="leading" secondItem="POv-cE-EBM" secondAttribute="leading" type="default" id="yqE-xO-ghU"/>
+                            <constraint firstItem="yWV-PT-UNy" firstAttribute="bottom" secondItem="POv-cE-EBM" secondAttribute="bottom" id="32A-kq-vce"/>
+                            <constraint firstItem="yWV-PT-UNy" firstAttribute="bottom" secondItem="RYd-NK-6YL" secondAttribute="bottom" id="9DJ-zs-rzS"/>
+                            <constraint firstItem="yWV-PT-UNy" firstAttribute="top" secondItem="RYd-NK-6YL" secondAttribute="top" id="J2Y-S5-EmN"/>
+                            <constraint firstItem="yWV-PT-UNy" firstAttribute="leading" secondItem="RYd-NK-6YL" secondAttribute="leading" id="LAo-cR-scZ"/>
+                            <constraint firstItem="RYd-NK-6YL" firstAttribute="trailing" secondItem="POv-cE-EBM" secondAttribute="trailing" id="LQo-wv-Tzk"/>
+                            <constraint firstAttribute="trailing" secondItem="RYd-NK-6YL" secondAttribute="trailing" id="hd8-t1-Mn7"/>
+                            <constraint firstItem="VGJ-zE-QTC" firstAttribute="top" secondItem="RYd-NK-6YL" secondAttribute="bottom" id="ksQ-qe-2JG"/>
+                            <constraint firstItem="RYd-NK-6YL" firstAttribute="top" secondItem="POv-cE-EBM" secondAttribute="top" id="mHm-yg-pm7"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="tableView" destination="E6m-e9-Lda" id="eev-oe-VQu"/>
                     </connections>

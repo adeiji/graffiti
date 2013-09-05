@@ -24,5 +24,6 @@
     - (IBAction)CameraButtonPressed:(id)sender;
     - (IBAction)btnTagItPressed:(id)sender;
     - (IBAction)btnCancelPressed:(id)sender;
+    - (IBAction)audioButtonPressed:(id)sender;
 
 @end

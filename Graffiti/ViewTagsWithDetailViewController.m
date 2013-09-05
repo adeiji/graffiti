@@ -186,9 +186,9 @@
         frame.origin.x = CGRectGetWidth(frame) * page;
         frame.origin.y = 0;
         
-        frame.size.height = 820;
+        //frame.size.height = 820;
         
-        controller.view.frame = frame;
+        //controller.view.frame = frame;
         
         [self addChildViewController:controller];
         [self.scrollView addSubview:controller.view];

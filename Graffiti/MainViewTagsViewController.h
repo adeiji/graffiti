@@ -19,4 +19,6 @@
 
 - (IBAction)navigateButtonPressed:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIView *displayTagView;
+
 @end

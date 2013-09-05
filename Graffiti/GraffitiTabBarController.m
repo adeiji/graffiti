@@ -45,7 +45,7 @@
     
     [viewControllers addObject:createGroupViewController];
     //Create the view that will handle creating tags
-    SecondViewController *tagLocationViewController = [[UIStoryboard storyboardWithName:@"TagLocationStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"TagLocationViewController"];
+    SecondViewController *tagLocationViewController = [[UIStoryboard storyboardWithName:@"TagLocationStoryboard" bundle:nil] instantiateViewControllerWithIdentifier:@"TagLocationNavigationController"];
     
     tagLocationViewController.title = @"Tag";
     tagLocationViewController.tabBarItem.image = [UIImage imageNamed:@"spraycan.png"];
