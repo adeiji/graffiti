@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) Tag* tag;
 @property (strong, nonatomic) NSArray *conversation;
+@property (strong, nonatomic) IBOutlet NSObject *bottomLayoutGuide;
 
 - (Tag*) tag;
 

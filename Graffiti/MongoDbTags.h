@@ -72,7 +72,8 @@ typedef enum {
 
 typedef enum {
     CONTENT_TYPE_IMAGE = 42,
-    CONTENT_TYPE_AUDIO = 43
+    CONTENT_TYPE_AUDIO = 43,
+    CONTENT_TYPE_VIDEO = 45
 } TagContentType;
 
 #endif

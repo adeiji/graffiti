@@ -15,11 +15,18 @@
 @property (strong, nonatomic) IBOutlet CommentTextView *txtComment;
 - (IBAction)sendButtonPressed:(id)sender;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-
+@property (strong, nonatomic) IBOutlet UIView *barView;
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;
-@property (strong, nonatomic) NSArray *initialConversationArray;
+@property (strong, nonatomic) NSArray * initialConversationArray;
+
+//Constraints
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewSpaceToBottomConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewSpaceToTopConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
+
 
 - (IBAction)viewTagsPressed:(id)sender;
 - (void) setTag : (Tag *) tag;
+
 
 @end

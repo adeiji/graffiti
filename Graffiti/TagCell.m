@@ -11,22 +11,20 @@
 @implementation TagCell
 
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id) initWithFrame:(CGRect)frame
 {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
-    if (self) {
-        
-        // Initialization code
-        
+    self = [super initWithFrame:frame];
+    if (self){
+        self.txtConversation = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 260, 0)];
     }
+    
     return self;
 }
 
 - (void) layoutSubviews
 {
     [super layoutSubviews];
-    self.txtConversation = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 260, 0)];
+    
     self.txtConversation.font = [UIFont systemFontOfSize:14.0f];
     
     __block BOOL containsObject = NO;

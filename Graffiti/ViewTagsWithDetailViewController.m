@@ -65,6 +65,7 @@
     
     [self.scrollView setScrollEnabled:YES];
     
+    
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
@@ -108,7 +109,7 @@
     
     self.scrollView.pagingEnabled = YES;
     self.scrollView.contentSize =
-    CGSizeMake(CGRectGetWidth(self.scrollView.frame) * numberOfPages, CGRectGetHeight(self.scrollView.frame) * 2);
+    CGSizeMake(CGRectGetWidth(self.scrollView.frame) * numberOfPages, CGRectGetHeight(self.scrollView.frame));
     
     self.scrollView.showsHorizontalScrollIndicator = NO;
     self.scrollView.showsVerticalScrollIndicator = NO;
@@ -123,8 +124,77 @@
     self.horizontalPageControl.currentPage = page;;
 }
 
+- (UIViewController *) createCompleteViewControllerWithPagingEnabled : (NSInteger) page
+{
+    UIViewController *viewCompleteTag = [[UIViewController alloc] init];
+    
+    //Page Control
+    UIPageControl *pageControl = [[UIPageControl alloc] init];
+    
+    //Scroll View
+    CGRect scrollViewFrame = CGRectMake(0, 0, 320, 480);
+    UIScrollView *viewCompleteTagScrollView = [[UIScrollView alloc] initWithFrame:scrollViewFrame];
+    //Set the content size to hold two view controllers
+    viewCompleteTagScrollView.contentSize = CGSizeMake(320, 480 * 2);
+    viewCompleteTagScrollView.scrollEnabled = YES;
+    viewCompleteTagScrollView.bounces = YES;
+    viewCompleteTagScrollView.pagingEnabled = YES;
+
+    //Main View
+    viewCompleteTag.view = [[UIView alloc] init];
+    
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:viewCompleteTag.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:320];
+    
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:viewCompleteTag.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:480];
+    
+    NSArray *viewCompleteTagConstraints = [[NSArray alloc] initWithObjects:widthConstraint, heightConstraint, nil];
+    
+    [viewCompleteTag.view addConstraints:viewCompleteTagConstraints];
+    
+    [viewCompleteTag.view addSubview:viewCompleteTagScrollView];
+    [viewCompleteTagScrollView addSubview:pageControl];
+    
+    //The View Controller that will actually display all the details of the tag
+    MainViewTagsViewController *mainViewTagsViewController = [[MainViewTagsViewController alloc] initWithPageNumber:page :[tags objectAtIndex:page]];
+    
+    //Create the view that will contain the table to show the conversations had on this tag.
+    ConversationViewController *conversationViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"ConversationViewController"];
+    
+    [conversationViewController.tableView layoutIfNeeded];
+    
+    conversationViewController.tag = [tags objectAtIndex:page];
+
+    //Change the orientation of the view so that it fits on the next page
+    CGRect frame = mainViewTagsViewController.view.frame;
+    
+    frame.origin.y = 0;
+    
+    //-----------Add the main view tags controller to the view controller that will allow the vertical paging
+    [self addControllerToScrollView:mainViewTagsViewController page:page scrollView:viewCompleteTagScrollView controllerToAddControllerTo:viewCompleteTag frame:frame];
+    //set the frame, this step is really for assigning the proper y value
+    frame = conversationViewController.view.frame;
+    
+    frame.origin.y = 480;
+    
+    [self addControllerToScrollView:conversationViewController page:page scrollView:viewCompleteTagScrollView controllerToAddControllerTo:viewCompleteTag frame:frame];
+    
+    //You must create the table view variable after the conversationViewController has been added to this view controller
+    //Create the two views first so that we can use these two to cretae constraints.
+    UITableView *conversationTableView = conversationViewController.tableView;
+    UIButton *commentButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    //Create a dictionary that will contain the comment Button and conversationTableView, this is then used in the addButtonToViewTags method when adding constraints to the comment button
+    NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(commentButton, conversationTableView);
+    
+    //-------Add the comment button to the view ------
+    [self addButtonToViewTags : conversationViewController.view viewDictionary:viewsDictionary button:commentButton];
+
+    return viewCompleteTag;
+}
+
 - (void) loadScrollViewWithPage:(NSUInteger) page
 {
+    CGRect frame;
     //Number of pages we're going to load
     if (page > [tags count])
         return;
@@ -137,32 +207,13 @@
         //If this is not the extra page created for the refresh button
         if (page != [tags count])
         {
-            controller = [[MainViewTagsViewController alloc] initWithPageNumber:page:[tags objectAtIndex:page]];
-            //Create the view that will contain the table to show the conversations had on this tag.
-            ConversationViewController *conversationViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"ConversationViewController"];
-            
-            conversationViewController.tag = [tags objectAtIndex:page];
-            //Change the orientation of the view so that it fits on the next page
-            CGRect frame = conversationViewController.view.frame;
-            
-            frame.origin.x = 30;
-            frame.origin.y = 550;
-            
-            frame.size.width = 260;
-            frame.size.height = 250;
-            
-            conversationViewController.view.frame = frame;
-            
-            [controller.view addSubview:conversationViewController.view];
+            controller = [self createCompleteViewControllerWithPagingEnabled : page];
             
             [self.viewControllers replaceObjectAtIndex:page withObject:controller];
             
-            frame = controller.view.frame;
-            
-            [self addButtonToViewTags : controller.view];
-            [self.conversationControllers addObject:conversationViewController];
-            
-         
+            frame = self.scrollView.frame;
+            frame.origin.x = CGRectGetWidth(frame) * page;
+            frame.origin.y = 0;
         }
         else
         {
@@ -175,23 +226,31 @@
             controller.view = refreshView;
             
             [self.viewControllers replaceObjectAtIndex:page withObject:controller];
-
+            
+            frame = self.scrollView.frame;
+            frame.origin.x = CGRectGetWidth(frame) * page;
+            frame.origin.y = 0;
         }
+        
+        //Add the controller's view to the scroll view
+        [self addControllerToScrollView:controller page:page scrollView:self.scrollView controllerToAddControllerTo:self frame:frame];
     }
     
-    // add the controller's view to the scroll view
+}
+
+- (void) addControllerToScrollView : (UIViewController *) controller
+                              page : (NSInteger) page
+                        scrollView : (UIScrollView *) scrollView
+        controllerToAddControllerTo: (UIViewController *) controllerToAddControllerTo
+                             frame : (CGRect) frame
+{
+    // Check to see if this controller has already been added to any view
     if (controller.view.superview == nil)
     {
-        CGRect frame = self.scrollView.frame;
-        frame.origin.x = CGRectGetWidth(frame) * page;
-        frame.origin.y = 0;
-        
-        //frame.size.height = 820;
-        
         controller.view.frame = frame;
         
-        [self addChildViewController:controller];
-        [self.scrollView addSubview:controller.view];
+        [controllerToAddControllerTo addChildViewController:controller];
+        [scrollView addSubview:controller.view];
         [controller didMoveToParentViewController:self];
     }
 }
@@ -251,21 +310,46 @@
 
 //Add the add comment button
 - (void) addButtonToViewTags : (UIView *) view
+              viewDictionary : (NSDictionary *) viewDictionary
+                      button : (UIButton *) commentButton
 {
-    //Create the button
-    UIButton *myButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //Set it on the second view when scrolled down
-    CGRect frame = CGRectMake(123, 470, 75, 75);
-    myButton.frame = frame;
+    commentButton.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:commentButton attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:75];
+    
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:commentButton attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:75];
+    
+    //Add the height and width constraints to the button itself
+    NSArray *constraints = [[NSArray alloc] initWithObjects:heightConstraint, widthConstraint, nil];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"commentbutton.png"];
     //Set the image background
-    [myButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+    [commentButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
     
-    [myButton addTarget:self action:@selector(commentButtonPressed) forControlEvents:UIControlEventTouchDown];
-    myButton.userInteractionEnabled = YES;
+    [commentButton addTarget:self action:@selector(commentButtonPressed) forControlEvents:UIControlEventTouchDown];
+    commentButton.userInteractionEnabled = YES;
     
-    [view addSubview:myButton];
+    [view addSubview:commentButton];
+    [commentButton addConstraints:constraints];
+    
+    //Create the constraint that will keep the button 20 pixels from the top
+    NSArray *spaceToTable = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[commentButton]-20-[conversationTableView]" options:0 metrics:nil views:viewDictionary];
+    //Create the view that will hold the commentbutton superview so that we can add it to NSDictionaryOfVariableBindings to use with the constraint.
+    UIView *superView = commentButton.superview;
+    
+    //Store the comment button and it's superview in the dictionary to use for the constraint
+    viewDictionary = NSDictionaryOfVariableBindings(superView, commentButton);
+    
+    NSArray *spaceToTop = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[commentButton]-180-[superView]" options:0 metrics:nil views:viewDictionary];
+    
+    //Create the constraint that will keep the button in the middle
+    NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:commentButton attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:commentButton.superview attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    
+    constraints = [[NSArray alloc] initWithObjects:[spaceToTable objectAtIndex:0], [spaceToTop objectAtIndex:0], centerX, nil];
+    [commentButton.superview addConstraints:constraints];
+ 
+    
+    NSLog(@"Comment Button Frame - %@",NSStringFromCGSize(commentButton.frame.size));
 }
 
 - (void) commentButtonPressed
@@ -287,11 +371,11 @@
         contentsFrame.origin.x = 0.0f;
     }
     
-    if (contentsFrame.size.height < boundsSize.height) {
-        contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0f;
-    } else {
+//    if (contentsFrame.size.height < boundsSize.height) {
+//        contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0f;
+//    } else {
         contentsFrame.origin.y = 0.0f;
-    }
+//    }
     
     self.containerView.frame = contentsFrame;
 }
@@ -309,6 +393,17 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    for (NSInteger i = 0; i < [self.viewControllers count]; i++)
+    {
+        UIViewController *controller = [self.viewControllers objectAtIndex:i];
+        if ((NSNull *) controller != [NSNull null])
+        {
+            [controller.view removeFromSuperview];
+            [controller removeFromParentViewController];
+        }
+    }
+    
   //  [super viewDidLoad];
     [self loadTags];
     

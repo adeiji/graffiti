@@ -14,6 +14,6 @@
 @property (strong, nonatomic) UITextView *txtTagContent;
 
 - (void) layoutSubviews;
-@property (strong, nonatomic) UITextView *txtConversation;
+@property (strong, nonatomic) IBOutlet UITextView *txtConversation;
 
 @end

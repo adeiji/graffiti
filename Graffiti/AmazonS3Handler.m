@@ -21,9 +21,9 @@
     NSString *contentType = [myContent valueForKey:CONTENT_TYPE];
     NSString *tagName = [myContent valueForKey:TAG_NAME];
     
-   // [AmazonErrorHandler shouldNotThrowExceptions];
+    [AmazonErrorHandler shouldNotThrowExceptions];
     
-    NSData *contentData = UIImageJPEGRepresentation(content, 1.0);
+    NSData *contentData = content;
     
     [self UploadContentToServer:contentData :contentType :tagName];
     
@@ -56,17 +56,42 @@
         por.contentType = @"image/jpeg";
         por.data = contentData;
     }
+    else if ([contentType isEqualToString:@"audio"])
+    {
+        por.contentType = @"audio/m4a";
+        por.data = contentData;
+    }
+    else if ([contentType isEqualToString:@"video"])
+    {
+        por.contentType = @"video/quicktime";
+        por.data = contentData;
+    }
     
     [s3 putObject:por];
     
-    [self AssignUrl:bucketName :tagName :s3];
+    [self AssignUrl:bucketName tagName : tagName s3:s3 ContentType:contentType];
 }
 
--(void) AssignUrl : (NSString *) bucketName : (NSString *) tagName : (AmazonS3Client *) s3
+-(void) AssignUrl : (NSString *) bucketName
+          tagName : (NSString *) tagName
+               s3 : (AmazonS3Client *) s3
+      ContentType : contentType
 {
     //create an override content type to ensure that the "content" will be treated as an image by the browser.
     S3ResponseHeaderOverrides *override = [[S3ResponseHeaderOverrides alloc] init];
-    override.contentType = @"image/jpeg";
+    
+    if ([contentType isEqualToString:@"image"])
+    {
+        override.contentType = @"image/jpeg";
+    }
+    else if ([contentType isEqualToString:@"audio"])
+    {
+        override.contentType = @"audio/m4a";
+    }
+    else if ([contentType isEqualToString:@"video"])
+    {
+        override.contentType = @"video/quicktime";
+    }
     
     S3GetPreSignedURLRequest *getPreSignedUrlRequest = [[S3GetPreSignedURLRequest alloc] init];
     getPreSignedUrlRequest.key = tagName;

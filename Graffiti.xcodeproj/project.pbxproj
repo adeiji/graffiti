@@ -89,6 +89,8 @@
 		CE9B92EA1763EB26007FA4CF /* spraycannoalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */; };
 		CE9B92EC1763ED5C007FA4CF /* tagit.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92EB1763ED5C007FA4CF /* tagit.png */; };
 		CE9F38A9175ECA7E00656674 /* graffitilogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */; };
+		CEA98F7317E1123300915A53 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA98F7217E1123300915A53 /* MobileCoreServices.framework */; };
+		CEA98F7717E11B2600915A53 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEA98F7617E11B2600915A53 /* MediaPlayer.framework */; };
 		CEB21CC117CF8D0C007C6125 /* RefreshButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB21CC017CF8D0B007C6125 /* RefreshButtonView.xib */; };
 		CEB21CC317CF8D8D007C6125 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = CEB21CC217CF8D8D007C6125 /* refresh.png */; };
 		CEB21CC817CF8F5E007C6125 /* RefreshButtonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEB21CC717CF8F5E007C6125 /* RefreshButtonViewController.m */; };
@@ -305,6 +307,8 @@
 		CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spraycannoalpha.png; sourceTree = "<group>"; };
 		CE9B92EB1763ED5C007FA4CF /* tagit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tagit.png; path = ../images/tagit.png; sourceTree = "<group>"; };
 		CE9F38A8175ECA7E00656674 /* graffitilogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = graffitilogo.jpg; path = ../graffitilogo.jpg; sourceTree = "<group>"; };
+		CEA98F7217E1123300915A53 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CEA98F7617E11B2600915A53 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		CEB21CC017CF8D0B007C6125 /* RefreshButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RefreshButtonView.xib; sourceTree = "<group>"; };
 		CEB21CC217CF8D8D007C6125 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = refresh.png; path = images/refresh.png; sourceTree = "<group>"; };
 		CEB21CC617CF8F5E007C6125 /* RefreshButtonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshButtonViewController.h; sourceTree = "<group>"; };
@@ -447,6 +451,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEA98F7717E11B2600915A53 /* MediaPlayer.framework in Frameworks */,
+				CEA98F7317E1123300915A53 /* MobileCoreServices.framework in Frameworks */,
 				CE1D4AC617D9189C00A2FB29 /* AudioToolbox.framework in Frameworks */,
 				CED3D00E17D8FDC1005FAF15 /* AVFoundation.framework in Frameworks */,
 				CE3462CA17CE4B1A009D92BF /* MapKit.framework in Frameworks */,
@@ -612,6 +618,8 @@
 		CE9A068517398B2D00783843 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CEA98F7617E11B2600915A53 /* MediaPlayer.framework */,
+				CEA98F7217E1123300915A53 /* MobileCoreServices.framework */,
 				CE1D4AC517D9189C00A2FB29 /* AudioToolbox.framework */,
 				CED3D00D17D8FDC1005FAF15 /* AVFoundation.framework */,
 				CEEEDF49173AD6B400A4DE20 /* CoreLocation.framework */,

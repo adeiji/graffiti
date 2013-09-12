@@ -112,4 +112,8 @@
 - (IBAction)cancelButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+- (IBAction)useAudioPressed:(id)sender {
+    [self saveAudio:sender];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 @end

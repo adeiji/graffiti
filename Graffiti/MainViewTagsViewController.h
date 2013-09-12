@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Tag.h"
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface MainViewTagsViewController : UIViewController
 
@@ -20,5 +21,7 @@
 - (IBAction)navigateButtonPressed:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIView *displayTagView;
+
+@property (strong, nonatomic) MPMoviePlayerController *movieController;
 
 @end

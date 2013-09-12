@@ -56,6 +56,8 @@
     self.tableView.dataSource = self;
     
     cellHeights = [[NSMutableArray alloc] init];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,59 +72,51 @@
     
     if (txtComment.contentSize.height > txtComment.frame.size.height && txtComment.frame.size.height < MAX_HEIGHT)
     {
-        CGRect frame = txtComment.frame;
+        int tableViewSpaceToBottomConstraintConstant = self.tableViewSpaceToBottomConstraint.constant;
+        int textViewHeight = self.textViewHeightConstraint.constant;
         
-        int heightChange = txtComment.contentSize.height - frame.size.height;
+        [txtComment removeConstraint:self.textViewHeightConstraint];
+        [self.tableView.superview removeConstraint:self.tableViewSpaceToBottomConstraint];
         
-        //Change the view that the text view is inside by increasing the height, and moving the view up  to compensate for the new height
-        frame = txtComment.superview.frame;
-        frame.size.height += heightChange;
-        frame.origin.y -= heightChange;
-        txtComment.superview.frame = frame;
+        self.tableViewSpaceToBottomConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.tableView.superview attribute:NSLayoutAttributeTop multiplier:0 constant:tableViewSpaceToBottomConstraintConstant + txtComment.font.lineHeight];
         
-        frame = txtComment.frame;
-        frame.size.height = txtComment.contentSize.height;
-        txtComment.frame = frame;
+        self.textViewHeightConstraint = [NSLayoutConstraint constraintWithItem:txtComment attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0 constant:textViewHeight + txtComment.font.lineHeight];
         
-        frame = self.sendButton.frame;
-        frame.origin.y += heightChange;
-        self.sendButton.frame = frame;
+        [txtComment addConstraint:self.textViewHeightConstraint];
+        [self.tableView.superview addConstraint:self.tableViewSpaceToBottomConstraint];
         
-        frame = self.tableView.frame;
-        frame.size.height -= heightChange;
-        self.tableView.frame = frame;
+        NSLog(@"Text View Frame : %@",NSStringFromCGRect(txtComment.frame));
         
-        NSLog(@"Height Changed");
     }
     else if (txtComment.contentSize.height < txtComment.frame.size.height)
     {
-        CGRect frame = txtComment.frame;
-        
-        int heightChange = frame.size.height - txtComment.contentSize.height;
-        
-        //Change the view that the text view is inside by increasing the height, and moving the view up  to compensate for the new height
-        frame = txtComment.superview.frame;
-        frame.size.height -= heightChange;
-        frame.origin.y += heightChange;
-        
-        txtComment.superview.frame = frame;
-        
-        frame = txtComment.frame;
-        
-        frame.size.height = txtComment.contentSize.height;
-        txtComment.frame = frame;
-        
-        frame = self.sendButton.frame;
-        
-        frame.origin.y -= heightChange;
-        
-        self.sendButton.frame = frame;
-        
-        frame = self.tableView.frame;
-        frame.size.height += heightChange;
-        self.tableView.frame = frame;
-        
-        NSLog(@"Height Changed");
+//        CGRect frame = txtComment.frame;
+//        
+//        int heightChange = frame.size.height - txtComment.contentSize.height;
+//        
+//        //Change the view that the text view is inside by increasing the height, and moving the view up  to compensate for the new height
+//        frame = txtComment.superview.frame;
+//        frame.size.height -= heightChange;
+//        frame.origin.y += heightChange;
+//        
+//        txtComment.superview.frame = frame;
+//        
+//        frame = txtComment.frame;
+//        
+//        frame.size.height = txtComment.contentSize.height;
+//        txtComment.frame = frame;
+//        
+//        frame = self.sendButton.frame;
+//        
+//        frame.origin.y -= heightChange;
+//        
+//        self.sendButton.frame = frame;
+//        
+//        frame = self.tableView.frame;
+//        frame.size.height += heightChange;
+//        self.tableView.frame = frame;
+//        
+//        NSLog(@"Height Changed");
     }
 }
 
@@ -193,12 +187,12 @@
     //Open up what was said in the initialConversationArray
     cell.txtConversation.text = [initialConversationArray objectAtIndex:indexPath.row];
     
-    CGRect frame = cell.txtConversation.frame;
-    
-    frame.size.height = cell.txtConversation.contentSize.height;
-    //frame.origin.y = cell.frame.origin.y;
-    frame.size.width = 320;
-    cell.txtConversation.frame = frame;
+//    CGRect frame = cell.txtConversation.frame;
+//    
+//    frame.size.height = cell.txtConversation.contentSize.height;
+//    //frame.origin.y = cell.frame.origin.y;
+//    frame.size.width = 320;
+//    cell.txtConversation.frame = frame;
     
     NSLog(@"Table content height is %@", NSStringFromCGSize(self.tableView.contentSize));
     NSLog(@"Cell Subview : %@", [cell.subviews description]);
@@ -210,7 +204,7 @@
     NSString *comment = [initialConversationArray objectAtIndex:indexPath.row];
     CGSize size = [comment sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(320, 1000) lineBreakMode:NSLineBreakByWordWrapping];
     
-    return size.height;
+    return size.height * 2;
 }
 
 

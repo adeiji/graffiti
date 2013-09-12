@@ -24,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *playButton;
 - (IBAction)cancelButtonPressed:(id)sender;
 @property (strong, nonatomic) NSURL *audioUrl;
+- (IBAction)useAudioPressed:(id)sender;
 
 
 @end

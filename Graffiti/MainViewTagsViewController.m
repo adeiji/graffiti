@@ -13,12 +13,15 @@
 #import "UIActivityIndicator-for-SDWebImage/UIImageView+UIActivityIndicatorForSDWebImage.h"
 #import "MongoDbTags.h"
 #import "TagEnumValue.h"
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface MainViewTagsViewController ()
 {
     int pageNumber;
     NSDictionary* tag;
     MACircleProgressIndicator *circleProgressIndicator;
+    AVAudioPlayer *player;;
 }
 @end
 
@@ -80,11 +83,84 @@
             //Remove the circle at finish of completion
             [circleProgressIndicator removeFromSuperview];
         }];
-        }
+    }
+    else if ([[tag valueForKey:[TagEnumValue getStringValue:TAG_CONTENT_TYPE_COLUMN]] isEqualToString:[TagEnumValue getStringValue:CONTENT_TYPE_AUDIO]])
+    {
+        UIButton *playAudio = [UIButton buttonWithType:UIButtonTypeCustom];
+        playAudio.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        UIImage *backgroundImage = [UIImage imageNamed:@"playButton.png"];
+        [playAudio setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+        
+        [playAudio addTarget:self action:@selector(playAudioButtonPressed) forControlEvents:UIControlEventTouchDown];
+        playAudio.userInteractionEnabled = YES;
+        
+        [self.displayTagView addSubview:playAudio];
+        
+        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:playAudio attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:1.0 constant:150];
+        
+        NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:playAudio attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeWidth multiplier:1.0 constant:150];
+        
+        NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:playAudio attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:playAudio.superview attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+        
+        NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:playAudio attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:playAudio.superview attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+        
+        [playAudio addConstraint:heightConstraint];
+        [playAudio addConstraint:widthConstraint];
+        
+        [playAudio.superview addConstraint:centerX];
+        [playAudio.superview addConstraint:centerY];
+        
+        self.tagContent.hidden = YES;
+        
+        //Setup audio session
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        //enables audio output
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+        [session setActive:YES error:nil];
+
+    }
+    else if ([[tag valueForKey:[TagEnumValue getStringValue:TAG_CONTENT_TYPE_COLUMN]] isEqualToString:[TagEnumValue getStringValue:CONTENT_TYPE_VIDEO]])
+    {
+        self.movieController = [[MPMoviePlayerController alloc] init];
+       // [self.movieController.view setFrame:CGRectMake(0, 0, 150, 150)];
+        self.movieController.view.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        NSString *urlString = [[tag valueForKey:[TagEnumValue getStringValue:TAG_DATA_URL_COLUMN]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\""]];
+        NSURL *url = [NSURL URLWithString:urlString];
+        
+        [self.movieController setContentURL:url];
+        [self.displayTagView addSubview:self.movieController.view];
+        
+        NSLayoutConstraint *heightConstraint = [NSLayoutConstraint constraintWithItem:self.movieController.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self.movieController.view.superview attribute:NSLayoutAttributeHeight multiplier:1.0 constant:0];
+        
+        NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.movieController.view attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self.movieController.view.superview attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0];
+        
+        NSLayoutConstraint *centerX = [NSLayoutConstraint constraintWithItem:self.movieController.view attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.movieController.view.superview attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+        
+        NSLayoutConstraint *centerY = [NSLayoutConstraint constraintWithItem:self.movieController.view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.movieController.view.superview attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0];
+        
+        NSArray *centerConstraints = [[NSArray alloc] initWithObjects:heightConstraint, widthConstraint, centerX, centerY, nil];
+        
+        [self.movieController.view.superview addConstraints:centerConstraints];
+        [self.movieController prepareToPlay];
+    }
+        
     self.txtTagger.text = [tag valueForKey:@"name"];
     self.txtContent.text = [tag valueForKey:@"content"];
-    
 }
+
+- (void) playAudioButtonPressed
+{
+    NSString *stringUrl = [[tag valueForKey:@"url"] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"\""]];
+    NSURL *url = [NSURL URLWithString:stringUrl];
+    NSData *audioData = [NSData dataWithContentsOfURL:url];
+    
+    player = [[AVAudioPlayer alloc] initWithData:audioData error:nil];
+    [player play];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {

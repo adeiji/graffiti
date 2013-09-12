@@ -15,6 +15,9 @@
     @property (strong, nonatomic) IBOutlet UIView *view;
     @property (strong, nonatomic) IBOutlet UITextView *txtTag;
     @property (strong, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+    @property (strong, nonatomic) IBOutlet UIBarButtonItem *audioButton;
+    @property (strong, nonatomic) IBOutlet UIBarButtonItem *videoButton;
+
     @property (strong, nonatomic) IBOutlet UINavigationBar *ComposeTagNavBar;
     @property (strong, nonatomic) IBOutlet UIBarButtonItem *btnTagIt;
     @property (strong, nonatomic) CLLocationManager *myLocationManager;
@@ -25,5 +28,6 @@
     - (IBAction)btnTagItPressed:(id)sender;
     - (IBAction)btnCancelPressed:(id)sender;
     - (IBAction)audioButtonPressed:(id)sender;
+    - (IBAction)videoButtonPressed:(id)sender;
 
 @end

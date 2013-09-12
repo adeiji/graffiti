@@ -168,6 +168,8 @@
         case CONTENT_TYPE_IMAGE:
             return @"image";
             break;
+        case CONTENT_TYPE_VIDEO:
+            return @"video";
         default:
             return @"NO_SUCH_COLUMN";
             break;

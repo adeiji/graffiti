@@ -17,12 +17,15 @@
 #import "TagAudioViewController.h"
 #import "TagTypes.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import <MobileCoreServices/MobileCoreServices.h>
 
 @interface SecondViewController ()
 {
     Tag *tag;
     UIImage *myImage;
     NSURL *audioUrl;
+    TagAudioViewController *tagAudioViewController;
+    NSURL *movieUrl;
 }
 
 @end
@@ -91,10 +94,12 @@
 
 - (IBAction)CameraButtonPressed:(id)sender {
     // Do any additional setup after loading the view, typically from a nib.
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) //Check to see if this device uses a camera
     {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
         picker.delegate = self;
+        picker.allowsEditing = YES;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         [self presentViewController:picker animated:YES completion:nil];
         //Set the tag type to image
@@ -115,12 +120,30 @@
 
 - (IBAction)audioButtonPressed:(id)sender {
     
-    TagAudioViewController *tagAudioViewController = [[TagAudioViewController alloc] initWithNibName:@"TagAudioView" bundle:nil];
+    tagAudioViewController = [[TagAudioViewController alloc] initWithNibName:@"TagAudioView" bundle:nil];
     
     tagAudioViewController.audioUrl = audioUrl;
     tag.type = [TagEnumValue getStringValueForTagType:TYPE_AUDIO];
     
     [self.navigationController pushViewController:tagAudioViewController animated:YES];
+    
+    [cameraButton setTintColor:[UIColor clearColor]];
+    [_audioButton setTintColor:[UIColor redColor]];
+}
+
+- (IBAction)videoButtonPressed:(id)sender
+{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) //Check to see if this device uses a camera
+    {
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.delegate = self;
+        picker.allowsEditing = YES;
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        picker.mediaTypes = [[NSArray alloc] initWithObjects:(NSString *) kUTTypeMovie, nil];
+        [self presentViewController:picker animated:YES completion:nil];
+        //Set the tag type to image
+        tag.type = [TagEnumValue getStringValueForTagType:TYPE_VIDEO];
+    }
 }
 
 - (void) gotoPreviousWindow
@@ -173,10 +196,11 @@
     }
     else if ([tag.type isEqualToString:[TagEnumValue getStringValueForTagType:TYPE_AUDIO]])
     {
-        tag.data = [NSData dataWithContentsOfURL:audioUrl options:0 error:nil];
-        
-        NSArray *pathComponents = [NSArray arrayWithObjects:[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject], @"audio.m4a", nil];
-        NSURL *outputFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+        tag.data = [NSData dataWithContentsOfURL:tagAudioViewController.audioUrl options:0 error:nil];
+    }
+    else if ([tag.type isEqualToString:[TagEnumValue getStringValueForTagType:TYPE_VIDEO]])
+    {
+        tag.data = [NSData dataWithContentsOfURL:movieUrl options:0 error:nil];
     }
     //Add the content information to a dictionary and then send this information to the Amazon S3 Handler so that it can asynchronously upload this data to the S3 server.
     [contentDictionary setObject:tag.data forKey:CONTENT];
@@ -243,13 +267,19 @@
     //Get the name of the Tag from the alertview textfield and then save this information to the database
     for (UIView* view in alertView.subviews)
     {
-        if ([[alertView subviews] count] != 0)
-        {
+        @try {
             NSString *name = [alertView textFieldAtIndex:0].text;
             //Create the actual tag asyncronously
-      //      [self CreateTag:name];
+            //[self CreateTag:name];
             [self performSelectorInBackground:@selector(CreateTag:) withObject:name];
             [self gotoPreviousWindow];
+            
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Error: Alert view does not contain a text field.");
+        }
+        @finally {
+            NSLog(@"ERROR");
         }
     }
 }
@@ -257,13 +287,20 @@
 #pragma mark - Camera Delegate Methods
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    myImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    myImage = [UIImage imageWithCGImage:myImage.CGImage scale:1.0f orientation:UIImageOrientationRight];
+    if (tag.type == [TagEnumValue getStringValueForTagType:TYPE_AUDIO])
+    {
+        myImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+        myImage = [UIImage imageWithCGImage:myImage.CGImage scale:1.0f orientation:UIImageOrientationRight];
+        [cameraButton setTintColor:[UIColor redColor]];
+        [_audioButton setTintColor:[UIColor clearColor]];
+    }
+    else if (tag.type == [TagEnumValue getStringValueForTagType:TYPE_VIDEO])
+    {
+        movieUrl = info[UIImagePickerControllerMediaURL];
+        [self.videoButton setTintColor:[UIColor redColor]];
+        [_audioButton setTintColor:[UIColor clearColor]];
+    }
     
-    //Display the image at the top of the page
-    [self DisplayImage:myImage];
-    [cameraButton setTintColor:[UIColor redColor]];
-
     [picker dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -271,7 +308,7 @@
 -(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [picker dismissViewControllerAnimated:YES completion:nil];
-     [cameraButton setTintColor:[UIColor clearColor]];
+     //[cameraButton setTintColor:[UIColor clearColor]];
 }
 
 #pragma mark - Keyboard Delegate Methods

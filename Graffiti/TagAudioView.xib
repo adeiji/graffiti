@@ -17,24 +17,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="background.png" translatesAutoresizingMaskIntoConstraints="NO" id="58">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" image="brickbackground.png" translatesAutoresizingMaskIntoConstraints="NO" id="106">
-                    <rect key="frame" x="0.0" y="-5" width="320" height="573"/>
+                    <rect key="frame" x="0.0" y="-2" width="320" height="573"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="bottomLeft" fixedFrame="YES" image="sprayline.png" translatesAutoresizingMaskIntoConstraints="NO" id="113">
-                    <rect key="frame" x="0.0" y="360" width="25" height="20"/>
+                <imageView userInteractionEnabled="NO" contentMode="bottomLeft" image="sprayline.png" translatesAutoresizingMaskIntoConstraints="NO" id="113">
+                    <rect key="frame" x="0.0" y="339" width="25" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" image="pressandhold.png" translatesAutoresizingMaskIntoConstraints="NO" id="131">
-                    <rect key="frame" x="8" y="393" width="305" height="87"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" image="pressandhold.png" translatesAutoresizingMaskIntoConstraints="NO" id="131">
+                    <rect key="frame" x="8" y="386" width="305" height="87"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42">
-                    <rect key="frame" x="68" y="82" width="184" height="182"/>
+                <button opaque="NO" alpha="0.89999997615814209" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="42">
+                    <rect key="frame" x="68" y="57" width="184" height="182"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="184" id="6hN-Tx-PSL"/>
@@ -54,7 +50,7 @@
                     </connections>
                 </button>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="218">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="13" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <items>
                         <navigationItem title="Tag Audio" id="219">
@@ -66,14 +62,14 @@
                             <barButtonItem key="rightBarButtonItem" title="Use Audio" id="234">
                                 <color key="tintColor" red="0.40139619430000001" green="0.78554105299999999" blue="0.3505192956" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <action selector="saveAudio:" destination="-1" id="lgb-5M-wd2"/>
+                                    <action selector="useAudioPressed:" destination="-1" id="cqa-xG-wCm"/>
                                 </connections>
                             </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwL-za-sba">
-                    <rect key="frame" x="123" y="272" width="75" height="75"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RwL-za-sba">
+                    <rect key="frame" x="123" y="247" width="75" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" backgroundImage="playButton.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -84,17 +80,27 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="131" secondAttribute="bottom" id="6qD-Ps-3ge"/>
+                <constraint firstAttribute="trailing" secondItem="113" secondAttribute="trailing" constant="295" id="2zT-31-MKX"/>
+                <constraint firstAttribute="trailing" secondItem="131" secondAttribute="trailing" constant="7" id="53Q-eW-gBp"/>
+                <constraint firstItem="131" firstAttribute="top" relation="greaterThanOrEqual" secondItem="1" secondAttribute="top" constant="386" id="Ihw-cq-djs"/>
+                <constraint firstAttribute="bottom" secondItem="131" secondAttribute="bottom" constant="7" id="Sk5-ZK-vdF"/>
+                <constraint firstItem="RwL-za-sba" firstAttribute="top" secondItem="42" secondAttribute="bottom" constant="8" id="U2Z-8y-tYI"/>
+                <constraint firstItem="131" firstAttribute="top" secondItem="113" secondAttribute="bottom" constant="27" id="We9-XG-aQx"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="RwL-za-sba" secondAttribute="bottom" constant="158" id="Wod-bn-zGB"/>
                 <constraint firstAttribute="centerX" secondItem="42" secondAttribute="centerX" id="ZD0-0S-VRF"/>
+                <constraint firstItem="RwL-za-sba" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="123" id="eeG-xP-35M"/>
+                <constraint firstItem="131" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="8" id="mdk-fA-Qhn"/>
+                <constraint firstItem="113" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="qNL-IZ-i4s"/>
+                <constraint firstAttribute="trailing" secondItem="RwL-za-sba" secondAttribute="trailing" constant="122" id="qUD-h0-oVw"/>
+                <constraint firstItem="42" firstAttribute="top" secondItem="1" secondAttribute="top" constant="57" id="xWo-HQ-0BA"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
-        <image name="background.png" width="320" height="480"/>
         <image name="brickbackground.png" width="500" height="500"/>
         <image name="playButton.png" width="500" height="500"/>
         <image name="pressandhold.png" width="320" height="200"/>

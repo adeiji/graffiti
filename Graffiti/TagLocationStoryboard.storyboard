@@ -83,7 +83,11 @@
                                                     <action selector="audioButtonPressed:" destination="NyI-Pr-veV" id="Ip5-7x-3c6"/>
                                                 </connections>
                                             </barButtonItem>
-                                            <barButtonItem systemItem="refresh" id="FfM-yu-6Hj"/>
+                                            <barButtonItem systemItem="fastForward" id="FfM-yu-6Hj">
+                                                <connections>
+                                                    <action selector="videoButtonPressed:" destination="NyI-Pr-veV" id="ItS-Y9-cns"/>
+                                                </connections>
+                                            </barButtonItem>
                                         </items>
                                     </toolbar>
                                 </subviews>
@@ -102,9 +106,11 @@
                     <navigationItem key="navigationItem" id="bOE-rk-HGj"/>
                     <connections>
                         <outlet property="ComposeTagNavBar" destination="0X3-eJ-1Xa" id="9wm-tp-tI6"/>
+                        <outlet property="audioButton" destination="QGa-hU-rBg" id="nXT-WS-5MV"/>
                         <outlet property="btnTagIt" destination="dK9-qR-tf7" id="Wzy-mA-tCN"/>
                         <outlet property="cameraButton" destination="Yk2-SG-Jnc" id="2bQ-xZ-Zxk"/>
                         <outlet property="txtTag" destination="puc-sK-O08" id="OJ3-2N-Sdx"/>
+                        <outlet property="videoButton" destination="FfM-yu-6Hj" id="mvM-KH-LHP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SGa-yK-Gx0" sceneMemberID="firstResponder"/>
