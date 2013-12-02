@@ -25,8 +25,6 @@
 @implementation CommentViewController
 
 @synthesize txtComment;
-@synthesize initialConversationArray;
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,6 +41,23 @@
     tag = myTag;
 }
 
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    //Remove all the memory allocations
+    self.view = nil;
+    self.tag = nil;
+    self.txtComment = nil;
+    self.tableView = nil;
+    self.barView = nil;
+    self.sendButton = nil;
+    self.tableViewSpaceToBottomConstraint = nil;
+    self.textViewSpaceToTopConstraint = nil;
+    self.textViewHeightConstraint = nil;
+    self.initialConversationArray = nil;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -52,12 +67,12 @@
     txtComment.layer.borderWidth = 1.0f;
     txtComment.layer.borderColor = [[UIColor grayColor] CGColor];
     
+    txtComment.contentInset = UIEdgeInsetsMake(2.0f, 2.0f, 2.0f, 2.0f);
+    
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
     cellHeights = [[NSMutableArray alloc] init];
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,55 +84,39 @@
 - (void) textViewDidChange:(UITextView *)textView
 {
     int const MAX_HEIGHT = 70;
+    static int line = 1;
+    int originalTextViewHeight = txtComment.frame.size.height;
     
-    if (txtComment.contentSize.height > txtComment.frame.size.height && txtComment.frame.size.height < MAX_HEIGHT)
+    NSLog(@"Comment View Controller text view content size: %@", NSStringFromCGSize(txtComment.contentSize));
+    NSLog(@"Comment View Controller text view frame size: %@", NSStringFromCGSize(txtComment.frame.size));
+    
+    if (txtComment.contentSize.height + txtComment.contentInset.bottom + txtComment.contentInset.top > txtComment.frame.size.height && txtComment.frame.size.height < MAX_HEIGHT)
     {
-        int tableViewSpaceToBottomConstraintConstant = self.tableViewSpaceToBottomConstraint.constant;
-        int textViewHeight = self.textViewHeightConstraint.constant;
+        line++;
+        int textViewHeight = (line * txtComment.font.lineHeight) + txtComment.contentInset.bottom + txtComment.contentInset.top;
         
-        [txtComment removeConstraint:self.textViewHeightConstraint];
-        [self.tableView.superview removeConstraint:self.tableViewSpaceToBottomConstraint];
+        int heightDifference = textViewHeight - originalTextViewHeight;
         
-        self.tableViewSpaceToBottomConstraint = [NSLayoutConstraint constraintWithItem:self.tableView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.tableView.superview attribute:NSLayoutAttributeTop multiplier:0 constant:tableViewSpaceToBottomConstraintConstant + txtComment.font.lineHeight];
-        
-        self.textViewHeightConstraint = [NSLayoutConstraint constraintWithItem:txtComment attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeHeight multiplier:0 constant:textViewHeight + txtComment.font.lineHeight];
-        
-        [txtComment addConstraint:self.textViewHeightConstraint];
-        [self.tableView.superview addConstraint:self.tableViewSpaceToBottomConstraint];
-        
+        self.tableViewSpaceToBottomConstraint.constant += heightDifference;
+   
+        NSLog(@"Height of Comment View Controller Text Changed");
         NSLog(@"Text View Frame : %@",NSStringFromCGRect(txtComment.frame));
         
+        textViewHeight = 0;
+        heightDifference = 0;
     }
-    else if (txtComment.contentSize.height < txtComment.frame.size.height)
+    else if (txtComment.contentSize.height + txtComment.contentInset.bottom + txtComment.contentInset.top < txtComment.frame.size.height)
     {
-//        CGRect frame = txtComment.frame;
-//        
-//        int heightChange = frame.size.height - txtComment.contentSize.height;
-//        
-//        //Change the view that the text view is inside by increasing the height, and moving the view up  to compensate for the new height
-//        frame = txtComment.superview.frame;
-//        frame.size.height -= heightChange;
-//        frame.origin.y += heightChange;
-//        
-//        txtComment.superview.frame = frame;
-//        
-//        frame = txtComment.frame;
-//        
-//        frame.size.height = txtComment.contentSize.height;
-//        txtComment.frame = frame;
-//        
-//        frame = self.sendButton.frame;
-//        
-//        frame.origin.y -= heightChange;
-//        
-//        self.sendButton.frame = frame;
-//        
-//        frame = self.tableView.frame;
-//        frame.size.height += heightChange;
-//        self.tableView.frame = frame;
-//        
-//        NSLog(@"Height Changed");
+        line --;
+        int textViewHeight = (line * txtComment.font.lineHeight) + txtComment.contentInset.bottom + txtComment.contentInset.top;
+        int heightDifference = originalTextViewHeight - textViewHeight;
+
+        self.tableViewSpaceToBottomConstraint.constant -= heightDifference;
+        
+        textViewHeight = 0;
+        heightDifference = 0;
     }
+    
 }
 
 - (IBAction)viewTagsPressed:(id)sender {
@@ -128,11 +127,11 @@
     
     NSMutableArray *updatedConversationArray ;
     
-    initialConversationArray = [tag valueForKey:[TagEnumValue getStringValue:TAG_COMMENTS_COLUMN]];
+    self.initialConversationArray = [tag valueForKey:[TagEnumValue getStringValue:TAG_COMMENTS_COLUMN]];
     //If the initialConversationArray is null then the app will crash
-    if (![initialConversationArray isEqual:[NSNull null]])
+    if (![self.initialConversationArray isEqual:[NSNull null]])
     {
-        updatedConversationArray = [[NSMutableArray alloc] initWithArray:initialConversationArray];
+        updatedConversationArray = [[NSMutableArray alloc] initWithArray:self.initialConversationArray];
     }
     else
     {
@@ -141,7 +140,7 @@
     
     [updatedConversationArray addObject:txtComment.text];
     
-    NSMutableDictionary *oldValue = [[NSMutableDictionary alloc] initWithObjectsAndKeys:initialConversationArray, [TagEnumValue getStringValue:TAG_COMMENTS_COLUMN], nil];
+    NSMutableDictionary *oldValue = [[NSMutableDictionary alloc] initWithObjectsAndKeys:self.initialConversationArray, [TagEnumValue getStringValue:TAG_COMMENTS_COLUMN], nil];
     
     NSMutableDictionary *newValue = [[NSMutableDictionary alloc] initWithObjectsAndKeys:updatedConversationArray, [TagEnumValue getStringValue:TAG_COMMENTS_COLUMN], nil];
     
@@ -164,12 +163,14 @@
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    initialConversationArray =  [tag valueForKey:[TagEnumValue getStringValue:TAG_COMMENTS_COLUMN]];
+    self.initialConversationArray =  [tag valueForKey:[TagEnumValue getStringValue:TAG_COMMENTS_COLUMN]];
     
-    if (![initialConversationArray isEqual:[NSNull null]])
+    if (![self.initialConversationArray isEqual:[NSNull null]])
     {
-        return [initialConversationArray count];
+        return [self.initialConversationArray count];
     }
+    
+    self.initialConversationArray = nil;
     
     return 0;
 }
@@ -185,7 +186,7 @@
     [cell.txtConversation setEditable:NO];
     
     //Open up what was said in the initialConversationArray
-    cell.txtConversation.text = [initialConversationArray objectAtIndex:indexPath.row];
+    cell.txtConversation.text = [self.initialConversationArray objectAtIndex:indexPath.row];
     
 //    CGRect frame = cell.txtConversation.frame;
 //    
@@ -201,7 +202,7 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *comment = [initialConversationArray objectAtIndex:indexPath.row];
+    NSString *comment = [self.initialConversationArray objectAtIndex:indexPath.row];
     CGSize size = [comment sizeWithFont:[UIFont systemFontOfSize:14.0f] constrainedToSize:CGSizeMake(320, 1000) lineBreakMode:NSLineBreakByWordWrapping];
     
     return size.height * 2;

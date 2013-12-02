@@ -54,6 +54,7 @@
 		CE3462D417CE56F0009D92BF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = CE3462CE17CE56F0009D92BF /* README.md */; };
 		CE3462D517CE56F0009D92BF /* UIActivityIndicator-for-SDWebImage.podspec in Resources */ = {isa = PBXBuildFile; fileRef = CE3462CF17CE56F0009D92BF /* UIActivityIndicator-for-SDWebImage.podspec */; };
 		CE3462D617CE56F0009D92BF /* UIImageView+UIActivityIndicatorForSDWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CE3462D117CE56F0009D92BF /* UIImageView+UIActivityIndicatorForSDWebImage.m */; };
+		CE75F0E618412B0D00E14DCB /* libCoreDataAI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE75F0E518412B0D00E14DCB /* libCoreDataAI.a */; };
 		CE8FC69D17BBF2DA001F9B69 /* Graffiti.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8FC69C17BBF2DA001F9B69 /* Graffiti.png */; };
 		CE8FC6A117BC0357001F9B69 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = CE8FC6A017BC0357001F9B69 /* background.png */; };
 		CE8FC6AA17BC3267001F9B69 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC6A917BC3267001F9B69 /* TagCell.m */; };
@@ -83,7 +84,6 @@
 		CE9A06BB17398B2E00783843 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9A068817398B2D00783843 /* Foundation.framework */; };
 		CE9A06C317398B2E00783843 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CE9A06C117398B2E00783843 /* InfoPlist.strings */; };
 		CE9A06C617398B2E00783843 /* GraffitiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CE9A06C517398B2E00783843 /* GraffitiTests.m */; };
-		CE9B4578175970890094BC9A /* libCoreDataAI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CE9B455F17595FC70094BC9A /* libCoreDataAI.a */; };
 		CE9B92E61763E2ED007FA4CF /* images in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E51763E2ED007FA4CF /* images */; };
 		CE9B92E81763E3F9007FA4CF /* homeButtonimage.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E71763E3F9007FA4CF /* homeButtonimage.png */; };
 		CE9B92EA1763EB26007FA4CF /* spraycannoalpha.png in Resources */ = {isa = PBXBuildFile; fileRef = CE9B92E91763EB26007FA4CF /* spraycannoalpha.png */; };
@@ -261,6 +261,7 @@
 		CE3462CF17CE56F0009D92BF /* UIActivityIndicator-for-SDWebImage.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "UIActivityIndicator-for-SDWebImage.podspec"; sourceTree = "<group>"; };
 		CE3462D017CE56F0009D92BF /* UIImageView+UIActivityIndicatorForSDWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+UIActivityIndicatorForSDWebImage.h"; sourceTree = "<group>"; };
 		CE3462D117CE56F0009D92BF /* UIImageView+UIActivityIndicatorForSDWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+UIActivityIndicatorForSDWebImage.m"; sourceTree = "<group>"; };
+		CE75F0E518412B0D00E14DCB /* libCoreDataAI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCoreDataAI.a; path = "../Created Libraries/Core Data/libCoreDataAI.a"; sourceTree = "<group>"; };
 		CE8FC69C17BBF2DA001F9B69 /* Graffiti.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Graffiti.png; path = images/Graffiti.png; sourceTree = "<group>"; };
 		CE8FC6A017BC0357001F9B69 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = images/background.png; sourceTree = "<group>"; };
 		CE8FC6A817BC3267001F9B69 /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
@@ -451,6 +452,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE75F0E618412B0D00E14DCB /* libCoreDataAI.a in Frameworks */,
 				CEA98F7717E11B2600915A53 /* MediaPlayer.framework in Frameworks */,
 				CEA98F7317E1123300915A53 /* MobileCoreServices.framework in Frameworks */,
 				CE1D4AC617D9189C00A2FB29 /* AudioToolbox.framework in Frameworks */,
@@ -458,7 +460,6 @@
 				CE3462CA17CE4B1A009D92BF /* MapKit.framework in Frameworks */,
 				CE3462C817CE4B02009D92BF /* ImageIO.framework in Frameworks */,
 				CEB9376917C68AFF00E825B9 /* QuartzCore.framework in Frameworks */,
-				CE9B4578175970890094BC9A /* libCoreDataAI.a in Frameworks */,
 				CE107C1E173C475500691F0C /* CoreData.framework in Frameworks */,
 				CEEEDF58173C459400A4DE20 /* AWSRuntime.framework in Frameworks */,
 				CEEEDF52173C383E00A4DE20 /* AWSS3.framework in Frameworks */,
@@ -593,6 +594,7 @@
 		CE9A067A17398B2D00783843 = {
 			isa = PBXGroup;
 			children = (
+				CE75F0E518412B0D00E14DCB /* libCoreDataAI.a */,
 				CE3462C917CE4B1A009D92BF /* MapKit.framework */,
 				CE3462C717CE4B02009D92BF /* ImageIO.framework */,
 				CEB9376817C68AFE00E825B9 /* QuartzCore.framework */,
@@ -1596,6 +1598,10 @@
 				GCC_PREFIX_HEADER = "Graffiti/Graffiti-Prefix.pch";
 				INFOPLIST_FILE = "Graffiti/Graffiti-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/user/Documents/XCode_Projects/Created\\ Libraries/Core\\ Data",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1614,6 +1620,10 @@
 				GCC_PREFIX_HEADER = "Graffiti/Graffiti-Prefix.pch";
 				INFOPLIST_FILE = "Graffiti/Graffiti-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/user/Documents/XCode_Projects/Created\\ Libraries/Core\\ Data",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

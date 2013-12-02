@@ -26,7 +26,7 @@ typedef enum {
 @property (strong, nonatomic) NSArray *groupsSelected;
 
 - (IBAction)saveGroupsPressed:(id)sender;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak   , nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) ProfileViewController *profileViewController;
 
 @end

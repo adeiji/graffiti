@@ -14,7 +14,7 @@
 @property (strong, nonatomic) NSArray *sections;
 @property (strong, nonatomic) NSArray *cellInfo;
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 - (IBAction)createGroupButtonPressed:(id)sender;
 

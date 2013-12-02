@@ -12,17 +12,17 @@
 
 @interface CommentViewController : UIViewController <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) IBOutlet CommentTextView *txtComment;
+@property (weak, nonatomic) IBOutlet CommentTextView *txtComment;
 - (IBAction)sendButtonPressed:(id)sender;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UIView *barView;
-@property (strong, nonatomic) IBOutlet UIButton *sendButton;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIView *barView;
+@property (weak, nonatomic) IBOutlet UIButton *sendButton;
 @property (strong, nonatomic) NSArray * initialConversationArray;
 
 //Constraints
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *tableViewSpaceToBottomConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewSpaceToTopConstraint;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewSpaceToBottomConstraint;
+@property ( weak, nonatomic) IBOutlet NSLayoutConstraint *textViewSpaceToTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *textViewHeightConstraint;
 
 
 - (IBAction)viewTagsPressed:(id)sender;

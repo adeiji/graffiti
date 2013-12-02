@@ -14,13 +14,13 @@
 
 - (id) initWithPageNumber:(NSUInteger) page : (NSDictionary *) tag;
 
-@property (strong, nonatomic) IBOutlet UIImageView *tagContent;
-@property (strong, nonatomic) IBOutlet UITextView *txtTagger;
-@property (strong, nonatomic) IBOutlet UITextView *txtContent;
+@property (weak, nonatomic) IBOutlet UIImageView *tagContent;
+@property (weak, nonatomic) IBOutlet UITextView *txtTagger;
+@property (weak, nonatomic) IBOutlet UITextView *txtContent;
 
 - (IBAction)navigateButtonPressed:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UIView *displayTagView;
+@property (weak, nonatomic) IBOutlet UIView *displayTagView;
 
 @property (strong, nonatomic) MPMoviePlayerController *movieController;
 

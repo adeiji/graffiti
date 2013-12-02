@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B4AF9DEC-6726-4677-AD38-4FB68C1DDAED</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Graffiti</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2F2F760A-1B9F-40A2-8672-49F3CB852471</key>
+		<string>https://github.com/JJSaccolo/UIActivityIndicator-for-SDWebImage.git</string>
+		<key>815B2EBF-CA87-4E29-B629-651952EE42BE</key>
+		<string>https://github.com/adeiji/graffiti.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Graffiti.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2F2F760A-1B9F-40A2-8672-49F3CB852471</key>
+		<string>../../Graffiti/UIActivityIndicator-for-SDWebImage</string>
+		<key>815B2EBF-CA87-4E29-B629-651952EE42BE</key>
+		<string>../..</string>
+		<key>FCC71E73-F37F-4ED6-BD99-713A3820A3DA</key>
+		<string>../../../CoreDataAI</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/adeiji/graffiti.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>815B2EBF-CA87-4E29-B629-651952EE42BE</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FCC71E73-F37F-4ED6-BD99-713A3820A3DA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CoreDataAI</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>815B2EBF-CA87-4E29-B629-651952EE42BE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Graffiti</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2F2F760A-1B9F-40A2-8672-49F3CB852471</string>
+			<key>IDESourceControlWCCName</key>
+			<string>UIActivityIndicator-for-SDWebImage</string>
+		</dict>
+	</array>
+</dict>
+</plist>

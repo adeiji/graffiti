@@ -26,6 +26,6 @@ typedef enum
 @property (strong, nonatomic) NSArray *rows;
 @property (strong, nonatomic) NSArray *groups;
 - (IBAction)saveButtonPressed:(id)sender;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

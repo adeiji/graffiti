@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "CoreDataAI/CoreData.h"
+#import "CoreDataAI/CoreDataAI.h"
 
 @implementation DataLayer
 

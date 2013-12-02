@@ -19,7 +19,7 @@
 @synthesize collection;
 
 //Set the address to the ip of my mac or whatever the ip address is of the server
-#define address @"54.213.167.56"
+#define address @"54.201.98.43"
 
 //mac home address - 192.168.1.129
 

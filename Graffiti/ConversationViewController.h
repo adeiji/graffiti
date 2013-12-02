@@ -11,11 +11,11 @@
 
 @interface ConversationViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) Tag* tag;
 @property (strong, nonatomic) NSArray *conversation;
-@property (strong, nonatomic) IBOutlet NSObject *bottomLayoutGuide;
+@property (weak, nonatomic) IBOutlet NSObject *bottomLayoutGuide;
 
 - (Tag*) tag;
 

@@ -19,9 +19,9 @@
 - (IBAction)playButtonReleased:(id)sender;
 - (IBAction)saveAudio:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UIImageView *audioLengthImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *audioLengthImageView;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *audioLengthRightSpace;
-@property (strong, nonatomic) IBOutlet UIButton *playButton;
+@property (weak, nonatomic) IBOutlet UIButton *playButton;
 - (IBAction)cancelButtonPressed:(id)sender;
 @property (strong, nonatomic) NSURL *audioUrl;
 - (IBAction)useAudioPressed:(id)sender;

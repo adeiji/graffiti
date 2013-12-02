@@ -21,7 +21,8 @@
     int pageNumber;
     NSDictionary* tag;
     MACircleProgressIndicator *circleProgressIndicator;
-    AVAudioPlayer *player;;
+    AVAudioPlayer *player;
+    dispatch_queue_t aQueue;
 }
 @end
 
@@ -59,9 +60,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    
+    //Set Global Concurrent Dispatch Queue to asynchronously load the tag data.
+    aQueue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     //Fill in all the UI objects with the necessary data, ie image, notes, etc.
-    [self fillOutObjects];
+   [self fillOutObjects];
+   
 }
 
 - (void) fillOutObjects
@@ -77,12 +81,11 @@
         //Show the progress of the image loading as it's loaded
         circleProgressIndicator.value = 0.7;
         
-        //Get the data from Amazon S3
-        [self.tagContent setImageWithURL:url completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType) {
-            circleProgressIndicator.value = 1;
-            //Remove the circle at finish of completion
-            [circleProgressIndicator removeFromSuperview];
-        }];
+        //Open the image using the Global Concurrent Dispatch Queue
+        dispatch_async(aQueue, ^{
+            [self.tagContent setImageWithURL:url];
+            }
+        );
     }
     else if ([[tag valueForKey:[TagEnumValue getStringValue:TAG_CONTENT_TYPE_COLUMN]] isEqualToString:[TagEnumValue getStringValue:CONTENT_TYPE_AUDIO]])
     {
@@ -113,12 +116,13 @@
         
         self.tagContent.hidden = YES;
         
-        //Setup audio session
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        //enables audio output
-        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
-        [session setActive:YES error:nil];
-
+        dispatch_async(aQueue, ^{
+            //Setup audio session
+            AVAudioSession *session = [AVAudioSession sharedInstance];
+            //enables audio output
+            [session setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+            [session setActive:YES error:nil];
+        });
     }
     else if ([[tag valueForKey:[TagEnumValue getStringValue:TAG_CONTENT_TYPE_COLUMN]] isEqualToString:[TagEnumValue getStringValue:CONTENT_TYPE_VIDEO]])
     {

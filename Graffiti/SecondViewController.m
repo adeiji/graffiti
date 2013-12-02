@@ -36,7 +36,6 @@
 @synthesize ComposeTagNavBar;
 @synthesize cameraButton;
 @synthesize myLocationManager;
-@synthesize myDataLayer;
 
 #define CONTENT @"content"
 #define CONTENT_TYPE @"contentType"
@@ -45,8 +44,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-    tag = [[Tag alloc] init];
     
     //We do this so that the Keyboard appears immediately when you open the Tag Screen after taking the picture
     [txtTag becomeFirstResponder];
@@ -60,10 +57,15 @@
     ComposeTagNavBar.frame = frame;
     
     ComposeTagNavBar.topItem.title = @"Tag Location";
-    myDataLayer = [[DataLayer alloc] init];
-    
-    self.delegate = [[UIApplication sharedApplication] delegate];
 }
+
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //Create a new tag every time the screen appears.
+    tag = [[Tag alloc] init];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -97,11 +99,11 @@
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) //Check to see if this device uses a camera
     {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-        picker.delegate = self;
-        picker.allowsEditing = YES;
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        [self presentViewController:picker animated:YES completion:nil];
+        self.picker = [[UIImagePickerController alloc] init];
+        self.picker.delegate = self;
+        self.picker.allowsEditing = YES;
+        self.picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:self.picker animated:YES completion:nil];
         //Set the tag type to image
         tag.type = [TagEnumValue getStringValueForTagType:TYPE_IMAGE];
     }
@@ -159,15 +161,9 @@
     double latitude = [[locations objectAtIndex:0] coordinate].latitude;
     double longitude = [[locations objectAtIndex:0] coordinate].longitude;
     
-    NSString *latitudeString = [NSString stringWithFormat:@"%g\u00B0", latitude];
-    NSString *longitudeString = [NSString stringWithFormat:@"%g\u00B0", longitude];
-    
     tag.latitude = [NSNumber numberWithDouble:latitude];
     tag.longitude = [NSNumber numberWithDouble:longitude];
     
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Location Tagged" message:[NSString stringWithFormat:@"Information tagged at location - Latitude: %@ , Longitude: %@", latitudeString, longitudeString] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
-    
-    [alert show];
     //Stop updating the location because now it is uneccesary
     [myLocationManager stopUpdatingLocation];
     [self GetTagName];
@@ -186,9 +182,11 @@
     NSMutableDictionary *contentDictionary = [[NSMutableDictionary alloc] init];
     
     tag.name = name;
+    
     //Use this where explicit transactions are not allowed.  This creates a unique ID and stores it as an ID using core data
     tag.uid = (__bridge NSString *)(CFUUIDCreate(NULL));
     tag.content = txtTag.text;
+    
     
     if ([tag.type isEqualToString:[TagEnumValue getStringValueForTagType:TYPE_IMAGE]])
     {
@@ -210,12 +208,10 @@
     //Call the AmazonS3Handler which will add the file to the Amazon Server
     AmazonS3Handler *myS3Handler = [[AmazonS3Handler alloc] init:contentDictionary];
     
-    //[myS3Handler performSelectorInBackground:@selector(init:) withObject:contentDictionary];
-    
     //Get the Url of the image that was saved onto the server and then save this url into the database
     NSString *url = [myS3Handler GetUrl];
     tag.url = url;
-    [tag.conversation addObject:@"This crazy right here man"];
+    //[tag.conversation addObject:@"This crazy right here man"];
     tag.expirationDate =  [self getNextYear];
     tag.dateTime = [[NSDate alloc] init];
     //tag.tagger = self.delegate.tagger;
@@ -227,13 +223,12 @@
     NSString *dateString = [NSDateFormatter localizedStringFromDate:tag.dateTime dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     NSString *expirationDateString = [NSDateFormatter localizedStringFromDate:tag.expirationDate dateStyle:NSDateFormatterShortStyle timeStyle:NSDateFormatterShortStyle];
     
-    contentDictionary = [[NSMutableDictionary alloc] init];
     
+    contentDictionary = [[NSMutableDictionary alloc] init];
     [contentDictionary setObject:[NSString stringWithFormat:@"%@",tag.uid] forKey:[TagEnumValue getStringValue:TAG_ID_COLUMN]];
     [contentDictionary setObject:tag.name forKey:[TagEnumValue getStringValue:TAG_NAME_COLUMN]];
     [contentDictionary setObject:tag.type forKey:[TagEnumValue getStringValue:TAG_CONTENT_TYPE_COLUMN]];
     [contentDictionary setObject:tag.content forKey:[TagEnumValue getStringValue:TAG_CONTENT_COLUMN]];
-//    [contentDictionary setObject:tag.data forKey:[TagEnumValue getStringValue:--DATA COLUMN--]];
     [contentDictionary setObject:tag.url forKey:[TagEnumValue getStringValue:TAG_DATA_URL_COLUMN]];
     [contentDictionary setObject:tag.conversation forKey:[TagEnumValue getStringValue:TAG_COMMENTS_COLUMN]];
     [contentDictionary setObject:expirationDateString forKey:[TagEnumValue getStringValue:TAG_EXPIRATION_DATE_COLUMN]];
@@ -248,6 +243,18 @@
     [MongoDbConnection insertInfo:contentDictionary collectionName:[TagEnumValue getStringValue:TAGS_TABLE]];
     
     NSLog(@"Tag saved");
+    
+    NSString *latitudeString = [NSString stringWithFormat:@"%@\u00B0", tag.latitude];
+    NSString *longitudeString = [NSString stringWithFormat:@"%@\u00B0", tag.longitude];
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Location Tagged" message:[NSString stringWithFormat:@"Information tagged at location - Latitude: %@ , Longitude: %@", latitudeString, longitudeString] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    
+    [alert show];
+    
+    
+    //Alloc a new tag object so that we don't have any issues with the previous tag conflicting with our new tag values
+    tag = [[Tag alloc] init];
+    myImage = nil;
 }
 
 - (NSDate *) getNextYear
@@ -285,12 +292,14 @@
 }
 
 #pragma mark - Camera Delegate Methods
+
+
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    if (tag.type == [TagEnumValue getStringValueForTagType:TYPE_AUDIO])
+    if (tag.type == [TagEnumValue getStringValueForTagType:TYPE_IMAGE])
     {
         myImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-        myImage = [UIImage imageWithCGImage:myImage.CGImage scale:1.0f orientation:UIImageOrientationRight];
+        myImage = [UIImage imageWithCGImage:myImage.CGImage scale:0.1f orientation:UIImageOrientationRight];
         [cameraButton setTintColor:[UIColor redColor]];
         [_audioButton setTintColor:[UIColor clearColor]];
     }

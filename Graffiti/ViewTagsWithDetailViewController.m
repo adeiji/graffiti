@@ -33,7 +33,6 @@
 @implementation ViewTagsWithDetailViewController
 
 @synthesize tags;
-@synthesize dataLayer;
 @synthesize cellHeight;
 @synthesize background;
 @synthesize mainView;
@@ -57,6 +56,15 @@
 
 #define mongoDbCollectionName @"Graffiti.tags"
 
+#define COMMENT_BUTTON_HEIGHT_CONSTRAINT @"commentButtonHeightConstraint"
+#define COMMENT_BUTTON_WIDTH_CONSTRAINT @"commentButtonWidthConstraint"
+#define COMMENT_BUTTON_CONSTRAINTS_ARRAY @"commentButtonConstraintsArray"
+#define COMMENT_BUTTON_SPACE_TO_TABLE_CONSTRAINT @"commentButtonSpaceToTableConstraint"
+#define COMMENT_BUTTON_SUPERVIEW @"commentButtonSuperview"
+#define COMMENT_BUTTON_SPACE_TO_TOP_CONSTRAINT @"commentButtonSpaceToTopConstraint"
+#define COMMENT_BUTTON_CENTER_X_CONSTRAINT @"commentButtonCenterX"
+
+
 - (void)viewDidLoad
 {
     
@@ -76,7 +84,6 @@
         self.scrollView.backgroundColor = [UIColor colorWithWhite:0.0f alpha:0.0f];
     }
     
-    dataLayer = [[DataLayer alloc] init];
     
     [self.scrollView addSubview:self.horizontalPageControl];
 }
@@ -95,7 +102,9 @@
     NSUInteger numberOfPages = [tags count] + 1;
     
     //View controllers are created lazily
-    NSMutableArray *controllers = [[NSMutableArray alloc] init];
+    static NSMutableArray *controllers;
+    
+    controllers = [[NSMutableArray alloc] init];
     
     for (NSUInteger i = 0; i < numberOfPages; i++ )
     {
@@ -104,8 +113,12 @@
     }
     
     self.viewControllers = controllers;
+    
     //This array will hold the conversation Controllers so that they are not released and we cannot scroll because the delegate will be set to nil.
-    self.conversationControllers = [[NSMutableArray alloc] init];
+    if (!self.conversationControllers)
+    {
+        self.conversationControllers = [[NSMutableArray alloc] init];
+    }
     
     self.scrollView.pagingEnabled = YES;
     self.scrollView.contentSize =
@@ -199,8 +212,9 @@
     if (page > [tags count])
         return;
     
-    // replace the placeholder if necessary
-    UIViewController *controller = [self.viewControllers objectAtIndex:page];
+    // replace the placeholder if necessary.  Set this view controller to static so that we don't keep loading this information into memory.
+    static UIViewController *controller;
+    controller = [self.viewControllers objectAtIndex:page];
     
     if ((NSNull *)controller == [NSNull null])
     {
@@ -220,7 +234,8 @@
             //Add a refresh button to the very end of the scroll
             controller = [[RefreshButtonViewController alloc] init];
             
-            RefreshButtonView *refreshView = (RefreshButtonView*) controller.view;
+            static RefreshButtonView *refreshView;
+            refreshView = (RefreshButtonView*) controller.view;
             [refreshView setControlToRefresh:self];
             
             controller.view = refreshView;
@@ -235,7 +250,6 @@
         //Add the controller's view to the scroll view
         [self addControllerToScrollView:controller page:page scrollView:self.scrollView controllerToAddControllerTo:self frame:frame];
     }
-    
 }
 
 - (void) addControllerToScrollView : (UIViewController *) controller
@@ -323,6 +337,7 @@
     NSArray *constraints = [[NSArray alloc] initWithObjects:heightConstraint, widthConstraint, nil];
     
     UIImage *backgroundImage = [UIImage imageNamed:@"commentbutton.png"];
+    
     //Set the image background
     [commentButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
     
@@ -347,18 +362,25 @@
     
     constraints = [[NSArray alloc] initWithObjects:[spaceToTable objectAtIndex:0], [spaceToTop objectAtIndex:0], centerX, nil];
     [commentButton.superview addConstraints:constraints];
- 
+
+    [self.cache setObject:heightConstraint forKey:COMMENT_BUTTON_HEIGHT_CONSTRAINT];
+    [self.cache setObject:constraints forKey:COMMENT_BUTTON_CONSTRAINTS_ARRAY];
+    [self.cache setObject:widthConstraint forKey:COMMENT_BUTTON_WIDTH_CONSTRAINT];
+    [self.cache setObject:spaceToTable forKey:COMMENT_BUTTON_SPACE_TO_TABLE_CONSTRAINT];
+    [self.cache setObject:superView forKey:COMMENT_BUTTON_SUPERVIEW];
+    [self.cache setObject:spaceToTop forKey:COMMENT_BUTTON_SPACE_TO_TOP_CONSTRAINT];
+    [self.cache setObject:centerX forKey:COMMENT_BUTTON_CENTER_X_CONSTRAINT];
     
     NSLog(@"Comment Button Frame - %@",NSStringFromCGSize(commentButton.frame.size));
 }
 
 - (void) commentButtonPressed
 {
-    CommentViewController *commentViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"commentViewController"];
+    self.commentViewController = [[UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil] instantiateViewControllerWithIdentifier:@"commentViewController"];
     
     //Set the tag to send to the comment view controller so that way the user can comment on the tag
-    [commentViewController setTag:[tags objectAtIndex:self.horizontalPageControl.currentPage]];
-    [self.navigationController pushViewController:commentViewController animated:YES];
+    [self.commentViewController setTag:[tags objectAtIndex:self.horizontalPageControl.currentPage]];
+    [self.navigationController pushViewController:self.commentViewController animated:YES];
 }
 
 - (void)centerScrollViewContents {
@@ -411,7 +433,14 @@
 
 - (void) refreshController
 {
+    self.viewControllers = nil;
+    
     [self setUpPaging];
+    
+    for (UIView *view in self.scrollView.subviews)
+    {
+        [view removeFromSuperview];
+    }
     
     //Get the current page
     NSUInteger page = self.horizontalPageControl.currentPage;
@@ -439,6 +468,13 @@
     [super viewWillDisappear:animated];
     
     previousTagCount = [tags count];
+}
+
+- (void) viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    
+    
 }
 
 
